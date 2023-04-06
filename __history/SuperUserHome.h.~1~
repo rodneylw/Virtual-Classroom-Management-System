@@ -1,0 +1,20 @@
+//---------------------------------------------------------------------------
+
+#ifndef SuperUserHomeH
+#define SuperUserHomeH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+//---------------------------------------------------------------------------
+class TSuperUserHomeForm : public TForm
+{
+__published:	// IDE-managed Components
+private:	// User declarations
+public:		// User declarations
+	__fastcall TSuperUserHomeForm(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TSuperUserHomeForm *SuperUserHomeForm;
+//---------------------------------------------------------------------------
+#endif

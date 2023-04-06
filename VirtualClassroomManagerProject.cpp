@@ -7,14 +7,16 @@
 #pragma hdrstop
 #include <System.StartUpCopy.hpp>
 //---------------------------------------------------------------------------
-USEFORM("VirtualClassroomLogin.cpp", Form1);
+USEFORM("VirtualClassroomLogin.cpp", LoginForm);
+USEFORM("SuperUserHome.cpp", SuperUserHomeForm);
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {
 	try
 	{
 		Application->Initialize();
-		Application->CreateForm(__classid(TForm1), &Form1);
+		Application->CreateForm(__classid(TLoginForm), &LoginForm);
+		Application->CreateForm(__classid(TSuperUserHomeForm), &SuperUserHomeForm);
 		Application->Run();
 	}
 	catch (Exception &exception)
