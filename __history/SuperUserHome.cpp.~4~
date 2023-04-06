@@ -1,0 +1,52 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#include <fstream>
+#pragma hdrstop
+
+#include "SuperUserHome.h"
+#include "VirtualClassroomLogin.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+TSuperUserHomeForm *SuperUserHomeForm;
+//---------------------------------------------------------------------------
+__fastcall TSuperUserHomeForm::TSuperUserHomeForm(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TSuperUserHomeForm::FormClose(TObject *Sender, TCloseAction &Action)
+
+{
+     LoginForm->Close();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TSuperUserHomeForm::CreateAdministratorButtonClick(TObject *Sender)
+
+{
+     fstream AdminInfoFile;
+     AdminInfoFile.open("AdminInfo.txt", ios::app);
+     if(AdminInfoFile.is_open()) {
+         AnsiString Email = EmailEdit->Text;
+         AnsiString Password = PasswordEdit->Text;
+         AnsiString FirstName = FirstNameEdit->Text;
+         AnsiString LastName = LastNameEdit->Text;
+         AnsiString Birthdate = BirthdateEdit->Text;
+         AnsiString PhoneNumber = PhoneNumberEdit->Text;
+         AnsiString Address = AddressEdit->Text;
+         AnsiString SecurityQuestion = SecurityQuestionEdit->Text;
+         AnsiString SecurityAnswer = SecurityAnswerEdit->Text;
+
+         AdminInfoFile << Email << "," << Password << "," << FirstName << ","
+         << LastName << "," << Birthdate << "," << PhoneNumber << ","
+         << Address << "," << SecurityQuestion << "," << SecurityAnswer
+         << std::endl;
+
+         AdminInfoFile.close();
+     }
+}
+//---------------------------------------------------------------------------
+

@@ -33,7 +33,10 @@ __published:	// IDE-managed Components
 	TLabel *SecurityAnswerLabel;
 	TEdit *SecurityAnswerEdit;
 	TButton *CreateAdministratorButton;
+	TLabel *JobTitleLabel;
+	TEdit *JobTitleEdit;
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall CreateAdministratorButtonClick(TObject *Sender);
 
 
 private:	// User declarations
