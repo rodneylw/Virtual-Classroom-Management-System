@@ -1,0 +1,19 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "School.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+
+void School::addAdministrator(std::unique_ptr<User>& admin) {
+    Administrators.push_back(admin);
+}
+
+/*School& getInstance() {
+    if(instance == nullptr) {
+        instance = new School("Horizon Middle School");
+    }
+    return instance;
+}           */

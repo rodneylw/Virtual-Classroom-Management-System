@@ -8,6 +8,7 @@
 #include "VirtualClassroomLogin.h"
 #include "User.h"
 #include "Administrator.h"
+#include "School.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -32,42 +33,37 @@ void __fastcall TSuperUserHomeForm::CreateAdministratorButtonClick(TObject *Send
 
      AnsiString AnsiEmail = EmailEdit->Text;
      string Email = AnsiEmail.c_str();
-
      AnsiString AnsiPassword = PasswordEdit->Text;
      string Password = AnsiPassword.c_str();
-
      AnsiString AnsiFirstName = FirstNameEdit->Text;
      string FirstName = AnsiFirstName.c_str();
-
      AnsiString AnsiLastName = LastNameEdit->Text;
      string LastName = AnsiLastName.c_str();
-
      AnsiString AnsiBirthdate = BirthdateEdit->Text;
      string Birthdate = AnsiBirthdate.c_str();
-
      AnsiString AnsiPhoneNumber = PhoneNumberEdit->Text;
      string PhoneNumber = AnsiPhoneNumber.c_str();
-
      AnsiString AnsiAddress = AddressEdit->Text;
      string Address = AnsiAddress.c_str();
-
      AnsiString AnsiSecurityQuestion = SecurityQuestionEdit->Text;
      string SecurityQuestion = AnsiSecurityQuestion.c_str();
-
      AnsiString AnsiSecurityAnswer = SecurityAnswerEdit->Text;
      string SecurityAnswer = AnsiSecurityAnswer.c_str();
-
      AnsiString AnsiJobTitle = JobTitleEdit->Text;
      string JobTitle = AnsiJobTitle.c_str();
 
 
-     std::unique_ptr<User> obj = std::make_unique<Administrator>(LastName, FirstName, Email, Password, PhoneNumber, Birthdate, SecurityQuestion, SecurityAnswer, Address, JobTitle);
+     std::unique_ptr<User> obj = std::make_unique<Administrator>(LastName,
+     FirstName, Email, Password, PhoneNumber, Birthdate, SecurityQuestion,
+     SecurityAnswer, Address, JobTitle);
+
+     School::getInstance().addAdministrator(std::move(obj));
 
 /*
 	fstream AdminInfoFile;
      AdminInfoFile.open("AdminInfo.txt", ios::app);
      if(AdminInfoFile.is_open()) {
-         
+
          AdminInfoFile << JobTitle << "," << Email << "," << Password << ","
          << FirstName << "," << LastName << "," << Birthdate << ","
          << PhoneNumber << "," << Address << "," << SecurityQuestion << ","
@@ -76,6 +72,7 @@ void __fastcall TSuperUserHomeForm::CreateAdministratorButtonClick(TObject *Send
          AdminInfoFile.close();
      }
 */
+
 }
 //---------------------------------------------------------------------------
 
