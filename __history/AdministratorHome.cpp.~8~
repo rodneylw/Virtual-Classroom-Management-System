@@ -6,8 +6,6 @@
 #include "AdministratorHome.h"
 #include "VirtualClassroomLogin.h"
 #include "AdministratorUserAccounts.h"
-#include "AdministratorManageCourses.h"
-#include "AdministratorStudentProgress.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -55,14 +53,6 @@ void __fastcall TAdministratorHomeForm::UserAccountsMenuItemMouseLeave(TObject *
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TAdministratorHomeForm::ManageCoursesMenuItemClick(TObject *Sender)
-
-{
-     AdministratorManageCoursesForm->Show();
-     AdministratorHomeForm->Hide();
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TAdministratorHomeForm::ManageCoursesMenuItemMouseEnter(TObject *Sender)
 
 {
@@ -82,14 +72,6 @@ void __fastcall TAdministratorHomeForm::ManageCoursesMenuItemMouseLeave(TObject 
     ManageCoursesMenuItem->Font->Style = fontStyle;
 
     ManageCoursesMenuItem->TextSettings->FontColor = TAlphaColorRec::Black;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TAdministratorHomeForm::StudentProgressMenuItemClick(TObject *Sender)
-
-{
-     AdministratorStudentProgressForm->Show();
-     AdministratorHomeForm->Hide();
 }
 //---------------------------------------------------------------------------
 
@@ -114,3 +96,4 @@ void __fastcall TAdministratorHomeForm::StudentProgressMenuItemMouseLeave(TObjec
     StudentProgressMenuItem->TextSettings->FontColor = TAlphaColorRec::Black;
 }
 //---------------------------------------------------------------------------
+

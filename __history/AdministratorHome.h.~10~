@@ -27,7 +27,6 @@ __published:	// IDE-managed Components
 	void __fastcall StudentProgressMenuItemMouseEnter(TObject *Sender);
 	void __fastcall StudentProgressMenuItemMouseLeave(TObject *Sender);
 	void __fastcall ManageCoursesMenuItemClick(TObject *Sender);
-	void __fastcall StudentProgressMenuItemClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorHomeForm(TComponent* Owner);

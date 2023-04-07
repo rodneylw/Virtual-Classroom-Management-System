@@ -41,7 +41,6 @@ object AdministratorHomeForm: TAdministratorHomeForm
     Size.PlatformDefault = False
     Text = 'Manage Courses'
     TextSettings.HorzAlign = Leading
-    OnClick = ManageCoursesMenuItemClick
     OnMouseEnter = ManageCoursesMenuItemMouseEnter
     OnMouseLeave = ManageCoursesMenuItemMouseLeave
   end
@@ -53,7 +52,6 @@ object AdministratorHomeForm: TAdministratorHomeForm
     Size.PlatformDefault = False
     Text = 'Student Progress Statistics'
     TextSettings.HorzAlign = Leading
-    OnClick = StudentProgressMenuItemClick
     OnMouseEnter = StudentProgressMenuItemMouseEnter
     OnMouseLeave = StudentProgressMenuItemMouseLeave
   end
