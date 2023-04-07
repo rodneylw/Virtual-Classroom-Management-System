@@ -9,16 +9,23 @@
 #include <FMX.Controls.Presentation.hpp>
 #include <FMX.StdCtrls.hpp>
 #include <FMX.Types.hpp>
+#include <FMX.Objects.hpp>
 //---------------------------------------------------------------------------
 class TAdministratorHomeForm : public TForm
 {
 __published:	// IDE-managed Components
 	TLabel *AdministratorHomeHeaderLabel;
-	TLabel *UserAccountMenuLabel;
-	TLabel *ManageCoursesMenuLabel;
-	TLabel *StudentProgressMenuLabel;
+	TText *UserAccountsMenuItem;
+	TText *ManageCoursesMenuItem;
+	TText *StudentProgressMenuItem;
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall UserAccountMenuLabelClick(TObject *Sender);
+	void __fastcall UserAccountsMenuItemClick(TObject *Sender);
+	void __fastcall UserAccountsMenuItemMouseEnter(TObject *Sender);
+	void __fastcall UserAccountsMenuItemMouseLeave(TObject *Sender);
+	void __fastcall ManageCoursesMenuItemMouseEnter(TObject *Sender);
+	void __fastcall ManageCoursesMenuItemMouseLeave(TObject *Sender);
+	void __fastcall StudentProgressMenuItemMouseEnter(TObject *Sender);
+	void __fastcall StudentProgressMenuItemMouseLeave(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorHomeForm(TComponent* Owner);

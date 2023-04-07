@@ -12,12 +12,15 @@ object SuperUserHomeForm: TSuperUserHomeForm
   object FirstNameEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 3
-    Position.X = 288.000000000000000000
+    Position.X = 264.000000000000000000
     Position.Y = 160.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
   object FirstNameLabel: TLabel
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 208.000000000000000000
+    Position.X = 184.000000000000000000
     Position.Y = 160.000000000000000000
     Size.Width = 81.000000000000000000
     Size.Height = 25.000000000000000000
@@ -28,7 +31,7 @@ object SuperUserHomeForm: TSuperUserHomeForm
   end
   object LastNameLabel: TLabel
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 208.000000000000000000
+    Position.X = 184.000000000000000000
     Position.Y = 192.000000000000000000
     Size.Width = 81.000000000000000000
     Size.Height = 25.000000000000000000
@@ -40,12 +43,15 @@ object SuperUserHomeForm: TSuperUserHomeForm
   object LastNameEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 4
-    Position.X = 288.000000000000000000
+    Position.X = 264.000000000000000000
     Position.Y = 192.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
   object EmailLabel: TLabel
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 208.000000000000000000
+    Position.X = 184.000000000000000000
     Position.Y = 96.000000000000000000
     Size.Width = 81.000000000000000000
     Size.Height = 25.000000000000000000
@@ -57,12 +63,15 @@ object SuperUserHomeForm: TSuperUserHomeForm
   object EmailEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 1
-    Position.X = 288.000000000000000000
+    Position.X = 264.000000000000000000
     Position.Y = 96.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
   object PasswordLabel: TLabel
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 208.000000000000000000
+    Position.X = 184.000000000000000000
     Position.Y = 128.000000000000000000
     Size.Width = 81.000000000000000000
     Size.Height = 25.000000000000000000
@@ -74,12 +83,15 @@ object SuperUserHomeForm: TSuperUserHomeForm
   object PasswordEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 2
-    Position.X = 288.000000000000000000
+    Position.X = 264.000000000000000000
     Position.Y = 128.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
   object PhoneNumberLabel: TLabel
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 208.000000000000000000
+    Position.X = 184.000000000000000000
     Position.Y = 256.000000000000000000
     Size.Width = 81.000000000000000000
     Size.Height = 25.000000000000000000
@@ -91,12 +103,15 @@ object SuperUserHomeForm: TSuperUserHomeForm
   object PhoneNumberEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 6
-    Position.X = 288.000000000000000000
+    Position.X = 264.000000000000000000
     Position.Y = 256.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
   object BirthdateLabel: TLabel
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 208.000000000000000000
+    Position.X = 184.000000000000000000
     Position.Y = 224.000000000000000000
     Size.Width = 81.000000000000000000
     Size.Height = 25.000000000000000000
@@ -108,12 +123,15 @@ object SuperUserHomeForm: TSuperUserHomeForm
   object BirthdateEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 5
-    Position.X = 288.000000000000000000
+    Position.X = 264.000000000000000000
     Position.Y = 224.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
   object AddressLabel: TLabel
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 208.000000000000000000
+    Position.X = 184.000000000000000000
     Position.Y = 288.000000000000000000
     Size.Width = 81.000000000000000000
     Size.Height = 25.000000000000000000
@@ -125,12 +143,15 @@ object SuperUserHomeForm: TSuperUserHomeForm
   object AddressEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 7
-    Position.X = 288.000000000000000000
+    Position.X = 264.000000000000000000
     Position.Y = 288.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
   object SecurityQuestionLabel: TLabel
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 208.000000000000000000
+    Position.X = 184.000000000000000000
     Position.Y = 320.000000000000000000
     Size.Width = 81.000000000000000000
     Size.Height = 25.000000000000000000
@@ -142,12 +163,15 @@ object SuperUserHomeForm: TSuperUserHomeForm
   object SecurityQuestionEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 8
-    Position.X = 288.000000000000000000
+    Position.X = 264.000000000000000000
     Position.Y = 320.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
   object SecurityAnswerLabel: TLabel
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 208.000000000000000000
+    Position.X = 184.000000000000000000
     Position.Y = 352.000000000000000000
     Size.Width = 81.000000000000000000
     Size.Height = 25.000000000000000000
@@ -159,8 +183,11 @@ object SuperUserHomeForm: TSuperUserHomeForm
   object SecurityAnswerEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 9
-    Position.X = 288.000000000000000000
+    Position.X = 264.000000000000000000
     Position.Y = 352.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
   object CreateAdministratorButton: TButton
     Position.X = 208.000000000000000000
@@ -174,7 +201,7 @@ object SuperUserHomeForm: TSuperUserHomeForm
   end
   object JobTitleLabel: TLabel
     StyledSettings = [Family, Style, FontColor]
-    Position.X = 208.000000000000000000
+    Position.X = 184.000000000000000000
     Position.Y = 64.000000000000000000
     Size.Width = 81.000000000000000000
     Size.Height = 25.000000000000000000
@@ -186,7 +213,10 @@ object SuperUserHomeForm: TSuperUserHomeForm
   object JobTitleEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     TabOrder = 0
-    Position.X = 288.000000000000000000
+    Position.X = 264.000000000000000000
     Position.Y = 64.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
 end

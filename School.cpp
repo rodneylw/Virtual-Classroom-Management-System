@@ -30,7 +30,7 @@ std::vector<std::unique_ptr<User>>& School::GetAdministrators() {
 
 void School::SaveUsers() {
     fstream AdminInfoFile;
-    AdminInfoFile.open("AdminInfo.txt", ios::app);
+    AdminInfoFile.open("AdminInfo.txt", ios::out);
     if(AdminInfoFile.is_open()) {
 
         for(auto& admin : Administrators) {
@@ -42,7 +42,7 @@ void School::SaveUsers() {
     }
 
     fstream InstructorInfoFile;
-    InstructorInfoFile.open("InstructorInfo.txt", ios::app);
+    InstructorInfoFile.open("InstructorInfo.txt", ios::out);
     if(InstructorInfoFile.is_open()) {
 
         for(auto& instructor : Instructors) {
@@ -54,7 +54,7 @@ void School::SaveUsers() {
     }
 
     fstream StudentInfoFile;
-    StudentInfoFile.open("StudentInfo.txt", ios::app);
+    StudentInfoFile.open("StudentInfo.txt", ios::out);
     if(StudentInfoFile.is_open()) {
 
         for(auto& student : Students) {
