@@ -1,0 +1,30 @@
+//---------------------------------------------------------------------------
+
+#ifndef CourseH
+#define CourseH
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+#include "Instructor.h"
+#include "Student.h"
+
+using std::string
+//---------------------------------------------------------------------------
+
+class Course {
+private:
+     string CourseID;
+     string CourseName;
+     string CourseSubject;
+     Instructor CourseInstructor;
+     vector<std::unique_ptr<User>> Students;
+     //vector<Assignment> Assignments;
+     //vector<Evaluation> Evaluations;
+     //vector<Discussion> Discussions;
+     //Calendar CourseCalendar;
+};
+
+
+#endif

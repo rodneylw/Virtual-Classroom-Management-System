@@ -1,0 +1,27 @@
+//---------------------------------------------------------------------------
+
+#ifndef StudentH
+#define StudentH
+#include "User.h"
+//#include "Course.h"
+//---------------------------------------------------------------------------
+#include <iostream>
+#include <string>
+#include <vector>
+
+using std::string;
+
+class Student : public User {
+private:
+     //vector<Course*> Courses;
+public:
+
+     void SaveUser(std::ostream& out) {
+         User::SaveUser(out);
+     }
+};
+
+
+
+
+#endif

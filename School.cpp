@@ -75,20 +75,29 @@ void School::LoadUsers() {
     		while(getline(AdminInfoFile, line)) {
                std::vector<std::string> ParsedLine = ParseCommaDelimitedString(line);
 
-               std::string Email = ParsedLine[0];
-               std::string Password = ParsedLine[1];
-               std::string FirstName = ParsedLine[2];
-               std::string LastName = ParsedLine[3];
-               std::string DateOfBirth = ParsedLine[4];
-               std::string PhoneNumber = ParsedLine[5];
-               std::string Address = ParsedLine[6];
-               std::string SecurityQuestion = ParsedLine[7];
-               std::string SecurityAnswer = ParsedLine[8];
-               std::string JobTitle = ParsedLine[9];
+               std::string UserID = ParsedLine[0];
+               std::string Email = ParsedLine[1];
+               std::string Password = ParsedLine[2];
+               std::string FirstName = ParsedLine[3];
+               std::string LastName = ParsedLine[4];
+               std::string DateOfBirth = ParsedLine[5];
+               std::string PhoneNumber = ParsedLine[6];
+               std::string Address = ParsedLine[7];
+               std::string SecurityQuestion = ParsedLine[8];
+               std::string SecurityAnswer = ParsedLine[9];
+               std::string IsBlockedString = ParsedLine[10];
+               std::string JobTitle = ParsedLine[11];
 
-               std::unique_ptr<User> obj = std::make_unique<Administrator>(LastName,
+               bool IsBlocked;
+               if(IsBlockedString == "0") {
+                   IsBlocked = false;
+               } else {
+                   IsBlocked = true;
+               }
+
+               std::unique_ptr<User> obj = std::make_unique<Administrator>(UserID, LastName,
      		FirstName, Email, Password, PhoneNumber, DateOfBirth, SecurityQuestion,
-               SecurityAnswer, Address, JobTitle);
+               SecurityAnswer, Address, IsBlocked, JobTitle);
 
                Administrators.push_back(std::move(obj));
           }

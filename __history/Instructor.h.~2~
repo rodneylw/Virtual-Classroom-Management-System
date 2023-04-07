@@ -1,0 +1,26 @@
+//---------------------------------------------------------------------------
+
+#ifndef InstructorH
+#define InstructorH
+#include "User.h"
+//---------------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+
+using std::string;
+
+class Instructor : public User {
+private:
+
+public:
+
+     void SaveUser(std::ostream& out) {
+         User::SaveUser(out);
+     }
+};
+
+
+
+
+#endif

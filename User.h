@@ -50,6 +50,23 @@ public:
           IsLoggedIn = false;
 	};
 
+     User(string userID, string lastname, string firstname, string email, string password, string phoneNumber, string dob, string question, string answer, string address, bool isBlocked){
+          UserID = userID;
+          LastName = lastname;
+          FirstName = firstname;
+          Email = email;
+          Password = password;
+          PhoneNumber = phoneNumber;
+          DateOfBirth = dob;
+          SecurityQuestion = question;
+          SecurityAnswer = answer;
+          Address = address;
+          IsBlocked = isBlocked;
+          IsLoggedIn = false;
+	};
+
+     //User(userID, lastname, firstname, email, password, phoneNumber, dob, question, answer, address, isBlocked)
+
      string GetLastName();
      string GetFirstName();
      string GetUserID();

@@ -1,0 +1,37 @@
+//---------------------------------------------------------------------------
+
+#ifndef AssignmentH
+#define AssignmentH
+//---------------------------------------------------------------------------
+#include <iostream>
+using std::string;
+
+class Assignment {
+private:
+    string AssignmentID
+    string Title
+    string Description
+    string DueDate
+    double MaximumPoints
+    double Weight
+    Course* Course
+    <vector> AttachedFiles
+protected:
+     string GenerateUniqueAssignmentID();
+public:
+     Assignment(string title, string description, string dueDate, double maxPoints,
+     double weight, Course* course) {
+          AssignmentID = GenerateUniqueAssignmentID();
+          Title = title;
+          Description = description;
+          DueDate = dueDate;
+          MaximumPoints = maxPoints;
+          Weight = weight;
+          Course = course;
+     }
+};
+
+
+
+
+#endif

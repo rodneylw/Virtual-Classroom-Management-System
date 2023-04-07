@@ -1,0 +1,18 @@
+//---------------------------------------------------------------------------
+
+#ifndef EvaluationH
+#define EvaluationH
+//---------------------------------------------------------------------------
+#include <iostream>
+using std::string;
+
+class Evaluation : public Assignment {
+public:
+     Evaluation(string title, string description, string dueDate, double maxPoints, double weight, Course* course)
+       : Assignment(title, description, dueDate, maxPoints, weight, course) {
+       //Constructor Body
+     }
+};
+
+
+#endif

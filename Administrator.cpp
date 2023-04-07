@@ -9,3 +9,8 @@
 string Administrator::GetJobTitle() {
     return JobTitle;
 }
+
+ void Administrator::SaveUser(std::ostream& out) {
+     User::SaveUser(out);
+     out << "," << GetJobTitle();
+ }

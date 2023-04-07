@@ -9,9 +9,9 @@
 #pragma package(smart_init)
 
 std::string User::generateID(UserType userType) {
-	static int adminCounter = 0;
-     static int instructorCounter = 0;
-     static int studentCounter = 0;
+	static int adminCounter = 1000;
+     static int instructorCounter = 1000;
+     static int studentCounter = 1000;
 
      std::string id;
 
@@ -70,9 +70,9 @@ std::string User::generateID(UserType userType) {
  };
 
  void User::SaveUser(std::ostream& out) {
-      out << GetEmail() << "," << GetPassword() << ","
+      out << GetUserID() << "," << GetEmail() << "," << GetPassword() << ","
       << GetFirstName() << "," << GetLastName() << "," << GetDateOfBirth() << ","
       << GetPhoneNumber() << "," << GetAddress() << "," << GetSecurityQuestion() << ","
-      << GetSecurityAnswer();
+      << GetSecurityAnswer() << "," << GetIsBlocked();
  }
 
