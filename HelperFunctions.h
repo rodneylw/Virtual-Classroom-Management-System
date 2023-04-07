@@ -12,6 +12,7 @@
 #include <random>
 
 std::vector<std::string> ParseCommaDelimitedString(std::string line);
+bool StringToBool(std::string obj);
 
 
 

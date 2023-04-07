@@ -7,6 +7,8 @@
 #include "School.h"
 #include "User.h"
 #include "Administrator.h"
+#include "Instructor.h"
+#include "Student.h"
 #include "HelperFunctions.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -70,7 +72,7 @@ void School::LoadUsers() {
     fstream AdminInfoFile;
     AdminInfoFile.open("AdminInfo.txt", ios::in);
     if(AdminInfoFile.is_open()) {
-    		std::string line;
+          std::string line;
 
     		while(getline(AdminInfoFile, line)) {
                std::vector<std::string> ParsedLine = ParseCommaDelimitedString(line);
@@ -88,21 +90,74 @@ void School::LoadUsers() {
                std::string IsBlockedString = ParsedLine[10];
                std::string JobTitle = ParsedLine[11];
 
-               bool IsBlocked;
-               if(IsBlockedString == "0") {
-                   IsBlocked = false;
-               } else {
-                   IsBlocked = true;
-               }
-
                std::unique_ptr<User> obj = std::make_unique<Administrator>(UserID, LastName,
      		FirstName, Email, Password, PhoneNumber, DateOfBirth, SecurityQuestion,
-               SecurityAnswer, Address, IsBlocked, JobTitle);
+               SecurityAnswer, Address, StringToBool(IsBlockedString), JobTitle);
 
                Administrators.push_back(std::move(obj));
           }
 
           AdminInfoFile.close();
+    }
+
+    fstream InstructorInfoFile;
+    InstructorInfoFile.open("InstructorInfo.txt", ios::in);
+    if(InstructorInfoFile.is_open()) {
+        std::string line;
+
+        while(getline(InstructorInfoFile, line)) {
+        	 std::vector<std::string> ParsedLine = ParseCommaDelimitedString(line);
+
+           std::string UserID = ParsedLine[0];
+           std::string Email = ParsedLine[1];
+           std::string Password = ParsedLine[2];
+           std::string FirstName = ParsedLine[3];
+           std::string LastName = ParsedLine[4];
+           std::string DateOfBirth = ParsedLine[5];
+           std::string PhoneNumber = ParsedLine[6];
+           std::string Address = ParsedLine[7];
+           std::string SecurityQuestion = ParsedLine[8];
+           std::string SecurityAnswer = ParsedLine[9];
+           std::string IsBlockedString = ParsedLine[10];
+
+           std::unique_ptr<User> obj = std::make_unique<Instructor>(UserID, LastName,
+           FirstName, Email, Password, PhoneNumber, DateOfBirth, SecurityQuestion,
+           SecurityAnswer, Address, StringToBool(IsBlockedString));
+
+           Instructors.push_back(std::move(obj));
+
+        }
+        InstructorInfoFile.close();
+    }
+
+    fstream StudentInfoFile;
+    StudentInfoFile.open("StudentInfo.txt", ios::in);
+    if(StudentInfoFile.is_open()) {
+        std::string line;
+
+        while(getline(StudentInfoFile, line)) {
+        	 std::vector<std::string> ParsedLine = ParseCommaDelimitedString(line);
+
+           std::string UserID = ParsedLine[0];
+           std::string Email = ParsedLine[1];
+           std::string Password = ParsedLine[2];
+           std::string FirstName = ParsedLine[3];
+           std::string LastName = ParsedLine[4];
+           std::string DateOfBirth = ParsedLine[5];
+           std::string PhoneNumber = ParsedLine[6];
+           std::string Address = ParsedLine[7];
+           std::string SecurityQuestion = ParsedLine[8];
+           std::string SecurityAnswer = ParsedLine[9];
+           std::string IsBlockedString = ParsedLine[10];
+
+           std::unique_ptr<User> obj = std::make_unique<Student>(UserID, LastName,
+           FirstName, Email, Password, PhoneNumber, DateOfBirth, SecurityQuestion,
+           SecurityAnswer, Address, StringToBool(IsBlockedString));
+
+           Students.push_back(std::move(obj));
+
+        }
+        StudentInfoFile.close();
     }
 }
 
