@@ -32,4 +32,47 @@ std::string User::generateID(UserType userType) {
      return id;
 }
 
+ string User::GetLastName() {
+	 return LastName;
+ }
+ string User::GetFirstName() {
+      return FirstName;
+ };
+ string User::GetUserID() {
+      return UserID;
+ };
+ string User::GetEmail() {
+      return Email;
+ };
+ string User::GetPassword() {
+      return Password;
+ };
+ string User::GetPhoneNumber() {
+      return PhoneNumber;
+ };
+ string User::GetDateOfBirth() {
+      return DateOfBirth;
+ };
+ string User::GetSecurityQuestion() {
+      return SecurityQuestion;
+ };
+ string User::GetSecurityAnswer() {
+      return SecurityAnswer;
+ };
+ string User::GetAddress() {
+      return Address;
+ };
+ bool User::GetIsBlocked() {
+      return IsBlocked;
+ };
+ bool User::GetIsLoggedIn() {
+      return IsLoggedIn;
+ };
+
+ void User::SaveUser(std::ostream& out) {
+      out << GetEmail() << "," << GetPassword() << ","
+      << GetFirstName() << "," << GetLastName() << "," << GetDateOfBirth() << ","
+      << GetPhoneNumber() << "," << GetAddress() << "," << GetSecurityQuestion() << ","
+      << GetSecurityAnswer();
+ }
 

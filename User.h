@@ -31,6 +31,7 @@ protected:
             Instructor,
             Student
          };
+
      string generateID(UserType userType);
 
 public:
@@ -49,6 +50,19 @@ public:
           IsLoggedIn = false;
 	};
 
+     string GetLastName();
+     string GetFirstName();
+     string GetUserID();
+     string GetEmail();
+     string GetPassword();
+     string GetPhoneNumber();
+     string GetDateOfBirth();
+     string GetSecurityQuestion();
+     string GetSecurityAnswer();
+     string GetAddress();
+     bool GetIsBlocked();
+     bool GetIsLoggedIn();
+     virtual void SaveUser(std::ostream& out);
 };
 
 

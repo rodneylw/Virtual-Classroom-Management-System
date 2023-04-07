@@ -18,6 +18,12 @@ public:
        : User(UserType::Administrator, lastname, firstname, email, password, phoneNumber, dob, question, answer, address), JobTitle(jobTitle){
           //Constructor Body
      }
+
+     string GetJobTitle();
+     void SaveUser(std::ostream& out) {
+         User::SaveUser(out);
+         out << "," << GetJobTitle();
+     }
 };
 
 

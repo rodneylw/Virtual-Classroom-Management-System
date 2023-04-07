@@ -22,6 +22,7 @@ __published:	// IDE-managed Components
 	TButton *LoginButton;
 	TImage *HeaderImage;
 	void __fastcall LoginButtonClick(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TLoginForm(TComponent* Owner);

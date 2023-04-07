@@ -30,7 +30,6 @@ void __fastcall TSuperUserHomeForm::FormClose(TObject *Sender, TCloseAction &Act
 void __fastcall TSuperUserHomeForm::CreateAdministratorButtonClick(TObject *Sender)
 
 {
-
      AnsiString AnsiEmail = EmailEdit->Text;
      string Email = AnsiEmail.c_str();
      AnsiString AnsiPassword = PasswordEdit->Text;
@@ -57,22 +56,8 @@ void __fastcall TSuperUserHomeForm::CreateAdministratorButtonClick(TObject *Send
      FirstName, Email, Password, PhoneNumber, Birthdate, SecurityQuestion,
      SecurityAnswer, Address, JobTitle);
 
-     School::getInstance().addAdministrator(std::move(obj));
-
-/*
-	fstream AdminInfoFile;
-     AdminInfoFile.open("AdminInfo.txt", ios::app);
-     if(AdminInfoFile.is_open()) {
-
-         AdminInfoFile << JobTitle << "," << Email << "," << Password << ","
-         << FirstName << "," << LastName << "," << Birthdate << ","
-         << PhoneNumber << "," << Address << "," << SecurityQuestion << ","
-         << SecurityAnswer << std::endl;
-
-         AdminInfoFile.close();
-     }
-*/
-
+     School::GetInstance().AddAdministrator(std::move(obj));
+     School::GetInstance().SaveUsers();
 }
 //---------------------------------------------------------------------------
 

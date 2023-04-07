@@ -6,6 +6,7 @@
 #include <vector>
 #include <memory>
 #include "User.h"
+#include "Administrator.h"
 //#include "Course.h"
 
 using std::string;
@@ -14,17 +15,20 @@ class School {
 private:
      string SchoolName;
      std::vector<std::unique_ptr<User>> Administrators;
-     std::vector<User*> Instructors;
-     std::vector<User*> Students;
-     //std::vector<Course*> Courses;
-     static School* instance;
+     std::vector<std::unique_ptr<User>> Instructors;
+     std::vector<std::unique_ptr<User>> Students;
+     //std::vector<std::unique_ptr<Course>> Courses;
+     static School* Instance;
 
      School(string name) {
           SchoolName = name;
      };
 public:
-     static School& getInstance();
-     void addAdministrator(std::unique_ptr<User> admin);
+     static School& GetInstance();
+     void AddAdministrator(std::unique_ptr<User> admin);
+     std::vector<std::unique_ptr<User>>& GetAdministrators();
+     void SaveUsers();
+     void LoadUsers();
 
 	School(const School&) = delete;
      School& operator=(const School&) = delete;
