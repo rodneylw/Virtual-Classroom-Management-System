@@ -11,7 +11,7 @@ object LoginForm: TLoginForm
   DesignerMasterStyle = 0
   object UsernameEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 1
+    TabOrder = 0
     Text = 'SuperUser'
     Position.X = 208.000000000000000000
     Position.Y = 192.000000000000000000
@@ -28,11 +28,11 @@ object LoginForm: TLoginForm
     Size.PlatformDefault = False
     TextSettings.Font.Size = 14.000000000000000000
     Text = 'Username:'
-    TabOrder = 3
+    TabOrder = 4
   end
   object PasswordEdit: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 0
+    TabOrder = 1
     Text = 'HorizonSU'
     Position.X = 208.000000000000000000
     Position.Y = 232.000000000000000000
@@ -49,12 +49,12 @@ object LoginForm: TLoginForm
     Size.PlatformDefault = False
     TextSettings.Font.Size = 14.000000000000000000
     Text = 'Password:'
-    TabOrder = 2
+    TabOrder = 3
   end
   object LoginButton: TButton
     Position.X = 217.000000000000000000
     Position.Y = 275.000000000000000000
-    TabOrder = 4
+    TabOrder = 2
     Text = 'Login'
     OnClick = LoginButtonClick
   end

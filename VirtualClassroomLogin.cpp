@@ -39,7 +39,7 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 
        for(auto admin = Administrators.begin(); admin != Administrators.end(); ++admin) {
            if(Email == (*admin)->GetEmail()) {
-              if(Password == (*admin)->GetPassword()) {
+               if(Password == (*admin)->GetPassword()) {
             		AdministratorHomeForm->Show();
                     LoginForm->Hide();
         		} else {

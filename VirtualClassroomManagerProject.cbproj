@@ -302,6 +302,12 @@
             <DependentOn>AdministratorHome.h</DependentOn>
             <BuildOrder>8</BuildOrder>
         </CppCompile>
+        <CppCompile Include="AdministratorUserAccounts.cpp">
+            <Form>AdministratorUserAccountsForm</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>AdministratorUserAccounts.h</DependentOn>
+            <BuildOrder>9</BuildOrder>
+        </CppCompile>
         <CppCompile Include="HelperFunctions.cpp">
             <DependentOn>HelperFunctions.h</DependentOn>
             <BuildOrder>7</BuildOrder>
@@ -336,6 +342,7 @@
         <FormResources Include="VirtualClassroomLogin.fmx"/>
         <FormResources Include="SuperUserHome.fmx"/>
         <FormResources Include="AdministratorHome.fmx"/>
+        <FormResources Include="AdministratorUserAccounts.fmx"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
