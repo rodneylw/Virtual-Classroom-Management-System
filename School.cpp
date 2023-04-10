@@ -82,17 +82,18 @@ void School::LoadUsers() {
                std::string Password = ParsedLine[2];
                std::string FirstName = ParsedLine[3];
                std::string LastName = ParsedLine[4];
-               std::string DateOfBirth = ParsedLine[5];
-               std::string PhoneNumber = ParsedLine[6];
-               std::string Address = ParsedLine[7];
-               std::string SecurityQuestion = ParsedLine[8];
-               std::string SecurityAnswer = ParsedLine[9];
-               std::string IsBlockedString = ParsedLine[10];
-               std::string JobTitle = ParsedLine[11];
+               std::string Gender = ParsedLine[5];
+               std::string DateOfBirth = ParsedLine[6];
+               std::string PhoneNumber = ParsedLine[7];
+               std::string Address = ParsedLine[8];
+               std::string SecurityQuestion = ParsedLine[9];
+               std::string SecurityAnswer = ParsedLine[10];
+               std::string IsBlockedString = ParsedLine[11];
+               std::string JobTitle = ParsedLine[12];
 
-               std::unique_ptr<User> obj = std::make_unique<Administrator>(UserID, LastName,
-     		FirstName, Email, Password, PhoneNumber, DateOfBirth, SecurityQuestion,
-               SecurityAnswer, Address, StringToBool(IsBlockedString), JobTitle);
+               std::unique_ptr<User> obj = std::make_unique<Administrator>(UserID, Email, Password,
+               FirstName, LastName, Gender, DateOfBirth, PhoneNumber, Address, SecurityQuestion,
+               SecurityAnswer, StringToBool(IsBlockedString), JobTitle);
 
                Administrators.push_back(std::move(obj));
           }
@@ -113,16 +114,17 @@ void School::LoadUsers() {
            std::string Password = ParsedLine[2];
            std::string FirstName = ParsedLine[3];
            std::string LastName = ParsedLine[4];
-           std::string DateOfBirth = ParsedLine[5];
-           std::string PhoneNumber = ParsedLine[6];
-           std::string Address = ParsedLine[7];
-           std::string SecurityQuestion = ParsedLine[8];
-           std::string SecurityAnswer = ParsedLine[9];
-           std::string IsBlockedString = ParsedLine[10];
+           std::string Gender = ParsedLine[5];
+           std::string DateOfBirth = ParsedLine[6];
+           std::string PhoneNumber = ParsedLine[7];
+           std::string Address = ParsedLine[8];
+           std::string SecurityQuestion = ParsedLine[9];
+           std::string SecurityAnswer = ParsedLine[10];
+           std::string IsBlockedString = ParsedLine[11];
 
-           std::unique_ptr<User> obj = std::make_unique<Instructor>(UserID, LastName,
-           FirstName, Email, Password, PhoneNumber, DateOfBirth, SecurityQuestion,
-           SecurityAnswer, Address, StringToBool(IsBlockedString));
+           std::unique_ptr<User> obj = std::make_unique<Instructor>(UserID, Email, Password,
+           FirstName, LastName, Gender, DateOfBirth, PhoneNumber, Address, SecurityQuestion,
+           SecurityAnswer, StringToBool(IsBlockedString));
 
            Instructors.push_back(std::move(obj));
 
@@ -143,16 +145,17 @@ void School::LoadUsers() {
            std::string Password = ParsedLine[2];
            std::string FirstName = ParsedLine[3];
            std::string LastName = ParsedLine[4];
-           std::string DateOfBirth = ParsedLine[5];
-           std::string PhoneNumber = ParsedLine[6];
-           std::string Address = ParsedLine[7];
-           std::string SecurityQuestion = ParsedLine[8];
-           std::string SecurityAnswer = ParsedLine[9];
-           std::string IsBlockedString = ParsedLine[10];
+           std::string Gender = ParsedLine[5];
+           std::string DateOfBirth = ParsedLine[6];
+           std::string PhoneNumber = ParsedLine[7];
+           std::string Address = ParsedLine[8];
+           std::string SecurityQuestion = ParsedLine[9];
+           std::string SecurityAnswer = ParsedLine[10];
+           std::string IsBlockedString = ParsedLine[11];
 
-           std::unique_ptr<User> obj = std::make_unique<Student>(UserID, LastName,
-           FirstName, Email, Password, PhoneNumber, DateOfBirth, SecurityQuestion,
-           SecurityAnswer, Address, StringToBool(IsBlockedString));
+           std::unique_ptr<User> obj = std::make_unique<Student>(UserID, Email, Password,
+           FirstName, LastName, Gender, DateOfBirth, PhoneNumber, Address, SecurityQuestion,
+           SecurityAnswer, StringToBool(IsBlockedString));
 
            Students.push_back(std::move(obj));
 

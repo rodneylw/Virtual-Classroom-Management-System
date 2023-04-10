@@ -62,6 +62,9 @@ std::string User::generateID(UserType userType) {
  string User::GetAddress() {
       return Address;
  };
+ string User::GetGender() {
+     return Gender;
+ }
  bool User::GetIsBlocked() {
       return IsBlocked;
  };
@@ -71,8 +74,10 @@ std::string User::generateID(UserType userType) {
 
  void User::SaveUser(std::ostream& out) {
       out << GetUserID() << "," << GetEmail() << "," << GetPassword() << ","
-      << GetFirstName() << "," << GetLastName() << "," << GetDateOfBirth() << ","
+      << GetFirstName() << "," << GetLastName() << "," << GetGender() << "," << GetDateOfBirth() << ","
       << GetPhoneNumber() << "," << GetAddress() << "," << GetSecurityQuestion() << ","
       << GetSecurityAnswer() << "," << GetIsBlocked();
  }
+
+
 

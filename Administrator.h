@@ -14,13 +14,13 @@ class Administrator : public User {
 private:
      string JobTitle;
 public:
-     Administrator(string userID, string lastname, string firstname, string email, string password, string phoneNumber, string dob, string question, string answer, string address, bool isBlocked, string jobTitle)
-       : User(userID, lastname, firstname, email, password, phoneNumber, dob, question, answer, address, isBlocked), JobTitle(jobTitle){
+     Administrator(string userID, string email, string password, string firstname, string lastname, string gender, string dob, string phoneNumber, string address, string question, string answer, bool isBlocked, string jobTitle)
+       : User(userID, email, password, firstname, lastname, gender, dob, phoneNumber, address, question, answer, isBlocked), JobTitle(jobTitle){
           //Constructor Body
      }
 
-     Administrator(string lastname, string firstname, string email, string password, string phoneNumber, string dob, string question, string answer, string address, string jobTitle)
-       : User(UserType::Administrator, lastname, firstname, email, password, phoneNumber, dob, question, answer, address), JobTitle(jobTitle){
+     Administrator(string email, string password, string firstname, string lastname, string gender, string dob, string phoneNumber, string address, string question, string answer, string jobTitle)
+       : User(UserType::Administrator, email, password, firstname, lastname, gender, dob, phoneNumber, address, question, answer), JobTitle(jobTitle){
           //Constructor Body
      }
 

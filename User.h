@@ -21,6 +21,7 @@ private:
      string SecurityQuestion;
      string SecurityAnswer;
      string Address;
+     string Gender;
      bool IsBlocked;
      bool IsLoggedIn;
      //std::vector<Notification> Notifications;
@@ -35,7 +36,7 @@ protected:
      string generateID(UserType userType);
 
 public:
-	User(UserType type, string lastname, string firstname, string email, string password, string phoneNumber, string dob, string question, string answer, string address){
+	User(UserType type, string email, string password, string firstname, string lastname, string gender, string dob, string phoneNumber, string address, string question, string answer){
           UserID = generateID(type);
           LastName = lastname;
           FirstName = firstname;
@@ -46,11 +47,12 @@ public:
           SecurityQuestion = question;
           SecurityAnswer = answer;
           Address = address;
+          Gender = gender;
           IsBlocked = false;
           IsLoggedIn = false;
 	};
 
-     User(string userID, string lastname, string firstname, string email, string password, string phoneNumber, string dob, string question, string answer, string address, bool isBlocked){
+     User(string userID, string email, string password, string firstname, string lastname, string gender, string dob, string phoneNumber, string address, string question, string answer, bool isBlocked){
           UserID = userID;
           LastName = lastname;
           FirstName = firstname;
@@ -61,6 +63,7 @@ public:
           SecurityQuestion = question;
           SecurityAnswer = answer;
           Address = address;
+          Gender = gender;
           IsBlocked = isBlocked;
           IsLoggedIn = false;
 	};
@@ -77,6 +80,7 @@ public:
      string GetSecurityQuestion();
      string GetSecurityAnswer();
      string GetAddress();
+     string GetGender();
      bool GetIsBlocked();
      bool GetIsLoggedIn();
      virtual void SaveUser(std::ostream& out);

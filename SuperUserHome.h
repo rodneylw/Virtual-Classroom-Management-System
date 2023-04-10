@@ -35,6 +35,8 @@ __published:	// IDE-managed Components
 	TButton *CreateAdministratorButton;
 	TLabel *JobTitleLabel;
 	TEdit *JobTitleEdit;
+	TLabel *GenderLabel;
+	TEdit *GenderEdit;
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall CreateAdministratorButtonClick(TObject *Sender);
 

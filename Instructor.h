@@ -17,13 +17,13 @@ private:
      //vector<Course*> Courses;
 
 public:
-	Instructor(string userID, string lastname, string firstname, string email, string password, string phoneNumber, string dob, string question, string answer, string address, bool isBlocked)
-       : User(userID, lastname, firstname, email, password, phoneNumber, dob, question, answer, address, isBlocked){
+	Instructor(string userID, string email, string password, string firstname, string lastname, string gender, string dob, string phoneNumber, string address, string question, string answer, bool isBlocked)
+       : User(userID, email, password, firstname, lastname, gender, dob, phoneNumber, address, question, answer, isBlocked){
           //Constructor Body
      }
 
-     Instructor(string lastname, string firstname, string email, string password, string phoneNumber, string dob, string question, string answer, string address)
-       : User(UserType::Instructor, lastname, firstname, email, password, phoneNumber, dob, question, answer, address){
+     Instructor(string email, string password, string firstname, string lastname, string gender, string dob, string phoneNumber, string address, string question, string answer)
+       : User(UserType::Instructor, email, password, firstname, lastname, gender, dob, phoneNumber, address, question, answer){
           //Constructor Body
      }
 

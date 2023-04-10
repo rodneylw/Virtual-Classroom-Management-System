@@ -1,0 +1,16 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+#include <fmx.h>
+#include "CustomPanel.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+class TCustomPanel : public TPanel
+{
+	typedef TPanel inherited;
+private:
+	void __fastcall Paint() override;
+public:
+	__fastcall TCustomPanel(TComponent* Owner) : TPanel(Owner) { }
+};
