@@ -3,6 +3,9 @@
 #pragma hdrstop
 
 #include "HelperFunctions.h"
+#include "VirtualClassroomLogin.h"
+#include <System.hpp>
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
@@ -30,6 +33,27 @@ bool StringToBool(std::string obj) {
     	   obj = true;
    	}
     return result;
+}
+
+void LogoutCloseForms() {
+
+	LoginForm->Show();
+
+	int formCount = Screen->FormCount;
+
+	std::vector<TCommonCustomForm*> formsToClose;
+
+	for (int i = 0; i < formCount; ++i) {
+		TCommonCustomForm *form = Screen->Forms[i];
+		formsToClose.push_back(form);
+	}
+
+	for (TCommonCustomForm *form : formsToClose) {
+		if (form->Name == "LoginForm") {
+				continue;
+		}
+		form->Close();
+	}
 }
 
 

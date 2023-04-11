@@ -1,15 +1,17 @@
 //---------------------------------------------------------------------------
-
+#include "HelperFunctions.h"
 #include <fmx.h>
 #include <FMX.Graphics.hpp>
 #include <System.UIConsts.hpp>
 #include <System.UITypes.hpp>
+#include <vector>
 
 #pragma hdrstop
 
+#include "VirtualClassroomLogin.h"
 #include "AdministratorUserAccounts.h"
 #include "AdministratorHome.h"
-#include "CustomPanel.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -161,6 +163,14 @@ void __fastcall TAdministratorUserAccountsForm::PopupProfileMenuSelectorMouseLea
 
 {
 	ProfileMenuIndicator->Visible = False;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::LogoutPopupProfileMenuItemSelectorClick(TObject *Sender)
+
+{
+	LoginForm -> Show();
+	AdministratorUserAccountsForm->Close();
 }
 //---------------------------------------------------------------------------
 

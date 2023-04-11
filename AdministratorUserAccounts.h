@@ -72,6 +72,7 @@ __published:	// IDE-managed Components
 	void __fastcall PopupProfileMenuSelectorClick(TObject *Sender);
 	void __fastcall PopupProfileMenuSelectorMouseEnter(TObject *Sender);
 	void __fastcall PopupProfileMenuSelectorMouseLeave(TObject *Sender);
+	void __fastcall LogoutPopupProfileMenuItemSelectorClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
