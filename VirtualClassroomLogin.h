@@ -11,6 +11,7 @@
 #include <FMX.StdCtrls.hpp>
 #include <FMX.Types.hpp>
 #include <FMX.Objects.hpp>
+#include <FMX.Layouts.hpp>
 //---------------------------------------------------------------------------
 class TLoginForm : public TForm
 {
@@ -18,9 +19,10 @@ __published:	// IDE-managed Components
 	TEdit *UsernameEdit;
 	TLabel *UsernameLabel;
 	TEdit *PasswordEdit;
-	TLabel *Label1;
+	TLabel *PasswordLabel;
 	TButton *LoginButton;
 	TImage *HeaderImage;
+	TLayout *Layout;
 	void __fastcall LoginButtonClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 private:	// User declarations

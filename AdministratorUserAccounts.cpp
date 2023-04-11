@@ -20,6 +20,7 @@ TAdministratorUserAccountsForm *AdministratorUserAccountsForm;
 __fastcall TAdministratorUserAccountsForm::TAdministratorUserAccountsForm(TComponent* Owner)
 	: TForm(Owner)
 {
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::FormClose(TObject *Sender, TCloseAction &Action)
@@ -33,8 +34,10 @@ void __fastcall TAdministratorUserAccountsForm::FormClose(TObject *Sender, TClos
 
 void __fastcall TAdministratorUserAccountsForm::FormCreate(TObject *Sender)
 {
-	Width = 1920;
-	Height = 1080;
+    Left = 0;
+    Top = 0;
+	Width = Screen->Width;
+	Height = Screen->Height;
 
 }
 //---------------------------------------------------------------------------
@@ -53,7 +56,7 @@ void __fastcall TAdministratorUserAccountsForm::HomeMenuItemRectMouseEnter(TObje
 void __fastcall TAdministratorUserAccountsForm::HomeMenuItemRectMouseLeave(TObject *Sender)
 
 {
-    HomeMenuItemRect->Fill->Kind = TBrushKind::None;
+	HomeMenuItemRect->Fill->Kind = TBrushKind::None;
 }
 //---------------------------------------------------------------------------
 
@@ -64,4 +67,72 @@ void __fastcall TAdministratorUserAccountsForm::HomeMenuItemRectClick(TObject *S
 	AdministratorUserAccountsForm->Close();
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::UserAccountsMenuItemRectMouseEnter(TObject *Sender)
+
+{
+	UserAccountsMenuItemRect->Fill->Kind = TBrushKind::Solid;
+	UserAccountsMenuItemRect->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::UserAccountsMenuItemRectMouseLeave(TObject *Sender)
+
+{
+	UserAccountsMenuItemRect->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::UserAccountsMenuItemRectClick(TObject *Sender)
+
+{
+	AdministratorUserAccountsForm->Show();
+}
+//---------------------------------------------------------------------------
+void __fastcall TAdministratorUserAccountsForm::ManageCoursesMenuItemRectMouseEnter(TObject *Sender)
+
+{
+	ManageCoursesMenuItemRect->Fill->Kind = TBrushKind::Solid;
+	ManageCoursesMenuItemRect->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::ManageCoursesMenuItemRectMouseLeave(TObject *Sender)
+
+{
+	ManageCoursesMenuItemRect->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::ManageCoursesMenuItemRectClick(TObject *Sender)
+
+{
+	//AdministratorManageCoursesForm->Show();
+	AdministratorUserAccountsForm->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::StudentStatisticsMenuItemRectMouseEnter(TObject *Sender)
+
+{
+	StudentStatisticsMenuItemRect->Fill->Kind = TBrushKind::Solid;
+	StudentStatisticsMenuItemRect->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::StudentStatisticsMenuItemRectMouseLeave(TObject *Sender)
+
+{
+	StudentStatisticsMenuItemRect->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::StudentStatisticsMenuItemRectClick(TObject *Sender)
+
+{
+	//AdministratorStudentStatisticsForm->Show();
+	AdministratorUserAccountsForm->Close();
+}
+//---------------------------------------------------------------------------
+
 

@@ -10,12 +10,6 @@ Coordinates=263,146,52,36
 [HomeMenuItem]
 Coordinates=242,78,105,58
 
-[HeaderDivider]
-Coordinates=10,146,97,58
-
-[HeaderLogo]
-Coordinates=196,10,85,58
-
 [MenuBar]
 Coordinates=187,146,66,36
 
@@ -26,7 +20,7 @@ Coordinates=10,78,82,58
 Coordinates=102,78,130,58
 
 []
-Coordinates=117,146,60,36
+Coordinates=196,10,85,58
 
 [UserAccountsMenuItemIcon]
 Coordinates=10,10,176,58

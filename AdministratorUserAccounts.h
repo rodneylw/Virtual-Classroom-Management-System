@@ -17,8 +17,6 @@ class TAdministratorUserAccountsForm : public TForm
 __published:	// IDE-managed Components
 	TRectangle *FooterBar;
 	TText *HeaderText;
-	TImage *HeaderDivider;
-	TImage *HeaderLogo;
 	TLayout *Header;
 	TLayout *MenuBar;
 	TLayout *Footer;
@@ -28,11 +26,35 @@ __published:	// IDE-managed Components
 	TText *UserAccountsMenuItem;
 	TRectangle *HomeMenuItemRect;
 	TRectangle *UserAccountsMenuItemRect;
+	TImage *ManageCoursesMenuItemIcon;
+	TText *ManageCourseMenuItem;
+	TRectangle *ManageCoursesMenuItemRect;
+	TText *StudentStatisticsMenuItem;
+	TImage *StudentStatisticsMenuItemIcon;
+	TRectangle *StudentStatisticsMenuItemRect;
+	TLayout *RightMargin;
+	TLayout *LeftMargin;
+	TImage *ProfileIcon;
+	TRectangle *FooterLeft;
+	TRectangle *FooterRight;
+	TLine *HorizontalRule;
+	TLayout *TopMargin;
+	TImage *HeaderLogo;
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall HomeMenuItemRectMouseEnter(TObject *Sender);
 	void __fastcall HomeMenuItemRectMouseLeave(TObject *Sender);
 	void __fastcall HomeMenuItemRectClick(TObject *Sender);
+	void __fastcall UserAccountsMenuItemRectMouseEnter(TObject *Sender);
+	void __fastcall UserAccountsMenuItemRectMouseLeave(TObject *Sender);
+	void __fastcall UserAccountsMenuItemRectClick(TObject *Sender);
+	void __fastcall ManageCoursesMenuItemRectMouseEnter(TObject *Sender);
+	void __fastcall ManageCoursesMenuItemRectMouseLeave(TObject *Sender);
+	void __fastcall ManageCoursesMenuItemRectClick(TObject *Sender);
+	void __fastcall StudentStatisticsMenuItemRectMouseEnter(TObject *Sender);
+	void __fastcall StudentStatisticsMenuItemRectMouseLeave(TObject *Sender);
+	void __fastcall StudentStatisticsMenuItemRectClick(TObject *Sender);
+
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
