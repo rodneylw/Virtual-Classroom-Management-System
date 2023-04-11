@@ -20,7 +20,6 @@ __published:	// IDE-managed Components
 	TLayout *Header;
 	TLayout *MenuBar;
 	TLayout *Footer;
-	TImage *HomeMenuItemIcon;
 	TText *HomeMenuItem;
 	TImage *UserAccountsMenuItemIcon;
 	TText *UserAccountsMenuItem;
@@ -40,6 +39,11 @@ __published:	// IDE-managed Components
 	TLine *HorizontalRule;
 	TLayout *TopMargin;
 	TImage *HeaderLogo;
+	TText *UserNameProfile;
+	TLine *Line1;
+	TImage *MessagesIcon;
+	TImage *HomeMenuItemIcon;
+	TImage *NotificationIcon;
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall HomeMenuItemRectMouseEnter(TObject *Sender);

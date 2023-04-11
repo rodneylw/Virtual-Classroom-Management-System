@@ -16,11 +16,8 @@ Coordinates=187,146,66,36
 [HeaderText]
 Coordinates=10,78,82,58
 
-[HomeMenuItemIcon]
-Coordinates=102,78,130,58
-
 []
-Coordinates=196,10,85,58
+Coordinates=102,78,130,58
 
 [UserAccountsMenuItemIcon]
 Coordinates=10,10,176,58
