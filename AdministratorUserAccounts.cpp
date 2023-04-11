@@ -134,5 +134,33 @@ void __fastcall TAdministratorUserAccountsForm::StudentStatisticsMenuItemRectCli
 	AdministratorUserAccountsForm->Close();
 }
 //---------------------------------------------------------------------------
+void __fastcall TAdministratorUserAccountsForm::PopupProfileMenuSelectorClick(TObject *Sender)
 
+{
+   if(PopupProfileMenu->Visible == True) {
+	PopupProfileMenu->Visible = False;
+	return;
+   }
+
+   PopupProfileMenu->Visible = True;
+   ProfileMenuIndicator->Visible = False;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::PopupProfileMenuSelectorMouseEnter(TObject *Sender)
+
+{
+	if(PopupProfileMenu->Visible == True) {
+		return;
+	}
+	ProfileMenuIndicator->Visible = True;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::PopupProfileMenuSelectorMouseLeave(TObject *Sender)
+
+{
+	ProfileMenuIndicator->Visible = False;
+}
+//---------------------------------------------------------------------------
 

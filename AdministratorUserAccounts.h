@@ -39,11 +39,22 @@ __published:	// IDE-managed Components
 	TLine *HorizontalRule;
 	TLayout *TopMargin;
 	TImage *HeaderLogo;
-	TText *UserNameProfile;
 	TLine *Line1;
 	TImage *MessagesIcon;
 	TImage *HomeMenuItemIcon;
 	TImage *NotificationIcon;
+	TImage *PopupProfileMenu;
+	TRectangle *PopupProfileMenuBackground;
+	TImage *EditProfilePopupMenuItemIcon;
+	TText *LogoutProfilePopupMenuItem;
+	TText *EditProfilePopupProfileMenuItem;
+	TImage *LogoutProfilePopupMenuItemIcon;
+	TRectangle *ProfileMenuIndicator;
+	TText *ProfileMenuIndicatorText;
+	TRectangle *EditProfilePopupProfileMenuSelector;
+	TRectangle *LogoutPopupProfileMenuItemSelector;
+	TText *UserNameProfile;
+	TRectangle *PopupProfileMenuSelector;
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall HomeMenuItemRectMouseEnter(TObject *Sender);
@@ -58,7 +69,9 @@ __published:	// IDE-managed Components
 	void __fastcall StudentStatisticsMenuItemRectMouseEnter(TObject *Sender);
 	void __fastcall StudentStatisticsMenuItemRectMouseLeave(TObject *Sender);
 	void __fastcall StudentStatisticsMenuItemRectClick(TObject *Sender);
-
+	void __fastcall PopupProfileMenuSelectorClick(TObject *Sender);
+	void __fastcall PopupProfileMenuSelectorMouseEnter(TObject *Sender);
+	void __fastcall PopupProfileMenuSelectorMouseLeave(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
