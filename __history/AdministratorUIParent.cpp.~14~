@@ -23,6 +23,11 @@ __fastcall TAdministratorUIParentForm::TAdministratorUIParentForm(TComponent* Ow
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUIParentForm::FormCreate(TObject *Sender)
 {
+	AdministratorHomeForm->Show();
+	AdministratorHomeForm->Hide();
+	AdministratorUserAccountsForm->Show();
+	AdministratorUserAccountsForm->Hide();
+
 	Left = 0;
 	Top = 0;
 	Width = Screen->Width;
@@ -283,6 +288,4 @@ void __fastcall TAdministratorUIParentForm::FormClose(TObject *Sender, TCloseAct
 	LoginForm->Close();
 }
 //---------------------------------------------------------------------------
-
-
 

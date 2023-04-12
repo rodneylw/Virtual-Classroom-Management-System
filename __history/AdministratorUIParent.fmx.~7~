@@ -1,12 +1,12 @@
 object AdministratorUIParentForm: TAdministratorUIParentForm
   Left = 0
   Top = 0
+  BorderStyle = None
   Caption = 'Administrator - UI Parent'
   ClientHeight = 1080
   ClientWidth = 1920
   Fill.Kind = Solid
   Position = ScreenCenter
-  WindowState = wsMaximized
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]

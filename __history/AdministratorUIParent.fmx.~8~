@@ -6,7 +6,6 @@ object AdministratorUIParentForm: TAdministratorUIParentForm
   ClientWidth = 1920
   Fill.Kind = Solid
   Position = ScreenCenter
-  WindowState = wsMaximized
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]

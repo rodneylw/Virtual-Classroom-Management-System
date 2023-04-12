@@ -14,7 +14,7 @@
 class TAdministratorHomeForm : public TAdministratorUIParentForm
 {
 __published:	// IDE-managed Components
-	void __fastcall FormActivate(TObject *Sender);
+	void __fastcall FormFocusChanged(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorHomeForm(TComponent* Owner);

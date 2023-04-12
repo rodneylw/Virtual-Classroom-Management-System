@@ -9,11 +9,17 @@
 #pragma package(smart_init)
 #pragma link "AdministratorUIParent"
 #pragma resource "*.fmx"
-TAdministratorUserAccountsForm *AdministratorUserAccountsForm;
+TAdministratorHomeForm *AdministratorHomeForm;
 //---------------------------------------------------------------------------
-__fastcall TAdministratorUserAccountsForm::TAdministratorUserAccountsForm(TComponent* Owner)
+__fastcall TAdministratorHomeForm::TAdministratorHomeForm(TComponent* Owner)
 	: TAdministratorUIParentForm(Owner)
 {
+}
+//---------------------------------------------------------------------------
+void __fastcall TAdministratorHomeForm::FormCreate(TObject *Sender)
+{
+	AdministratorUserAccountsForm->Show();
+	AdministratorUserAccountsForm->Hide();
 }
 //---------------------------------------------------------------------------
 

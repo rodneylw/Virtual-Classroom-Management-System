@@ -23,10 +23,10 @@ __fastcall TAdministratorUIParentForm::TAdministratorUIParentForm(TComponent* Ow
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUIParentForm::FormCreate(TObject *Sender)
 {
-	Left = 0;
+  /*	Left = 0;
 	Top = 0;
 	Width = Screen->Width;
-	Height = Screen->Height;
+	Height = Screen->Height;     */
 
 	TShadowEffect *dropShadow = new TShadowEffect(this);
     dropShadow->Parent = PopupProfileMenuBackground;
@@ -104,10 +104,10 @@ void __fastcall TAdministratorUIParentForm::ManageCoursesMenuItemRectMouseLeave(
 void __fastcall TAdministratorUIParentForm::ManageCoursesMenuItemRectClick(TObject *Sender)
 
 {
-	/*AdministratorManageCoursesForm->Show();
+	AdministratorManageCoursesForm->Show();
 	if(!AdministratorManageCoursesForm->Visible){
 		this->Hide();
-	}       */
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -283,6 +283,4 @@ void __fastcall TAdministratorUIParentForm::FormClose(TObject *Sender, TCloseAct
 	LoginForm->Close();
 }
 //---------------------------------------------------------------------------
-
-
 

@@ -284,5 +284,12 @@ void __fastcall TAdministratorUIParentForm::FormClose(TObject *Sender, TCloseAct
 }
 //---------------------------------------------------------------------------
 
-
+void __fastcall TAdministratorUIParentForm::FormActivate(TObject *Sender)
+{
+	AdministratorHomeForm->Show();
+	AdministratorHomeForm->Hide();
+	AdministratorUserAccountsForm->Show();
+	AdministratorUserAccountsForm->Hide();
+}
+//---------------------------------------------------------------------------
 

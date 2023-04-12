@@ -1,7 +1,7 @@
 inherited AdministratorHomeForm: TAdministratorHomeForm
   Caption = 'Administrator - Home'
-  OnActivate = FormActivate
   OnCreate = nil
+  OnFocusChanged = FormFocusChanged
   DesignerMasterStyle = 0
   inherited Header: TLayout
     inherited PopupProfileMenu: TImage

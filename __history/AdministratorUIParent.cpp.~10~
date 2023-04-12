@@ -23,10 +23,10 @@ __fastcall TAdministratorUIParentForm::TAdministratorUIParentForm(TComponent* Ow
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUIParentForm::FormCreate(TObject *Sender)
 {
-	Left = 0;
+  /*	Left = 0;
 	Top = 0;
 	Width = Screen->Width;
-	Height = Screen->Height;
+	Height = Screen->Height;     */
 
 	TShadowEffect *dropShadow = new TShadowEffect(this);
     dropShadow->Parent = PopupProfileMenuBackground;
@@ -54,11 +54,10 @@ void __fastcall TAdministratorUIParentForm::HomeMenuItemRectMouseLeave(TObject *
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUIParentForm::HomeMenuItemRectClick(TObject *Sender)
 {
-	if(AdministratorHomeForm->Visible == true){
-		return;
-	}
 	AdministratorHomeForm->Show();
-	this->Hide();
+	if(!AdministratorHomeForm->Visible){
+		this->Hide();
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -82,7 +81,7 @@ void __fastcall TAdministratorUIParentForm::UserAccountsMenuItemRectClick(TObjec
 		return;
 	}
 	AdministratorUserAccountsForm->Show();
-	this->Hide();
+    this->Hide();
 }
 //---------------------------------------------------------------------------
 
@@ -283,6 +282,4 @@ void __fastcall TAdministratorUIParentForm::FormClose(TObject *Sender, TCloseAct
 	LoginForm->Close();
 }
 //---------------------------------------------------------------------------
-
-
 

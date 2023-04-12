@@ -10,6 +10,7 @@ object AdministratorUIParentForm: TAdministratorUIParentForm
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnActivate = FormActivate
   OnCreate = FormCreate
   OnClose = FormClose
   DesignerMasterStyle = 0
