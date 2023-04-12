@@ -169,13 +169,13 @@
             <Form>AdministratorHomeForm</Form>
             <FormType>fmx</FormType>
             <DependentOn>AdministratorHome.h</DependentOn>
-            <BuildOrder>8</BuildOrder>
+            <BuildOrder>17</BuildOrder>
         </CppCompile>
         <CppCompile Include="AdministratorManageCourses.cpp">
             <Form>AdministratorManageCoursesForm</Form>
             <FormType>fmx</FormType>
             <DependentOn>AdministratorManageCourses.h</DependentOn>
-            <BuildOrder>10</BuildOrder>
+            <BuildOrder>17</BuildOrder>
         </CppCompile>
         <CppCompile Include="AdministratorStudentProgress.cpp">
             <Form>AdministratorStudentProgressForm</Form>
@@ -247,10 +247,10 @@
         <FormResources Include="SuperUserHome.fmx"/>
         <FormResources Include="VirtualClassroomLogin.fmx"/>
         <FormResources Include="AdministratorStudentProgress.fmx"/>
-        <FormResources Include="AdministratorManageCourses.fmx"/>
-        <FormResources Include="AdministratorHome.fmx"/>
         <FormResources Include="AdministratorUserAccounts.fmx"/>
         <FormResources Include="AdministratorUserAccounts.Windows.fmx"/>
+        <FormResources Include="AdministratorHome.fmx"/>
+        <FormResources Include="AdministratorManageCourses.fmx"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -288,8 +288,13 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c270.dll" Class="DependencyModule">
-                    <Platform Name="Win32">
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx64\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -305,11 +310,6 @@
                 </DeployFile>
                 <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin\borlndmm.dll" Class="DependencyModule">
                     <Platform Name="Win32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -372,8 +372,8 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx64\libcgcrtl.dylib" Class="DependencyModule">
-                    <Platform Name="OSX64">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c270.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

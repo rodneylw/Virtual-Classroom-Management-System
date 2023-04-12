@@ -1,0 +1,24 @@
+//---------------------------------------------------------------------------
+
+#ifndef AdministratorManageCoursesH
+#define AdministratorManageCoursesH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include "AdministratorHome.h"
+#include <FMX.Layouts.hpp>
+#include <FMX.Objects.hpp>
+#include <FMX.Types.hpp>
+//---------------------------------------------------------------------------
+class TAdministratorHomeForm1 : public TAdministratorHomeForm
+{
+__published:	// IDE-managed Components
+private:	// User declarations
+public:		// User declarations
+	__fastcall TAdministratorHomeForm1(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TAdministratorHomeForm1 *AdministratorHomeForm1;
+//---------------------------------------------------------------------------
+#endif

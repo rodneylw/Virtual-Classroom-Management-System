@@ -56,6 +56,11 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 void __fastcall TLoginForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	School::GetInstance().SaveUsers();
+
+	 for (int i = Screen->FormCount - 1; i >= 0; i--)
+    {
+        Screen->Forms[i]->Close();
+	}
 }
 //---------------------------------------------------------------------------
 

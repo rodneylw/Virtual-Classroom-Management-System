@@ -3,21 +3,22 @@
 #include <fmx.h>
 #pragma hdrstop
 
-#include "AdministratorHome.h"
 #include "AdministratorManageCourses.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "AdministratorHome"
 #pragma resource "*.fmx"
 TAdministratorManageCoursesForm *AdministratorManageCoursesForm;
 //---------------------------------------------------------------------------
 __fastcall TAdministratorManageCoursesForm::TAdministratorManageCoursesForm(TComponent* Owner)
-	: TForm(Owner)
+	: TAdministratorHomeForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TAdministratorManageCoursesForm::FormClose(TObject *Sender, TCloseAction &Action)
+void __fastcall TAdministratorManageCoursesForm::HomeMenuItemRectClick(TObject *Sender)
 
 {
 	AdministratorHomeForm->Show();
+    this->Hide();
 }
 //---------------------------------------------------------------------------

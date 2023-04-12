@@ -12,6 +12,7 @@
 #include "School.h"
 #include "VirtualClassroomLogin.h"
 #include "AdministratorUserAccounts.h"
+#include "AdministratorManageCourses.h"
 #include "AdministratorHome.h"
 
 //---------------------------------------------------------------------------
@@ -72,7 +73,7 @@ void __fastcall TAdministratorUserAccountsForm::HomeMenuItemRectClick(TObject *S
 
 {
 	AdministratorHomeForm->Show();
-	AdministratorUserAccountsForm->Close();
+	this->Hide();
 }
 //---------------------------------------------------------------------------
 
@@ -95,6 +96,9 @@ void __fastcall TAdministratorUserAccountsForm::UserAccountsMenuItemRectClick(TO
 
 {
 	AdministratorUserAccountsForm->Show();
+	if(this != AdministratorUserAccountsForm){
+		this->Hide();
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::ManageCoursesMenuItemRectMouseEnter(TObject *Sender)
@@ -115,8 +119,8 @@ void __fastcall TAdministratorUserAccountsForm::ManageCoursesMenuItemRectMouseLe
 void __fastcall TAdministratorUserAccountsForm::ManageCoursesMenuItemRectClick(TObject *Sender)
 
 {
-	//AdministratorManageCoursesForm->Show();
-	AdministratorUserAccountsForm->Close();
+	AdministratorManageCoursesForm->Show();
+	AdministratorUserAccountsForm->Hide();
 }
 //---------------------------------------------------------------------------
 
@@ -139,7 +143,7 @@ void __fastcall TAdministratorUserAccountsForm::StudentStatisticsMenuItemRectCli
 
 {
 	//AdministratorStudentStatisticsForm->Show();
-	AdministratorUserAccountsForm->Close();
+	AdministratorUserAccountsForm->Hide();
 }
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::PopupProfileMenuSelectorClick(TObject *Sender)

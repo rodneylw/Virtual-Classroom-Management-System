@@ -6,27 +6,15 @@
 #include <System.Classes.hpp>
 #include <FMX.Controls.hpp>
 #include <FMX.Forms.hpp>
-#include <FMX.Controls.Presentation.hpp>
-#include <FMX.StdCtrls.hpp>
-#include <FMX.Types.hpp>
+#include "AdministratorUserAccounts.h"
+#include <FMX.Layouts.hpp>
 #include <FMX.Objects.hpp>
+#include <FMX.Types.hpp>
 //---------------------------------------------------------------------------
-class TAdministratorHomeForm : public TForm
+class TAdministratorHomeForm : public TAdministratorUserAccountsForm
 {
 __published:	// IDE-managed Components
-	TLabel *AdministratorHomeHeaderLabel;
-	TText *UserAccountsMenuItem;
-	TText *ManageCoursesMenuItem;
-	TText *StudentProgressMenuItem;
-	void __fastcall UserAccountsMenuItemClick(TObject *Sender);
-	void __fastcall UserAccountsMenuItemMouseEnter(TObject *Sender);
-	void __fastcall UserAccountsMenuItemMouseLeave(TObject *Sender);
-	void __fastcall ManageCoursesMenuItemMouseEnter(TObject *Sender);
-	void __fastcall ManageCoursesMenuItemMouseLeave(TObject *Sender);
-	void __fastcall StudentProgressMenuItemMouseEnter(TObject *Sender);
-	void __fastcall StudentProgressMenuItemMouseLeave(TObject *Sender);
-	void __fastcall ManageCoursesMenuItemClick(TObject *Sender);
-	void __fastcall StudentProgressMenuItemClick(TObject *Sender);
+	void __fastcall HomeMenuItemRectClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorHomeForm(TComponent* Owner);
