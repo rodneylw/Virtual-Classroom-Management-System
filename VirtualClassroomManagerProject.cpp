@@ -9,7 +9,7 @@
 //---------------------------------------------------------------------------
 USEFORM("SuperUserHome.cpp", SuperUserHomeForm);
 USEFORM("VirtualClassroomLogin.cpp", LoginForm);
-USEFORM("AdministratorHome.cpp", AdministratorHomeForm);
+USEFORM("AdministratorUIParent.cpp", AdministratorUIParentForm);
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {
@@ -18,7 +18,7 @@ extern "C" int FMXmain()
 		Application->Initialize();
 		Application->CreateForm(__classid(TLoginForm), &LoginForm);
 		Application->CreateForm(__classid(TSuperUserHomeForm), &SuperUserHomeForm);
-		Application->CreateForm(__classid(TAdministratorHomeForm), &AdministratorHomeForm);
+		Application->CreateForm(__classid(TAdministratorUIParentForm), &AdministratorUIParentForm);
 		Application->Run();
 	}
 	catch (Exception &exception)
