@@ -11,6 +11,10 @@
 #include "AdministratorUserAccounts.h"
 #include "AdministratorManageCourses.h"
 #include "AdministratorStudentProgress.h"
+#include "Instructor.h"
+#include "InstructorHome.h"
+#include "InstructorManageClasses.h"
+#include "InstructorResources.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -55,10 +59,10 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 					AdministratorHomeForm->Show();
 					LoginForm->Hide();
 				} else {
-            		ShowMessage("Incorrect password for " + String((*admin)->GetEmail().c_str()));
-        		}
-          }
-       }
+					ShowMessage("Incorrect password for " + String((*admin)->GetEmail().c_str()));
+				}
+		  }
+	   }
 
 }
 //---------------------------------------------------------------------------

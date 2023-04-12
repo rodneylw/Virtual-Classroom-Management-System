@@ -6,6 +6,9 @@
 #include "InstructorUIParent.h"
 #include "School.h"
 #include "VirtualClassroomLogin.h"
+#include "InstructorHome.h"
+#include "InstructorManageClasses.h"
+#include "InstructorResources.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"

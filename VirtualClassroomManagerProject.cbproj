@@ -219,6 +219,24 @@
             <DependentOn>Instructor.h</DependentOn>
             <BuildOrder>13</BuildOrder>
         </CppCompile>
+        <CppCompile Include="InstructorHome.cpp">
+            <Form>InstructorHomeForm</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>InstructorHome.h</DependentOn>
+            <BuildOrder>20</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="InstructorManageClasses.cpp">
+            <Form>InstructorManageClassesForm</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>InstructorManageClasses.h</DependentOn>
+            <BuildOrder>21</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="InstructorResources.cpp">
+            <Form>InstructorResourcesForm</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>InstructorResources.h</DependentOn>
+            <BuildOrder>22</BuildOrder>
+        </CppCompile>
         <CppCompile Include="InstructorUIParent.cpp">
             <Form>InstructorUIParentForm</Form>
             <FormType>fmx</FormType>
@@ -264,6 +282,9 @@
         <FormResources Include="AdministratorUIParent.fmx"/>
         <FormResources Include="AdministratorUserAccounts.fmx"/>
         <FormResources Include="InstructorUIParent.fmx"/>
+        <FormResources Include="InstructorHome.fmx"/>
+        <FormResources Include="InstructorManageClasses.fmx"/>
+        <FormResources Include="InstructorResources.fmx"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

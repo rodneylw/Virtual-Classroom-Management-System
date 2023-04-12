@@ -15,6 +15,9 @@ USEFORM("AdministratorHome.cpp", AdministratorHomeForm);
 USEFORM("AdministratorUIParent.cpp", AdministratorUIParentForm);
 USEFORM("AdministratorUserAccounts.cpp", AdministratorUserAccountsForm);
 USEFORM("InstructorUIParent.cpp", InstructorUIParentForm);
+USEFORM("InstructorHome.cpp", InstructorHomeForm);
+USEFORM("InstructorManageClasses.cpp", InstructorManageClassesForm);
+USEFORM("InstructorResources.cpp", InstructorResourcesForm);
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {
@@ -29,6 +32,9 @@ extern "C" int FMXmain()
 		Application->CreateForm(__classid(TAdministratorManageCoursesForm), &AdministratorManageCoursesForm);
 		Application->CreateForm(__classid(TAdministratorStudentProgressForm), &AdministratorStudentProgressForm);
 		Application->CreateForm(__classid(TInstructorUIParentForm), &InstructorUIParentForm);
+		Application->CreateForm(__classid(TInstructorHomeForm), &InstructorHomeForm);
+		Application->CreateForm(__classid(TInstructorManageClassesForm), &InstructorManageClassesForm);
+		Application->CreateForm(__classid(TInstructorResourcesForm), &InstructorResourcesForm);
 		Application->Run();
 	}
 	catch (Exception &exception)
