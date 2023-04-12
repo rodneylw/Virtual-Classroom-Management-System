@@ -18,7 +18,6 @@ __published:	// IDE-managed Components
 	TText *UserAccountsMenuItem;
 	TText *ManageCoursesMenuItem;
 	TText *StudentProgressMenuItem;
-	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall UserAccountsMenuItemClick(TObject *Sender);
 	void __fastcall UserAccountsMenuItemMouseEnter(TObject *Sender);
 	void __fastcall UserAccountsMenuItemMouseLeave(TObject *Sender);

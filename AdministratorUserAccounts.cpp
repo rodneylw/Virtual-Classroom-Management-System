@@ -2,6 +2,7 @@
 #include "HelperFunctions.h"
 #include <fmx.h>
 #include <FMX.Graphics.hpp>
+#include <FMX.Effects.hpp>
 #include <System.UIConsts.hpp>
 #include <System.UITypes.hpp>
 #include <vector>
@@ -25,21 +26,25 @@ __fastcall TAdministratorUserAccountsForm::TAdministratorUserAccountsForm(TCompo
 
 }
 //---------------------------------------------------------------------------
-void __fastcall TAdministratorUserAccountsForm::FormClose(TObject *Sender, TCloseAction &Action)
-
-{
-    AdministratorHomeForm->Show();
-}
-//---------------------------------------------------------------------------
 
 
 
 void __fastcall TAdministratorUserAccountsForm::FormCreate(TObject *Sender)
 {
-    Left = 0;
+	Left = 0;
     Top = 0;
 	Width = Screen->Width;
 	Height = Screen->Height;
+
+	TShadowEffect *dropShadow = new TShadowEffect(this);
+    dropShadow->Parent = PopupProfileMenuBackground;
+	dropShadow->Enabled = true;
+	dropShadow->Softness = 0.6f;  // A higher value creates a softer shadow
+	dropShadow->Distance = 2.0f;  // A lower value creates a shorter shadow
+	dropShadow->Direction = 90.0f; // Set the direction to 90 degrees (downwards)
+    dropShadow->ShadowColor = claBlack;
+	dropShadow->Opacity = 0.25f;
+	dropShadow->SendToBack();
 
 }
 //---------------------------------------------------------------------------
@@ -169,8 +174,74 @@ void __fastcall TAdministratorUserAccountsForm::PopupProfileMenuSelectorMouseLea
 void __fastcall TAdministratorUserAccountsForm::LogoutPopupProfileMenuItemSelectorClick(TObject *Sender)
 
 {
-	LoginForm -> Show();
-	AdministratorUserAccountsForm->Close();
+	this->Close();
+	LoginForm->Show();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TAdministratorUserAccountsForm::EditProfilePopupProfileMenuSelectorMouseEnter(TObject *Sender)
+
+{
+	EditProfilePopupProfileMenuSelector->Fill->Kind = TBrushKind::Solid;
+	EditProfilePopupProfileMenuSelector->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::EditProfilePopupProfileMenuSelectorMouseLeave(TObject *Sender)
+
+{
+    EditProfilePopupProfileMenuSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::LogoutPopupProfileMenuItemSelectorMouseEnter(TObject *Sender)
+
+{
+	LogoutPopupProfileMenuItemSelector->Fill->Kind = TBrushKind::Solid;
+	LogoutPopupProfileMenuItemSelector->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::LogoutPopupProfileMenuItemSelectorMouseLeave(TObject *Sender)
+
+{
+    LogoutPopupProfileMenuItemSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::NotificationIconMouseEnter(TObject *Sender)
+
+{
+	NotificationsIndicator->Visible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::NotificationIconMouseLeave(TObject *Sender)
+
+{
+	NotificationsIndicator->Visible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::MessagesIconMouseEnter(TObject *Sender)
+
+{
+	MessagesIndicator->Visible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::MessagesIconMouseLeave(TObject *Sender)
+
+{
+	MessagesIndicator->Visible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::FormClose(TObject *Sender, TCloseAction &Action)
+
+{
+	LoginForm->Close();
 }
 //---------------------------------------------------------------------------
 

@@ -1,0 +1,60 @@
+object AdministratorHomeForm: TAdministratorHomeForm
+  Left = 0
+  Top = 0
+  Caption = 'Administrator Home'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  DesignerMasterStyle = 0
+  object AdministratorHomeHeaderLabel: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 208.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 22.000000000000000000
+    TextSettings.HorzAlign = Center
+    Text = 'Administrator Menu'
+    TabOrder = 0
+  end
+  object UserAccountsMenuItem: TText
+    Position.X = 56.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'User Accounts'
+    TextSettings.HorzAlign = Leading
+    OnClick = UserAccountsMenuItemClick
+    OnMouseEnter = UserAccountsMenuItemMouseEnter
+    OnMouseLeave = UserAccountsMenuItemMouseLeave
+  end
+  object ManageCoursesMenuItem: TText
+    Position.X = 56.000000000000000000
+    Position.Y = 120.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Manage Courses'
+    TextSettings.HorzAlign = Leading
+    OnClick = ManageCoursesMenuItemClick
+    OnMouseEnter = ManageCoursesMenuItemMouseEnter
+    OnMouseLeave = ManageCoursesMenuItemMouseLeave
+  end
+  object StudentProgressMenuItem: TText
+    Position.X = 56.000000000000000000
+    Position.Y = 144.000000000000000000
+    Size.Width = 145.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Student Progress Statistics'
+    TextSettings.HorzAlign = Leading
+    OnClick = StudentProgressMenuItemClick
+    OnMouseEnter = StudentProgressMenuItemMouseEnter
+    OnMouseLeave = StudentProgressMenuItemMouseLeave
+  end
+end

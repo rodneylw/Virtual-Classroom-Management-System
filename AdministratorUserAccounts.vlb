@@ -17,7 +17,7 @@ Coordinates=187,146,66,36
 Coordinates=10,78,82,58
 
 []
-Coordinates=512,362,148,36
+Coordinates=313,362,189,36
 
 [UserAccountsMenuItemIcon]
 Coordinates=10,10,176,58
@@ -103,9 +103,6 @@ Coordinates=899,362,158,58
 
 [EditProfilePopupProfileMenuItem]
 Coordinates=1165,1,205,58
-
-[PopupProfileMenuBackground]
-Coordinates=313,362,189,36
 
 [LogoutProfilePopupMenuItem]
 Coordinates=918,56,192,58

@@ -18,12 +18,6 @@ __fastcall TAdministratorHomeForm::TAdministratorHomeForm(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TAdministratorHomeForm::FormClose(TObject *Sender, TCloseAction &Action)
-
-{
-     LoginForm->Close();
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TAdministratorHomeForm::UserAccountsMenuItemClick(TObject *Sender)
 
