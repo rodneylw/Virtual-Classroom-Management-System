@@ -1,14 +1,15 @@
 //---------------------------------------------------------------------------
 
 #include <fmx.h>
+//#include <FMX.Dialogs.hpp>
 #pragma hdrstop
 
 #include "School.h"
 #include "VirtualClassroomLogin.h"
 #include "AdministratorHome.h"
-#include "AdministratorUserAccounts.h"
-#include "AdministratorManageCourses.h"
-#include "AdministratorStudentProgress.h"
+//#include "AdministratorUserAccounts.h"
+//#include "AdministratorManageCourses.h"
+//#include "AdministratorStudentProgress.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -75,10 +76,10 @@ void __fastcall TAdministratorHomeForm::UserAccountsMenuItemRectMouseLeave(TObje
 void __fastcall TAdministratorHomeForm::UserAccountsMenuItemRectClick(TObject *Sender)
 
 {
-	AdministratorUserAccountsForm->Show();
+	/*AdministratorUserAccountsForm->Show();
 	if(!AdministratorUserAccountsForm->Visible){
 		this->Hide();
-	}
+	}     */
 }
 //---------------------------------------------------------------------------
 
@@ -180,6 +181,7 @@ void __fastcall TAdministratorHomeForm::EditProfilePopupProfileMenuItemSelectorM
 void __fastcall TAdministratorHomeForm::EditProfilePopupProfileMenuItemSelectorClick(TObject *Sender)
 
 {
+    PopupProfileMenu->Visible = false;
     //No Function yet
 }
 //---------------------------------------------------------------------------
@@ -202,9 +204,17 @@ void __fastcall TAdministratorHomeForm::LogoutPopupProfileMenuItemSelectorMouseL
 void __fastcall TAdministratorHomeForm::LogoutPopupProfileMenuItemSelectorClick(TObject *Sender)
 
 {
-	School::GetInstance().LogoutUser();
-	this->Close();
-	LoginForm->Show();
+	PopupProfileMenu->Visible = false;
+
+	UnicodeString msg = "Are you sure you want to logout?";
+	TMsgDlgButtons buttons = TMsgDlgButtons() << TMsgDlgBtn::mbYes << TMsgDlgBtn::mbNo;
+	TMsgDlgType dlgType = TMsgDlgType::mtConfirmation;
+
+	if (MessageDlg(msg, dlgType, buttons, 0) == mrYes) {
+		School::GetInstance().LogoutUser();
+		this->Close();
+		LoginForm->Show();
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -244,6 +254,30 @@ void __fastcall TAdministratorHomeForm::MessagesIconMouseLeave(TObject *Sender)
 void __fastcall TAdministratorHomeForm::MessagesIconClick(TObject *Sender)
 {
     //No Function Yet
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::FooterLogoutButtonClick(TObject *Sender)
+{
+    UnicodeString msg = "Are you sure you want to logout?";
+	TMsgDlgButtons buttons = TMsgDlgButtons() << TMsgDlgBtn::mbYes << TMsgDlgBtn::mbNo;
+	TMsgDlgType dlgType = TMsgDlgType::mtConfirmation;
+
+	if (MessageDlg(msg, dlgType, buttons, 0) == mrYes) {
+		School::GetInstance().LogoutUser();
+		this->Close();
+		LoginForm->Show();
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::FormClose(TObject *Sender, TCloseAction &Action)
+
+{
+	if(School::GetInstance().GetLoggedInUser().empty()) {
+		return;
+	}
+	LoginForm->Close();
 }
 //---------------------------------------------------------------------------
 

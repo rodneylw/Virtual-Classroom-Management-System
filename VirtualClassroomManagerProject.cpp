@@ -9,8 +9,6 @@
 //---------------------------------------------------------------------------
 USEFORM("SuperUserHome.cpp", SuperUserHomeForm);
 USEFORM("VirtualClassroomLogin.cpp", LoginForm);
-USEFORM("AdministratorStudentProgress.cpp", AdministratorStudentProgressForm);
-USEFORM("AdministratorUserAccounts.cpp", AdministratorUserAccountsForm);
 USEFORM("AdministratorHome.cpp", AdministratorHomeForm);
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
@@ -20,8 +18,6 @@ extern "C" int FMXmain()
 		Application->Initialize();
 		Application->CreateForm(__classid(TLoginForm), &LoginForm);
 		Application->CreateForm(__classid(TSuperUserHomeForm), &SuperUserHomeForm);
-		Application->CreateForm(__classid(TAdministratorUserAccountsForm), &AdministratorUserAccountsForm);
-		Application->CreateForm(__classid(TAdministratorStudentProgressForm), &AdministratorStudentProgressForm);
 		Application->CreateForm(__classid(TAdministratorHomeForm), &AdministratorHomeForm);
 		Application->Run();
 	}

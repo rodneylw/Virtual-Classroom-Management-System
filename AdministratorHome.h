@@ -52,12 +52,14 @@ __published:	// IDE-managed Components
 	TImage *StudentStatisticsMenuItemIcon;
 	TImage *HomeMenuItemIcon;
 	TLayout *Footer;
-	TRectangle *FooterBar;
+	TRectangle *FooterBackground;
 	TLayout *RightMargin;
 	TRectangle *FooterRight;
 	TLayout *LeftMargin;
 	TRectangle *FooterLeft;
 	TLayout *TopMargin;
+	TImage *FooterLogoutButton;
+	TText *SchoolInfo;
 	void __fastcall HomeMenuItemRectMouseEnter(TObject *Sender);
 	void __fastcall HomeMenuItemRectMouseLeave(TObject *Sender);
 	void __fastcall HomeMenuItemRectClick(TObject *Sender);
@@ -86,6 +88,8 @@ __published:	// IDE-managed Components
 	void __fastcall MessagesIconMouseEnter(TObject *Sender);
 	void __fastcall MessagesIconMouseLeave(TObject *Sender);
 	void __fastcall MessagesIconClick(TObject *Sender);
+	void __fastcall FooterLogoutButtonClick(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 
 
 private:	// User declarations

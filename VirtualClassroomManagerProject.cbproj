@@ -79,7 +79,7 @@
         <AUP_READ_PHONE_STATE>true</AUP_READ_PHONE_STATE>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <Icns_MainIcns>$(BDS)\bin\cbuilder_PROJECTICNS.icns</Icns_MainIcns>
-        <AllPackageLibs>rtl.lib;fmx.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;fmx.lib;vcl.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <IncludePath>..\..\..\CPP Programing\CPP Git Folders\Virtual-Classroom-Management-System\;$(IncludePath)</IncludePath>
@@ -136,7 +136,7 @@
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
-        <LinkPackageImports>rtl.bpi;fmx.bpi</LinkPackageImports>
+        <LinkPackageImports>rtl.bpi;fmx.bpi;vcl.bpi</LinkPackageImports>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Icon_MainIcon>VirtualClassroomManagerProject_Icon.ico</Icon_MainIcon>
@@ -170,18 +170,6 @@
             <FormType>fmx</FormType>
             <DependentOn>AdministratorHome.h</DependentOn>
             <BuildOrder>17</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="AdministratorStudentProgress.cpp">
-            <Form>AdministratorStudentProgressForm</Form>
-            <FormType>fmx</FormType>
-            <DependentOn>AdministratorStudentProgress.h</DependentOn>
-            <BuildOrder>11</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="AdministratorUserAccounts.cpp">
-            <Form>AdministratorUserAccountsForm</Form>
-            <FormType>fmx</FormType>
-            <DependentOn>AdministratorUserAccounts.h</DependentOn>
-            <BuildOrder>9</BuildOrder>
         </CppCompile>
         <CppCompile Include="Assignment.cpp">
             <DependentOn>Assignment.h</DependentOn>
@@ -240,9 +228,6 @@
         </CppCompile>
         <FormResources Include="SuperUserHome.fmx"/>
         <FormResources Include="VirtualClassroomLogin.fmx"/>
-        <FormResources Include="AdministratorStudentProgress.fmx"/>
-        <FormResources Include="AdministratorUserAccounts.fmx"/>
-        <FormResources Include="AdministratorUserAccounts.Windows.fmx"/>
         <FormResources Include="AdministratorHome.fmx"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -281,7 +266,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c270.dll" Class="DependencyModule">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c270mt.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32270.dll" Class="DependencyModule">
                     <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -297,11 +287,6 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin\borlndmm.dll" Class="DependencyModule">
-                    <Platform Name="Win32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32270.dll" Class="DependencyModule">
                     <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -365,7 +350,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c270mt.dll" Class="DependencyModule">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c270.dll" Class="DependencyModule">
                     <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
                     </Platform>
