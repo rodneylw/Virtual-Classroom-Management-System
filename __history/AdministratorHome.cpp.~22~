@@ -1,0 +1,37 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#pragma hdrstop
+
+#include "AdministratorHome.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+TAdministratorHomeForm *AdministratorHomeForm;
+//---------------------------------------------------------------------------
+__fastcall TAdministratorHomeForm::TAdministratorHomeForm(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TAdministratorHomeForm::HomeMenuItemRectMouseEnter(TObject *Sender)
+
+{
+	HomeMenuItemRect->Fill->Kind = TBrushKind::Solid;
+	HomeMenuItemRect->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+void __fastcall TAdministratorHomeForm::HomeMenuItemRectMouseLeave(TObject *Sender)
+
+{
+	HomeMenuItemRect->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+void __fastcall TAdministratorHomeForm::HomeMenuItemRectClick(TObject *Sender)
+{
+	AdministratorHomeForm->Show();
+	if(this != AdministratorHomeForm){
+		this->Hide();
+	}
+}
+//---------------------------------------------------------------------------

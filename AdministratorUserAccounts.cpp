@@ -72,8 +72,8 @@ void __fastcall TAdministratorUserAccountsForm::HomeMenuItemRectMouseLeave(TObje
 void __fastcall TAdministratorUserAccountsForm::HomeMenuItemRectClick(TObject *Sender)
 
 {
-	AdministratorHomeForm->Show();
-	this->Hide();
+	//AdministratorHomeForm->Show();
+	//this->Hide();
 }
 //---------------------------------------------------------------------------
 
@@ -119,8 +119,8 @@ void __fastcall TAdministratorUserAccountsForm::ManageCoursesMenuItemRectMouseLe
 void __fastcall TAdministratorUserAccountsForm::ManageCoursesMenuItemRectClick(TObject *Sender)
 
 {
-	AdministratorManageCoursesForm->Show();
-	AdministratorUserAccountsForm->Hide();
+	//AdministratorManageCoursesForm->Show();
+	//AdministratorUserAccountsForm->Hide();
 }
 //---------------------------------------------------------------------------
 
@@ -143,7 +143,7 @@ void __fastcall TAdministratorUserAccountsForm::StudentStatisticsMenuItemRectCli
 
 {
 	//AdministratorStudentStatisticsForm->Show();
-	AdministratorUserAccountsForm->Hide();
+	//AdministratorUserAccountsForm->Hide();
 }
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::PopupProfileMenuSelectorClick(TObject *Sender)
