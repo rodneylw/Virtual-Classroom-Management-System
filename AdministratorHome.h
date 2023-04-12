@@ -18,7 +18,7 @@ __published:	// IDE-managed Components
 	TImage *PopupProfileMenu;
 	TRectangle *PopupProfileMenuBackground;
 	TRectangle *LogoutPopupProfileMenuItemSelector;
-	TRectangle *EditProfilePopupProfileMenuSelector;
+	TRectangle *EditProfilePopupProfileMenuItemSelector;
 	TImage *EditProfilePopupMenuItemIcon;
 	TText *EditProfilePopupProfileMenuItem;
 	TText *LogoutProfilePopupMenuItem;
@@ -71,6 +71,23 @@ __published:	// IDE-managed Components
 	void __fastcall StudentStatisticsMenuItemRectMouseEnter(TObject *Sender);
 	void __fastcall StudentStatisticsMenuItemRectMouseLeave(TObject *Sender);
 	void __fastcall StudentStatisticsMenuItemRectClick(TObject *Sender);
+	void __fastcall PopupProfileMenuSelectorMouseEnter(TObject *Sender);
+	void __fastcall PopupProfileMenuSelectorMouseLeave(TObject *Sender);
+	void __fastcall PopupProfileMenuSelectorClick(TObject *Sender);
+	void __fastcall EditProfilePopupProfileMenuItemSelectorMouseEnter(TObject *Sender);
+	void __fastcall EditProfilePopupProfileMenuItemSelectorMouseLeave(TObject *Sender);
+	void __fastcall LogoutPopupProfileMenuItemSelectorMouseEnter(TObject *Sender);
+	void __fastcall EditProfilePopupProfileMenuItemSelectorClick(TObject *Sender);
+	void __fastcall LogoutPopupProfileMenuItemSelectorClick(TObject *Sender);
+	void __fastcall LogoutPopupProfileMenuItemSelectorMouseLeave(TObject *Sender);
+	void __fastcall NotificationIconMouseEnter(TObject *Sender);
+	void __fastcall NotificationIconMouseLeave(TObject *Sender);
+	void __fastcall NotificationIconClick(TObject *Sender);
+	void __fastcall MessagesIconMouseEnter(TObject *Sender);
+	void __fastcall MessagesIconMouseLeave(TObject *Sender);
+	void __fastcall MessagesIconClick(TObject *Sender);
+
+
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorHomeForm(TComponent* Owner);

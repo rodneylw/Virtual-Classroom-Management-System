@@ -3,8 +3,12 @@
 #include <fmx.h>
 #pragma hdrstop
 
+#include "School.h"
+#include "VirtualClassroomLogin.h"
 #include "AdministratorHome.h"
 #include "AdministratorUserAccounts.h"
+#include "AdministratorManageCourses.h"
+#include "AdministratorStudentProgress.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -125,6 +129,121 @@ void __fastcall TAdministratorHomeForm::StudentStatisticsMenuItemRectClick(TObje
 	if(!AdministratorStudentStatisticsForm->Visible){
 		this->Hide();
 	}       */
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::PopupProfileMenuSelectorMouseEnter(TObject *Sender)
+
+{
+	if(PopupProfileMenu->Visible == True) {
+		return;
+	}
+	ProfileMenuIndicator->Visible = True;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::PopupProfileMenuSelectorMouseLeave(TObject *Sender)
+
+{
+	ProfileMenuIndicator->Visible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::PopupProfileMenuSelectorClick(TObject *Sender)
+
+{
+	if(PopupProfileMenu->Visible == true) {
+		PopupProfileMenu->Visible = false;
+        return;
+	}
+
+	PopupProfileMenu->Visible = true;
+    ProfileMenuIndicator->Visible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::EditProfilePopupProfileMenuItemSelectorMouseEnter(TObject *Sender)
+
+{
+	EditProfilePopupProfileMenuItemSelector->Fill->Kind = TBrushKind::Solid;
+	EditProfilePopupProfileMenuItemSelector->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::EditProfilePopupProfileMenuItemSelectorMouseLeave(TObject *Sender)
+
+{
+	EditProfilePopupProfileMenuItemSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::EditProfilePopupProfileMenuItemSelectorClick(TObject *Sender)
+
+{
+    //No Function yet
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::LogoutPopupProfileMenuItemSelectorMouseEnter(TObject *Sender)
+
+{
+	LogoutPopupProfileMenuItemSelector->Fill->Kind = TBrushKind::Solid;
+	LogoutPopupProfileMenuItemSelector->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::LogoutPopupProfileMenuItemSelectorMouseLeave(TObject *Sender)
+
+{
+	LogoutPopupProfileMenuItemSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::LogoutPopupProfileMenuItemSelectorClick(TObject *Sender)
+
+{
+	School::GetInstance().LogoutUser();
+	this->Close();
+	LoginForm->Show();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TAdministratorHomeForm::NotificationIconMouseEnter(TObject *Sender)
+
+{
+	NotificationsIndicator->Visible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::NotificationIconMouseLeave(TObject *Sender)
+
+{
+	NotificationsIndicator->Visible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::NotificationIconClick(TObject *Sender)
+{
+    //No Function Yet
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::MessagesIconMouseEnter(TObject *Sender)
+{
+	MessagesIndicator->Visible = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::MessagesIconMouseLeave(TObject *Sender)
+{
+	MessagesIndicator->Visible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorHomeForm::MessagesIconClick(TObject *Sender)
+{
+    //No Function Yet
 }
 //---------------------------------------------------------------------------
 
