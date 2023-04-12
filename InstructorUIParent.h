@@ -1,0 +1,97 @@
+//---------------------------------------------------------------------------
+
+#ifndef InstructorUIParentH
+#define InstructorUIParentH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include <FMX.Layouts.hpp>
+#include <FMX.Objects.hpp>
+#include <FMX.Types.hpp>
+//---------------------------------------------------------------------------
+class TInstructorUIParentForm : public TForm
+{
+__published:	// IDE-managed Components
+	TLayout *Header;
+	TRectangle *HeaderBackground;
+	TImage *PopupProfileMenu;
+	TRectangle *PopupProfileMenuBackground;
+	TRectangle *LogoutPopupProfileMenuItemSelector;
+	TRectangle *EditProfilePopupProfileMenuItemSelector;
+	TImage *EditProfilePopupMenuItemIcon;
+	TText *EditProfilePopupProfileMenuItem;
+	TText *LogoutProfilePopupMenuItem;
+	TImage *LogoutProfilePopupMenuItemIcon;
+	TText *HeaderText;
+	TImage *ProfileIcon;
+	TLine *HorizontalRule;
+	TImage *HeaderLogo;
+	TLine *Line1;
+	TImage *NotificationIcon;
+	TImage *MessagesIcon;
+	TRectangle *ProfileMenuIndicator;
+	TText *ProfileMenuIndicatorText;
+	TText *UserNameProfile;
+	TRectangle *PopupProfileMenuSelector;
+	TRectangle *NotificationsIndicator;
+	TText *NotificationsIndicatorText;
+	TRectangle *MessagesIndicator;
+	TText *MessagesIndicatorText;
+	TLayout *MenuBar;
+	TRectangle *HomeMenuItemRect;
+	TRectangle *InstructorResourcesMenuItemRect;
+	TRectangle *ManageClassesMenuItemRect;
+	TText *HomeMenuItem;
+	TImage *ManageClassesMenuItemIcon;
+	TText *ManageClassesMenuItem;
+	TText *InstructorResourcesMenuItem;
+	TImage *InstructorResourcesMenuItemIcon;
+	TImage *HomeMenuItemIcon;
+	TLayout *Footer;
+	TRectangle *FooterBackground;
+	TImage *FooterLogoutButton;
+	TText *SchoolInfo;
+	TLayout *RightMargin;
+	TRectangle *FooterRight;
+	TLayout *LeftMargin;
+	TRectangle *FooterLeft;
+	TLayout *TopMargin;
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall HomeMenuItemRectMouseEnter(TObject *Sender);
+	void __fastcall HomeMenuItemRectMouseLeave(TObject *Sender);
+	void __fastcall HomeMenuItemRectClick(TObject *Sender);
+	void __fastcall ManageClassesMenuItemRectMouseEnter(TObject *Sender);
+	void __fastcall ManageClassesMenuItemRectMouseLeave(TObject *Sender);
+	void __fastcall ManageClassesMenuItemRectClick(TObject *Sender);
+	void __fastcall InstructorResourcesMenuItemRectMouseEnter(TObject *Sender);
+	void __fastcall InstructorResourcesMenuItemRectMouseLeave(TObject *Sender);
+	void __fastcall InstructorResourcesMenuItemRectClick(TObject *Sender);
+	void __fastcall PopupProfileMenuSelectorMouseEnter(TObject *Sender);
+	void __fastcall PopupProfileMenuSelectorMouseLeave(TObject *Sender);
+	void __fastcall PopupProfileMenuSelectorClick(TObject *Sender);
+	void __fastcall EditProfilePopupProfileMenuItemSelectorMouseEnter(TObject *Sender);
+	void __fastcall EditProfilePopupProfileMenuItemSelectorMouseLeave(TObject *Sender);
+	void __fastcall EditProfilePopupProfileMenuItemSelectorClick(TObject *Sender);
+	void __fastcall LogoutPopupProfileMenuItemSelectorMouseEnter(TObject *Sender);
+	void __fastcall LogoutPopupProfileMenuItemSelectorMouseLeave(TObject *Sender);
+	void __fastcall LogoutPopupProfileMenuItemSelectorClick(TObject *Sender);
+	void __fastcall NotificationIconMouseEnter(TObject *Sender);
+	void __fastcall NotificationIconMouseLeave(TObject *Sender);
+	void __fastcall NotificationIconClick(TObject *Sender);
+	void __fastcall MessagesIconMouseEnter(TObject *Sender);
+	void __fastcall MessagesIconMouseLeave(TObject *Sender);
+	void __fastcall MessagesIconClick(TObject *Sender);
+	void __fastcall FooterLogoutButtonClick(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall FormActivate(TObject *Sender);
+
+
+private:	// User declarations
+public:		// User declarations
+	__fastcall TInstructorUIParentForm(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TInstructorUIParentForm *InstructorUIParentForm;
+//---------------------------------------------------------------------------
+#endif

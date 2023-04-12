@@ -9,11 +9,12 @@
 //---------------------------------------------------------------------------
 USEFORM("SuperUserHome.cpp", SuperUserHomeForm);
 USEFORM("VirtualClassroomLogin.cpp", LoginForm);
-USEFORM("AdministratorUserAccounts.cpp", AdministratorUserAccountsForm);
-USEFORM("AdministratorUIParent.cpp", AdministratorUIParentForm);
-USEFORM("AdministratorHome.cpp", AdministratorHomeForm);
-USEFORM("AdministratorManageCourses.cpp", AdministratorManageCoursesForm);
 USEFORM("AdministratorStudentProgress.cpp", AdministratorStudentProgressForm);
+USEFORM("AdministratorManageCourses.cpp", AdministratorManageCoursesForm);
+USEFORM("AdministratorHome.cpp", AdministratorHomeForm);
+USEFORM("AdministratorUIParent.cpp", AdministratorUIParentForm);
+USEFORM("AdministratorUserAccounts.cpp", AdministratorUserAccountsForm);
+USEFORM("InstructorUIParent.cpp", InstructorUIParentForm);
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {
@@ -27,6 +28,7 @@ extern "C" int FMXmain()
 		Application->CreateForm(__classid(TAdministratorUserAccountsForm), &AdministratorUserAccountsForm);
 		Application->CreateForm(__classid(TAdministratorManageCoursesForm), &AdministratorManageCoursesForm);
 		Application->CreateForm(__classid(TAdministratorStudentProgressForm), &AdministratorStudentProgressForm);
+		Application->CreateForm(__classid(TInstructorUIParentForm), &InstructorUIParentForm);
 		Application->Run();
 	}
 	catch (Exception &exception)

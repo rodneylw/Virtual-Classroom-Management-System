@@ -1,0 +1,131 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#pragma hdrstop
+
+#include "InstructorUIParent.h"
+#include "School.h"
+#include "VirtualClassroomLogin.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+TInstructorUIParentForm *InstructorUIParentForm;
+//---------------------------------------------------------------------------
+__fastcall TInstructorUIParentForm::TInstructorUIParentForm(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::FormCreate(TObject *Sender)
+{
+	Left = 0;
+	Top = 0;
+	Width = Screen->Width;
+	Height = Screen->Height;
+
+	TShadowEffect *dropShadow = new TShadowEffect(this);
+    dropShadow->Parent = PopupProfileMenuBackground;
+	dropShadow->Enabled = true;
+	dropShadow->Softness = 0.6f;  // A higher value creates a softer shadow
+	dropShadow->Distance = 2.0f;  // A lower value creates a shorter shadow
+	dropShadow->Direction = 90.0f; // Set the direction to 90 degrees (downwards)
+    dropShadow->ShadowColor = claBlack;
+	dropShadow->Opacity = 0.25f;
+	dropShadow->SendToBack();
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::HomeMenuItemRectMouseEnter(TObject *Sender)
+
+{
+	HomeMenuItemRect->Fill->Kind = TBrushKind::Solid;
+	HomeMenuItemRect->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::HomeMenuItemRectMouseLeave(TObject *Sender)
+
+{
+	HomeMenuItemRect->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::HomeMenuItemRectClick(TObject *Sender)
+{
+	if(InstructorHomeForm->Visible == true){
+		return;
+	}
+	InstructorHomeForm->Show();
+	this->Hide();
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::ManageClassesMenuItemRectMouseEnter(TObject *Sender)
+
+{
+	ManageClassesMenuItemRect->Fill->Kind = TBrushKind::Solid;
+	ManageClassesMenuItemRect->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::ManageClassesMenuItemRectMouseLeave(TObject *Sender)
+
+{
+	ManageClassesMenuItemRect->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::ManageClassesMenuItemRectClick(TObject *Sender)
+
+{
+	if(InstructorManageClassesForm->Visible == true){
+		return;
+	}
+	InstructorManageClassesForm->Show();
+	this->Hide();
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::InstructorResourcesMenuItemRectMouseEnter(TObject *Sender)
+
+{
+	InstructorResourcesMenuItemRect->Fill->Kind = TBrushKind::Solid;
+	InstructorResourcesMenuItemRect->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::InstructorResourcesMenuItemRectMouseLeave(TObject *Sender)
+
+{
+	InstructorResourcesMenuItemRect->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::InstructorResourcesMenuItemRectClick(TObject *Sender)
+
+{
+	if(InstructorResourcesForm->Visible == true){
+		return;
+	}
+	InstructorResourcesForm->Show();
+	this->Hide();
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::PopupProfileMenuSelectorMouseEnter(TObject *Sender)
+
+{
+	if(PopupProfileMenu->Visible == True) {
+		return;
+	}
+	ProfileMenuIndicator->Visible = True;
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::PopupProfileMenuSelectorMouseLeave(TObject *Sender)
+
+{
+	ProfileMenuIndicator->Visible = false;
+}
+//---------------------------------------------------------------------------
+void __fastcall TInstructorUIParentForm::PopupProfileMenuSelectorClick(TObject *Sender)
+
+{
+	if(PopupProfileMenu->Visible == true) {
+		PopupProfileMenu->Visible = false;
+        return;
+	}
+
+	PopupProfileMenu->Visible = true;
+    ProfileMenuIndicator->Visible = false;
+}
+//---------------------------------------------------------------------------
