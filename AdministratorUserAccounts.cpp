@@ -9,6 +9,7 @@
 
 #pragma hdrstop
 
+#include "School.h"
 #include "VirtualClassroomLogin.h"
 #include "AdministratorUserAccounts.h"
 #include "AdministratorHome.h"
@@ -174,6 +175,7 @@ void __fastcall TAdministratorUserAccountsForm::PopupProfileMenuSelectorMouseLea
 void __fastcall TAdministratorUserAccountsForm::LogoutPopupProfileMenuItemSelectorClick(TObject *Sender)
 
 {
+	School::GetInstance().LogoutUser();
 	this->Close();
 	LoginForm->Show();
 }
@@ -241,6 +243,9 @@ void __fastcall TAdministratorUserAccountsForm::MessagesIconMouseLeave(TObject *
 void __fastcall TAdministratorUserAccountsForm::FormClose(TObject *Sender, TCloseAction &Action)
 
 {
+	if(School::GetInstance().GetLoggedInUser().empty()) {
+		return;
+	}
 	LoginForm->Close();
 }
 //---------------------------------------------------------------------------

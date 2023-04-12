@@ -11,7 +11,7 @@ using std::string;
 //---------------------------------------------------------------------------
 class User {
 private:
-     string LastName;
+	 string LastName;
      string FirstName;
      string UserID;
      string Email;
@@ -23,7 +23,8 @@ private:
      string Address;
      string Gender;
      bool IsBlocked;
-     bool IsLoggedIn;
+	 bool IsLoggedIn;
+
      //std::vector<Notification> Notifications;
 
 protected:
@@ -82,8 +83,9 @@ public:
      string GetAddress();
      string GetGender();
      bool GetIsBlocked();
-     bool GetIsLoggedIn();
-     virtual void SaveUser(std::ostream& out);
+	 bool GetIsLoggedIn();
+     void Logout();
+	 virtual void SaveUser(std::ostream& out);
 };
 
 

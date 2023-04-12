@@ -38,11 +38,13 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
        const auto& Administrators = School::GetInstance().GetAdministrators();
 
        for(auto admin = Administrators.begin(); admin != Administrators.end(); ++admin) {
-           if(Email == (*admin)->GetEmail()) {
-               if(Password == (*admin)->GetPassword()) {
-            		AdministratorHomeForm->Show();
+		   if(Email == (*admin)->GetEmail()) {
+			   if(Password == (*admin)->GetPassword()) {
+                    string userID = (*admin)->GetUserID();
+					School::GetInstance().LoginUser(userID);
+					AdministratorHomeForm->Show();
                     LoginForm->Hide();
-        		} else {
+				} else {
             		ShowMessage("Incorrect password for " + String((*admin)->GetEmail().c_str()));
         		}
           }

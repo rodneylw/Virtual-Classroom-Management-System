@@ -161,6 +161,42 @@ void School::LoadUsers() {
 
         }
         StudentInfoFile.close();
-    }
+	}
+}
+
+std::string School::GetLoggedInUser() {
+	return LoggedInUser;
+}
+
+void School::LoginUser(string userID) {
+	LoggedInUser = userID;
+}
+
+void School::LogoutUser() {
+
+	if(LoggedInUser.empty())
+		return;
+
+	for(auto& user : Administrators) {
+		if(user->GetUserID() == LoggedInUser) {
+			user->Logout();
+			LoggedInUser = "";
+			break;
+		}
+	}
+	for(auto& user : Instructors) {
+		if(user->GetUserID() == LoggedInUser) {
+			user->Logout();
+			LoggedInUser = "";
+			break;
+		}
+	}
+	for(auto& user : Students) {
+		if(user->GetUserID() == LoggedInUser) {
+			user->Logout();
+			LoggedInUser = "";
+			break;
+		}
+	}
 }
 

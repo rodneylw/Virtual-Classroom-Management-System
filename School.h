@@ -13,14 +13,15 @@ using std::string;
 //---------------------------------------------------------------------------
 class School {
 private:
+	 string LoggedInUser;
      string SchoolName;
-     std::vector<std::unique_ptr<User>> Administrators;
-     std::vector<std::unique_ptr<User>> Instructors;
+	 std::vector<std::unique_ptr<User>> Administrators;
+	 std::vector<std::unique_ptr<User>> Instructors;
      std::vector<std::unique_ptr<User>> Students;
      //std::vector<std::unique_ptr<Course>> Courses;
      static School* Instance;
 
-     School(string name) {
+	 School(string name) {
           SchoolName = name;
      };
 public:
@@ -31,7 +32,13 @@ public:
      void LoadUsers();
 
 	School(const School&) = delete;
-     School& operator=(const School&) = delete;
+	 School& operator=(const School&) = delete;
+
+     string GetLoggedInUser();
+	 void LoginUser(string userID);
+	 void LogoutUser();
+
+
 };
 
 
