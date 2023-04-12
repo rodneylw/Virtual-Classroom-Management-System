@@ -1,0 +1,25 @@
+//---------------------------------------------------------------------------
+
+#ifndef AdministratorHomeH
+#define AdministratorHomeH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include "AdministratorUIParent.h"
+#include <FMX.Layouts.hpp>
+#include <FMX.Objects.hpp>
+#include <FMX.Types.hpp>
+//---------------------------------------------------------------------------
+class TAdministratorHomeForm : public TAdministratorUIParentForm
+{
+__published:	// IDE-managed Components
+	void __fastcall FormActivate(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TAdministratorHomeForm(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TAdministratorHomeForm *AdministratorHomeForm;
+//---------------------------------------------------------------------------
+#endif

@@ -9,8 +9,8 @@
 #include "AdministratorUIParent.h"
 #include "AdministratorHome.h"
 #include "AdministratorUserAccounts.h"
-//#include "AdministratorManageCourses.h"
-//#include "AdministratorStudentProgress.h"
+#include "AdministratorManageCourses.h"
+#include "AdministratorStudentProgress.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -104,10 +104,11 @@ void __fastcall TAdministratorUIParentForm::ManageCoursesMenuItemRectMouseLeave(
 void __fastcall TAdministratorUIParentForm::ManageCoursesMenuItemRectClick(TObject *Sender)
 
 {
-	/*AdministratorManageCoursesForm->Show();
-	if(!AdministratorManageCoursesForm->Visible){
-		this->Hide();
-	}       */
+	if(AdministratorManageCoursesForm->Visible == true){
+		return;
+	}
+	AdministratorManageCoursesForm->Show();
+	this->Hide();
 }
 //---------------------------------------------------------------------------
 
@@ -129,10 +130,11 @@ void __fastcall TAdministratorUIParentForm::StudentStatisticsMenuItemRectMouseLe
 void __fastcall TAdministratorUIParentForm::StudentStatisticsMenuItemRectClick(TObject *Sender)
 
 {
-	/*AdministratorStudentStatisticsForm->Show();
-	if(!AdministratorStudentStatisticsForm->Visible){
-		this->Hide();
-	}       */
+	if(AdministratorStudentProgressForm->Visible == true){
+		return;
+	}
+	AdministratorStudentProgressForm->Show();
+	this->Hide();
 }
 //---------------------------------------------------------------------------
 
@@ -283,8 +285,6 @@ void __fastcall TAdministratorUIParentForm::FormClose(TObject *Sender, TCloseAct
 	LoginForm->Close();
 }
 //---------------------------------------------------------------------------
-
-
 
 void __fastcall TAdministratorUIParentForm::FormActivate(TObject *Sender)
 {

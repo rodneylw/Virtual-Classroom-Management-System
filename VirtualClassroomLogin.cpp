@@ -8,6 +8,9 @@
 #include "School.h"
 #include "Administrator.h"
 #include "AdministratorHome.h"
+#include "AdministratorUserAccounts.h"
+#include "AdministratorManageCourses.h"
+#include "AdministratorStudentProgress.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -43,8 +46,14 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 					string userID = (*admin)->GetUserID();
 					string userName = (*admin)->GetFullName();
 					School::GetInstance().LoginUser(userID, userName);
+						AdministratorUserAccountsForm->Show();
+						AdministratorUserAccountsForm->Hide();
+						AdministratorManageCoursesForm->Show();
+						AdministratorManageCoursesForm->Hide();
+						AdministratorStudentProgressForm->Show();
+						AdministratorStudentProgressForm->Hide();
 					AdministratorHomeForm->Show();
-                    LoginForm->Hide();
+					LoginForm->Hide();
 				} else {
             		ShowMessage("Incorrect password for " + String((*admin)->GetEmail().c_str()));
         		}
