@@ -21,10 +21,3 @@ __fastcall TAdministratorHomeForm::TAdministratorHomeForm(TComponent* Owner)
 //---------------------------------------------------------------------------
 
 
-void __fastcall TAdministratorHomeForm::FormActivate(TObject *Sender)
-{
-	UserNameProfile->Text = School::GetInstance().GetLoggedInUserName().c_str();
-}
-//---------------------------------------------------------------------------
-
-
