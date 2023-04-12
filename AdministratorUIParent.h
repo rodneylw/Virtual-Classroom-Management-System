@@ -90,6 +90,7 @@ __published:	// IDE-managed Components
 	void __fastcall MessagesIconClick(TObject *Sender);
 	void __fastcall FooterLogoutButtonClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall FormActivate(TObject *Sender);
 
 
 private:	// User declarations

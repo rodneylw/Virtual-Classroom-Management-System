@@ -72,7 +72,8 @@ public:
      //User(userID, lastname, firstname, email, password, phoneNumber, dob, question, answer, address, isBlocked)
 
      string GetLastName();
-     string GetFirstName();
+	 string GetFirstName();
+     string GetFullName();
      string GetUserID();
      string GetEmail();
      string GetPassword();

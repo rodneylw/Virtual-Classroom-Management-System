@@ -40,8 +40,9 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
        for(auto admin = Administrators.begin(); admin != Administrators.end(); ++admin) {
 		   if(Email == (*admin)->GetEmail()) {
 			   if(Password == (*admin)->GetPassword()) {
-                    string userID = (*admin)->GetUserID();
-					School::GetInstance().LoginUser(userID);
+					string userID = (*admin)->GetUserID();
+					string userName = (*admin)->GetFullName();
+					School::GetInstance().LoginUser(userID, userName);
 					AdministratorHomeForm->Show();
                     LoginForm->Hide();
 				} else {

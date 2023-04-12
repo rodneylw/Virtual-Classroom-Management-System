@@ -34,9 +34,12 @@ std::string User::generateID(UserType userType) {
 
  string User::GetLastName() {
 	 return LastName;
- }
+ };
  string User::GetFirstName() {
       return FirstName;
+ };
+ string User::GetFullName() {
+	 return FirstName + " " + LastName;
  };
  string User::GetUserID() {
       return UserID;

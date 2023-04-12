@@ -3,6 +3,7 @@
 #include <fmx.h>
 #pragma hdrstop
 
+#include "School.h"
 #include "AdministratorHome.h"
 #include "AdministratorUserAccounts.h"
 //---------------------------------------------------------------------------
@@ -20,7 +21,9 @@ __fastcall TAdministratorHomeForm::TAdministratorHomeForm(TComponent* Owner)
 
 void __fastcall TAdministratorHomeForm::FormActivate(TObject *Sender)
 {
-	if(AdministratorUserAccountsForm->Visible == false) {
+	UserNameProfile->Text = School::GetInstance().GetLoggedInUserName().c_str();
+
+	 if(AdministratorUserAccountsForm->Visible == false) {
 		AdministratorUserAccountsForm->Show();
 		AdministratorUserAccountsForm->Hide();
 	}
