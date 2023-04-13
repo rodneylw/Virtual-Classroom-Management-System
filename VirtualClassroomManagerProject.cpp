@@ -55,3 +55,9 @@ extern "C" int FMXmain()
 	return 0;
 }
 //---------------------------------------------------------------------------
+
+//SuperUser Admin Creation
+//  Job Title doens't work
+//  User always starts blocked
+//  UserID counter is not working
+//  Admin Users are saving incorrectly

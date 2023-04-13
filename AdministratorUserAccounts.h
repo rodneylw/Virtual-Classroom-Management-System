@@ -32,6 +32,7 @@ __published:	// IDE-managed Components
 	TStringColumn *StringColumn6;
 	TStringColumn *StringColumn7;
 	TStyleBook *StyleBook1;
+	TStringColumn *StringColumn8;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
           TColumn * const Column, const TRectF &Bounds);

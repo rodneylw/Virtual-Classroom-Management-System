@@ -63,7 +63,7 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths()
 	int remainingWidth = totalAvailableWidth - totalRequiredWidth;
 
 	// Adjust the width of each column based on the calculated maximum width and distribute the remaining width
-	int extraWidthPerColumn = (remainingWidth-7) / AdministratorAccountsStringGrid->ColumnCount;
+	int extraWidthPerColumn = (remainingWidth-8) / AdministratorAccountsStringGrid->ColumnCount;
 
 	for (int j = 0; j < AdministratorAccountsStringGrid->ColumnCount; ++j)
 	{
@@ -72,8 +72,8 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths()
 		// Distribute the remaining width among the columns evenly
 		AdministratorAccountsStringGrid->Columns[j]->Width += extraWidthPerColumn;
 
-		// Remainder Width
-		AdministratorAccountsStringGrid->Columns[6]->Width += 3;
+		// Width
+		AdministratorAccountsStringGrid->Columns[7]->Width += 3;
 	}
 }
 //---------------------------------------------------------------------------
@@ -84,25 +84,31 @@ void __fastcall TAdministratorUserAccountsForm::PopulateGridWithAdministrators(c
 
 	// Add headers for the columns
 	AdministratorAccountsStringGrid->Columns[0]->Header = "User ID";
-	AdministratorAccountsStringGrid->Columns[1]->Header = "First Name";
-	AdministratorAccountsStringGrid->Columns[2]->Header = "Last Name";
-	AdministratorAccountsStringGrid->Columns[3]->Header = "Gender";
-	AdministratorAccountsStringGrid->Columns[4]->Header = "Date of Birth";
-	AdministratorAccountsStringGrid->Columns[5]->Header = "Phone Number";
-	AdministratorAccountsStringGrid->Columns[6]->Header = "Blocked?";
+	AdministratorAccountsStringGrid->Columns[1]->Header = "Job Title";
+	AdministratorAccountsStringGrid->Columns[2]->Header = "First Name";
+	AdministratorAccountsStringGrid->Columns[3]->Header = "Last Name";
+	AdministratorAccountsStringGrid->Columns[4]->Header = "Gender";
+	AdministratorAccountsStringGrid->Columns[5]->Header = "Date of Birth";
+	AdministratorAccountsStringGrid->Columns[6]->Header = "Phone Number";
+	AdministratorAccountsStringGrid->Columns[7]->Header = "Blocked?";
 
 	// Populate StrinGrid
 	for (int i=0; i < administrators.size(); i++)
 	{
 		User* admin = administrators[i].get();
+		Administrator* admin_ptr = dynamic_cast<Administrator*>(admin);
 
-		AdministratorAccountsStringGrid->Cells[0][i] = admin->GetUserID().c_str();
-		AdministratorAccountsStringGrid->Cells[1][i] = admin->GetFirstName().c_str();
-		AdministratorAccountsStringGrid->Cells[2][i] = admin->GetLastName().c_str();
-		AdministratorAccountsStringGrid->Cells[3][i] = admin->GetGender().c_str();
-		AdministratorAccountsStringGrid->Cells[4][i] = admin->GetDateOfBirth().c_str();
-		AdministratorAccountsStringGrid->Cells[5][i] = admin->GetPhoneNumber().c_str();
-		AdministratorAccountsStringGrid->Cells[6][i] = admin->GetIsBlocked() ? "Blocked" : "Not Blocked";
+		if (admin_ptr)
+		{
+			AdministratorAccountsStringGrid->Cells[0][i] = admin_ptr->GetUserID().c_str();
+			AdministratorAccountsStringGrid->Cells[1][i] = admin_ptr->GetJobTitle().c_str();
+			AdministratorAccountsStringGrid->Cells[2][i] = admin_ptr->GetFirstName().c_str();
+			AdministratorAccountsStringGrid->Cells[3][i] = admin_ptr->GetLastName().c_str();
+			AdministratorAccountsStringGrid->Cells[4][i] = admin_ptr->GetGender().c_str();
+			AdministratorAccountsStringGrid->Cells[5][i] = admin_ptr->GetDateOfBirth().c_str();
+			AdministratorAccountsStringGrid->Cells[6][i] = admin_ptr->GetPhoneNumber().c_str();
+			AdministratorAccountsStringGrid->Cells[7][i] = admin_ptr->GetIsBlocked() ? "Blocked" : "Not Blocked";
+		}
 	}
 }
 
