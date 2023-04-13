@@ -26,12 +26,13 @@ std::vector<std::string> ParseCommaDelimitedString(std::string line) {
 }
 
 bool StringToBool(std::string obj) {
-    bool result;
-   	if(obj == "0") {
-    	   obj = false;
-   	} else {
-    	   obj = true;
-   	}
+	bool result;
+	if(obj == "0") {
+		   result = false;
+	}
+	if(obj == "1") {
+		   result = true;
+	}
     return result;
 }
 
