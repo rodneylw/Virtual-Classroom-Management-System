@@ -17,7 +17,7 @@ Coordinates=187,146,66,36
 Coordinates=10,78,82,58
 
 []
-Coordinates=313,362,189,36
+Coordinates=800,362,91,36
 
 [UserAccountsMenuItemIcon]
 Coordinates=10,10,176,58
@@ -105,12 +105,75 @@ Coordinates=899,362,158,58
 Coordinates=1165,1,205,58
 
 [LogoutProfilePopupMenuItem]
-Coordinates=918,56,192,58
+Coordinates=918,56,185,58
 Visible=True
 
 [LogoutPopupProfileMenuItemSelector]
-Coordinates=1148,78,252,36
+Coordinates=1148,78,232,36
 
 [EditProfilePopupProfileMenuSelector]
 Coordinates=1165,133,207,36
+
+[NotificationsIndicator]
+Coordinates=522,362,135,36
+
+[NotificationsIndicatorText]
+Coordinates=0,0,160,58
+
+[MessagesIndicator]
+Coordinates=393,362,122,36
+
+[FooterBackground]
+Coordinates=264,362,120,36
+
+[HeaderBackground]
+Coordinates=135,362,125,36
+
+[MessagesIndicatorText]
+Coordinates=179,77,148,58
+
+[StringColumn3]
+Coordinates=26,362,100,36
+
+[PopupProfileMenuBackground]
+Coordinates=1165,133,189,36
+
+[SchoolInfo]
+Coordinates=0,221,75,58
+
+[EditProfilePopupProfileMenuItemSelector]
+Coordinates=1148,188,252,36
+
+[StringColumn2]
+Coordinates=1165,243,100,36
+
+[UserNameProfile]
+Coordinates=16,77,112,58
+
+[StringColumn4]
+Coordinates=1165,298,100,36
+
+[AdministratorAccountsStringGrid]
+Coordinates=686,1,202,58
+
+[PopupProfileMenuSelector]
+Coordinates=1165,353,168,36
+
+[StringColumn1]
+Coordinates=1165,408,100,36
+
+[UserAccountsScrollBox]
+Coordinates=1146,458,149,36
+
+[FooterLogoutButton]
+Coordinates=435,1,128,58
+
+[StringColumn7]
+Coordinates=1037,458,100,36
+
+[StringColumn6]
+Coordinates=928,458,100,36
+
+[StringColumn5]
+Coordinates=819,458,100,36
 
