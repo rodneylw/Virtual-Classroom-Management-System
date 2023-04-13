@@ -2,6 +2,7 @@
 
 #include <fmx.h>
 #include <algorithm>
+#include <FMX.Grid.hpp>
 #pragma hdrstop
 
 #include "School.h"
@@ -22,61 +23,58 @@ __fastcall TAdministratorUserAccountsForm::TAdministratorUserAccountsForm(TCompo
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths()
 {
-    // Initialize a vector to store the maximum width for each column
-    std::vector<int> maxWidths(StringGrid1->ColumnCount, 0);
+	// Initialize a vector to store the maximum width for each column
+	std::vector<int> maxWidths(StringGrid1->ColumnCount, 0);
 
-    // Iterate over all cells in the TStringGrid
+	// Iterate over all cells in the TStringGrid
     for (int i = 0; i < StringGrid1->RowCount; ++i)
     {
-        for (int j = 0; j < StringGrid1->ColumnCount; ++j)
+		for (int j = 0; j < StringGrid1->ColumnCount; ++j)
         {
             // Calculate the width of the current cell or header
-            int cellWidth = StringGrid1->Canvas->TextWidth(StringGrid1->Cells[j][i]);
+			int cellWidth = StringGrid1->Canvas->TextWidth(StringGrid1->Cells[j][i]);
 
-            // If the current row is the first row, then we need to compare the cell width with the header width
-            if (i == 0)
+			// If the current row is the first row, then we need to compare the cell width with the header width
+			if (i == 0)
             {
                 int headerWidth = StringGrid1->Canvas->TextWidth(StringGrid1->Columns[j]->Header);
-                cellWidth = std::max(cellWidth, headerWidth);
+				cellWidth = std::max(cellWidth, headerWidth);
             }
 
-            // Update the maximum width for the current column, if needed
+			// Update the maximum width for the current column, if needed
             if (cellWidth > maxWidths[j])
             {
-                maxWidths[j] = cellWidth;
-            }
-        }
-    }
+				maxWidths[j] = cellWidth;
+			}
+		}
+	}
 
-    // Add a small padding value to the calculated maximum widths for better readability
-    int padding = 10;
+	// Set the total available width
+	int totalAvailableWidth = 1120;
 
-    // Calculate the total available width
-	int totalAvailableWidth = StringGrid1->Width - (StringGrid1->ColumnCount);
-
-    // Calculate the total required width for all columns based on the maxWidths and padding
-    int totalRequiredWidth = 0;
+	// Calculate the total required width for all columns based on the maxWidths
+	int totalRequiredWidth = 0;
 	for (int maxWidth : maxWidths)
 	{
-        totalRequiredWidth += maxWidth + padding;
-    }
+		totalRequiredWidth += maxWidth;
+	}
 
-    // Calculate the remaining width that needs to be distributed among the columns
-    int remainingWidth = totalAvailableWidth - totalRequiredWidth;
+	// Calculate the remaining width that needs to be distributed among the columns
+	int remainingWidth = totalAvailableWidth - totalRequiredWidth;
 
-    // Adjust the width of each column based on the calculated maximum width and distribute the remaining width
-    for (int j = 0; j < StringGrid1->ColumnCount; ++j)
-    {
-        StringGrid1->Columns[j]->Width = maxWidths[j] + padding;
+	// Adjust the width of each column based on the calculated maximum width and distribute the remaining width
+	int extraWidthPerColumn = (remainingWidth-7) / StringGrid1->ColumnCount;
 
-        // Distribute the remaining width among the columns
-        if (remainingWidth > 0)
-        {
-            int extraWidth = std::min(remainingWidth, maxWidths[j] / 2);
-            StringGrid1->Columns[j]->Width += extraWidth;
-            remainingWidth -= extraWidth;
-        }
-    }
+	for (int j = 0; j < StringGrid1->ColumnCount; ++j)
+	{
+		StringGrid1->Columns[j]->Width = maxWidths[j];
+
+		// Distribute the remaining width among the columns evenly
+		StringGrid1->Columns[j]->Width += extraWidthPerColumn;
+
+		// Remainder Width
+		StringGrid1->Columns[6]->Width += 3;
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::PopulateGridWithAdministrators(const std::vector<std::unique_ptr<User>>& administrators)
@@ -113,5 +111,39 @@ void __fastcall TAdministratorUserAccountsForm::FormCreate(TObject *Sender)
 	PopulateGridWithAdministrators(School::GetInstance().GetAdministrators());
 	AdjustColumnWidths();
 }
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::StringGrid1DrawColumnHeader(TObject *Sender,
+          TCanvas * const Canvas, TColumn * const Column, const TRectF &Bounds)
+{
+    // Clear the header area with a solid color (white in this case)
+    Canvas->Fill->Color = TAlphaColorRec::White;
+    Canvas->FillRect(Bounds, 0, 0, {}, 1);
+
+    TFont *oldFont = new TFont();
+    TBrush *oldFill = new TBrush(TBrushKind::Solid, TAlphaColorRec::Black);
+
+    oldFont->Assign(Canvas->Font); // Save the old font settings
+    oldFill->Assign(Canvas->Fill); // Save the old fill settings
+
+    Canvas->Font->Size = 10; // Set the header font size
+    Canvas->Fill->Color = TAlphaColorRec::Slategray; // Set the header font color
+
+    TFillTextFlags fillTextFlags = TFillTextFlags();
+
+	// Add padding to the header text
+	float paddingHorizontal = 3;
+	float paddingVertical = 5;
+    TRectF paddedBounds = TRectF(Bounds.Left + paddingHorizontal, Bounds.Top + paddingVertical, Bounds.Right - paddingHorizontal, Bounds.Bottom - paddingVertical);
+
+    Canvas->FillText(paddedBounds, Column->Header, false, 1, fillTextFlags, TTextAlign::Leading, TTextAlign::Leading);
+
+    Canvas->Font->Assign(oldFont); // Restore the old font settings
+    Canvas->Fill->Assign(oldFill); // Restore the old fill settings
+
+    delete oldFont;
+    delete oldFill;
+}
+
 //---------------------------------------------------------------------------
 

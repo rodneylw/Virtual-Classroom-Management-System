@@ -22,7 +22,7 @@
 class TAdministratorUserAccountsForm : public TAdministratorUIParentForm
 {
 __published:	// IDE-managed Components
-	TVertScrollBox *VertScrollBox1;
+	TVertScrollBox *UserAccountsScrollBox;
 	TStringGrid *StringGrid1;
 	TStringColumn *StringColumn1;
 	TStringColumn *StringColumn2;
@@ -32,6 +32,8 @@ __published:	// IDE-managed Components
 	TStringColumn *StringColumn6;
 	TStringColumn *StringColumn7;
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall StringGrid1DrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
+          TColumn * const Column, const TRectF &Bounds);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
