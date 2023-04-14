@@ -25,8 +25,8 @@ void __fastcall TAdministratorUIParentForm::FormCreate(TObject *Sender)
 {
 	Left = 0;
 	Top = 0;
-	Width = Screen->Width;
-	Height = Screen->Height;
+	Width = ((Screen->Width)-50);
+	Height = ((Screen->Height)-50);
 
 	TShadowEffect *dropShadow = new TShadowEffect(this);
     dropShadow->Parent = PopupProfileMenuBackground;

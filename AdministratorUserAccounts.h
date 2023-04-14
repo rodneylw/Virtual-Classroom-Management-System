@@ -33,6 +33,13 @@ __published:	// IDE-managed Components
 	TStringColumn *StringColumn7;
 	TStyleBook *StyleBook1;
 	TStringColumn *StringColumn8;
+	TImage *UserTypeSelectionContainer;
+	TImage *UserTypeSelectionDropDownIndicator;
+	TText *UserTypeSelectionText;
+	TRectangle *UserTypeSelector;
+	TLayout *Content;
+	TLayout *CreateNewSection;
+	TLine *VerticleDivider;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
           TColumn * const Column, const TRectF &Bounds);
