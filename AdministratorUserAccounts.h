@@ -38,8 +38,9 @@ __published:	// IDE-managed Components
 	TText *UserTypeSelectionText;
 	TRectangle *UserTypeSelector;
 	TLayout *Content;
-	TLayout *CreateNewSection;
+	TLayout *CreateNewAdministratorSection;
 	TLine *VerticleDivider;
+	TText *CreateNewText;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
           TColumn * const Column, const TRectF &Bounds);
