@@ -33,46 +33,49 @@ std::string User::generateID(UserType userType) {
 }
 
  string User::GetLastName() {
-	 return LastName;
+ 	return LastName;
  };
  string User::GetFirstName() {
-      return FirstName;
+	return FirstName;
  };
  string User::GetFullName() {
-	 return FirstName + " " + LastName;
+	return FirstName + " " + LastName;
  };
  string User::GetUserID() {
-      return UserID;
+	return UserID;
  };
  string User::GetEmail() {
-      return Email;
+	return Email;
  };
  string User::GetPassword() {
-      return Password;
+	return Password;
  };
  string User::GetPhoneNumber() {
-      return PhoneNumber;
+	return PhoneNumber;
  };
  string User::GetDateOfBirth() {
-      return DateOfBirth;
+	return DateOfBirth;
  };
  string User::GetSecurityQuestion() {
-      return SecurityQuestion;
+	return SecurityQuestion;
  };
  string User::GetSecurityAnswer() {
-      return SecurityAnswer;
+	return SecurityAnswer;
  };
  string User::GetAddress() {
-      return Address;
+	return Address;
  };
  string User::GetGender() {
-     return Gender;
+	return Gender;
  }
  bool User::GetIsBlocked() {
-      return IsBlocked;
+	return IsBlocked;
+ };
+ void User::UnblockUser() {
+	IsBlocked = false;
  };
  bool User::GetIsLoggedIn() {
-      return IsLoggedIn;
+	return IsLoggedIn;
  };
 
  void User::SaveUser(std::ostream& out) {

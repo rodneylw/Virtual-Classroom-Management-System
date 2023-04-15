@@ -86,7 +86,8 @@ public:
      string GetSecurityAnswer();
      string GetAddress();
      string GetGender();
-     bool GetIsBlocked();
+	 bool GetIsBlocked();
+	 void UnblockUser();
 	 bool GetIsLoggedIn();
      void Logout();
 	 virtual void SaveUser(std::ostream& out);
