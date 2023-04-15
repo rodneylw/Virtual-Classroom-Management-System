@@ -26,9 +26,17 @@ private:
           SchoolName = name;
      };
 public:
-     static School& GetInstance();
+	 static School& GetInstance();
+
      void AddAdministrator(std::unique_ptr<User> admin);
-     std::vector<std::unique_ptr<User>>& GetAdministrators();
+	 std::vector<std::unique_ptr<User>>& GetAdministrators();
+
+	 void AddInstructor(std::unique_ptr<User> instructor);
+	 std::vector<std::unique_ptr<User>>& GetInstructors();
+
+	 void AddStudent(std::unique_ptr<User> student);
+	 std::vector<std::unique_ptr<User>>& GetStudents();
+
      void SaveUsers();
      void LoadUsers();
 

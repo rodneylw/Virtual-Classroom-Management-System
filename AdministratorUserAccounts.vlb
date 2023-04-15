@@ -132,9 +132,6 @@ Coordinates=135,362,125,36
 [MessagesIndicatorText]
 Coordinates=179,77,148,58
 
-[StringColumn3]
-Coordinates=26,362,100,36
-
 [PopupProfileMenuBackground]
 Coordinates=1165,133,189,36
 
@@ -144,14 +141,8 @@ Coordinates=0,221,75,58
 [EditProfilePopupProfileMenuItemSelector]
 Coordinates=1148,188,252,36
 
-[StringColumn2]
-Coordinates=1165,243,100,36
-
 [UserNameProfile]
 Coordinates=16,77,112,58
-
-[StringColumn4]
-Coordinates=1165,298,100,36
 
 [AdministratorAccountsStringGrid]
 Coordinates=686,1,202,58
@@ -159,21 +150,30 @@ Coordinates=686,1,202,58
 [PopupProfileMenuSelector]
 Coordinates=1165,353,168,36
 
-[StringColumn1]
-Coordinates=1165,408,100,36
-
 [UserAccountsScrollBox]
 Coordinates=1146,458,149,36
 
 [FooterLogoutButton]
 Coordinates=435,1,128,58
 
-[StringColumn7]
+[AdministratorBlocked]
 Coordinates=1037,458,100,36
 
-[StringColumn6]
+[AdministratorFirstName]
+Coordinates=26,362,100,36
+
+[AdministratorGender]
+Coordinates=819,458,100,36
+
+[AdministratorJobTitle]
+Coordinates=1165,243,100,36
+
+[AdministratorLastName]
+Coordinates=1165,298,100,36
+
+[AdministratorPhoneNumber]
 Coordinates=928,458,100,36
 
-[StringColumn5]
-Coordinates=819,458,100,36
+[AdministratorUserID]
+Coordinates=1165,408,100,36
 

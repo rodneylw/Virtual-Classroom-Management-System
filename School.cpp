@@ -25,12 +25,28 @@ School& School::GetInstance() {
 }
 
 void School::AddAdministrator(std::unique_ptr<User> admin) {
-    Administrators.push_back(std::move(admin));
+	Administrators.push_back(std::move(admin));
 }
 
 std::vector<std::unique_ptr<User>>& School::GetAdministrators() {
-        return Administrators;
-    }
+		return Administrators;
+}
+
+void School::AddInstructor(std::unique_ptr<User> instructor) {
+	Instructors.push_back(std::move(instructor));
+}
+
+std::vector<std::unique_ptr<User>>& School::GetInstructors() {
+		return Instructors;
+}
+
+void School::AddStudent(std::unique_ptr<User> student) {
+	Students.push_back(std::move(student));
+}
+
+std::vector<std::unique_ptr<User>>& School::GetStudents() {
+		return Students;
+}
 
 void School::SaveUsers() {
     fstream AdminInfoFile;
@@ -122,11 +138,12 @@ void School::LoadUsers() {
            std::string Address = ParsedLine[8];
            std::string SecurityQuestion = ParsedLine[9];
            std::string SecurityAnswer = ParsedLine[10];
-           std::string IsBlockedString = ParsedLine[11];
+		   std::string IsBlockedString = ParsedLine[11];
+		   std::string Department = ParsedLine[12];
 
            std::unique_ptr<User> obj = std::make_unique<Instructor>(UserID, Email, Password,
            FirstName, LastName, Gender, DateOfBirth, PhoneNumber, Address, SecurityQuestion,
-           SecurityAnswer, StringToBool(IsBlockedString));
+           SecurityAnswer, StringToBool(IsBlockedString), Department);
 
            Instructors.push_back(std::move(obj));
 
