@@ -19,7 +19,7 @@ private:
 public:
 	Instructor(string userID, string email, string password, string firstname, string lastname, string gender, string dob, string phoneNumber, string address, string question, string answer, bool isBlocked)
        : User(userID, email, password, firstname, lastname, gender, dob, phoneNumber, address, question, answer, isBlocked){
-          //Constructor Body
+          InstructorCounter++;
      }
 
      Instructor(string email, string password, string firstname, string lastname, string gender, string dob, string phoneNumber, string address, string question, string answer)

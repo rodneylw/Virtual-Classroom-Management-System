@@ -59,25 +59,25 @@ void School::SaveUsers() {
 
     fstream StudentInfoFile;
     StudentInfoFile.open("StudentInfo.txt", ios::out);
-    if(StudentInfoFile.is_open()) {
+	if(StudentInfoFile.is_open()) {
 
-        for(auto& student : Students) {
-            student->SaveUser(StudentInfoFile);
-            StudentInfoFile << std::endl;
-        }
+		for(auto& student : Students) {
+			student->SaveUser(StudentInfoFile);
+			StudentInfoFile << std::endl;
+		}
 
-        StudentInfoFile.close();
-    }
+		StudentInfoFile.close();
+	}
 }
 
 void School::LoadUsers() {
-    fstream AdminInfoFile;
-    AdminInfoFile.open("AdminInfo.txt", ios::in);
+	fstream AdminInfoFile;
+	AdminInfoFile.open("AdminInfo.txt", ios::in);
 	if(AdminInfoFile.is_open()) {
 		  string line;
 
 			while(getline(AdminInfoFile, line)) {
-               std::vector<string> ParsedLine = ParseCommaDelimitedString(line);
+			   std::vector<string> ParsedLine = ParseCommaDelimitedString(line);
 
 			   std::string UserID = ParsedLine[0];
 			   std::string Email = ParsedLine[1];
@@ -93,15 +93,15 @@ void School::LoadUsers() {
 			   std::string IsBlockedString = ParsedLine[11];
 			   std::string JobTitle = ParsedLine[12];
 
-               std::unique_ptr<User> obj = std::make_unique<Administrator>(UserID, Email, Password,
-               FirstName, LastName, Gender, DateOfBirth, PhoneNumber, Address, SecurityQuestion,
-               SecurityAnswer, StringToBool(IsBlockedString), JobTitle);
+			   std::unique_ptr<User> obj = std::make_unique<Administrator>(UserID, Email, Password,
+			   FirstName, LastName, Gender, DateOfBirth, PhoneNumber, Address, SecurityQuestion,
+			   SecurityAnswer, StringToBool(IsBlockedString), JobTitle);
 
-               Administrators.push_back(std::move(obj));
-          }
+			   Administrators.push_back(std::move(obj));
+		  }
 
-          AdminInfoFile.close();
-    }
+		  AdminInfoFile.close();
+	}
 
     fstream InstructorInfoFile;
     InstructorInfoFile.open("InstructorInfo.txt", ios::in);
@@ -162,7 +162,7 @@ void School::LoadUsers() {
            Students.push_back(std::move(obj));
 
         }
-        StudentInfoFile.close();
+		StudentInfoFile.close();
 	}
 }
 

@@ -15,6 +15,7 @@
 #include <FMX.Grid.Style.hpp>
 #include <FMX.ScrollBox.hpp>
 #include <System.Rtti.hpp>
+#include <FMX.Edit.hpp>
 #include <vector>
 
 #include "User.h"
@@ -41,6 +42,7 @@ __published:	// IDE-managed Components
 	TLayout *CreateNewAdministratorSection;
 	TLine *VerticleDivider;
 	TText *CreateNewText;
+	TEdit *Edit1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
           TColumn * const Column, const TRectF &Bounds);

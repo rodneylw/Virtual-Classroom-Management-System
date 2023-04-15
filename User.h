@@ -28,14 +28,17 @@ private:
      //std::vector<Notification> Notifications;
 
 protected:
-    enum class UserType {
+	 static int AdminCounter;
+	 static int InstructorCounter;
+	 static int StudentCounter;
+
+     enum class UserType {
             Administrator,
             Instructor,
             Student
          };
 
-     string generateID(UserType userType);
-
+	 string generateID(UserType userType);
 public:
 	User(UserType type, string email, string password, string firstname, string lastname, string gender, string dob, string phoneNumber, string address, string question, string answer){
           UserID = generateID(type);
@@ -60,7 +63,7 @@ public:
           Email = email;
           Password = password;
           PhoneNumber = phoneNumber;
-          DateOfBirth = dob;
+		  DateOfBirth = dob;
           SecurityQuestion = question;
           SecurityAnswer = answer;
           Address = address;

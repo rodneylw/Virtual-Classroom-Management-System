@@ -73,7 +73,7 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths()
 		AdministratorAccountsStringGrid->Columns[j]->Width += extraWidthPerColumn;
 
 		// Width
-		AdministratorAccountsStringGrid->Columns[7]->Width += 3;
+		AdministratorAccountsStringGrid->Columns[7]->Width += 2;
 	}
 }
 //---------------------------------------------------------------------------
@@ -114,6 +114,21 @@ void __fastcall TAdministratorUserAccountsForm::PopulateGridWithAdministrators(c
 
 void __fastcall TAdministratorUserAccountsForm::FormCreate(TObject *Sender)
 {
+	Left = 0;
+	Top = 0;
+	Width = ((Screen->Width)-50);
+	Height = ((Screen->Height)-50);
+
+	TShadowEffect *dropShadow = new TShadowEffect(this);
+    dropShadow->Parent = PopupProfileMenuBackground;
+	dropShadow->Enabled = true;
+	dropShadow->Softness = 0.6f;  // A higher value creates a softer shadow
+	dropShadow->Distance = 2.0f;  // A lower value creates a shorter shadow
+	dropShadow->Direction = 90.0f; // Set the direction to 90 degrees (downwards)
+    dropShadow->ShadowColor = claBlack;
+	dropShadow->Opacity = 0.25f;
+	dropShadow->SendToBack();
+
 	PopulateGridWithAdministrators(School::GetInstance().GetAdministrators());
 	AdjustColumnWidths();
 }

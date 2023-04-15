@@ -8,22 +8,22 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-std::string User::generateID(UserType userType) {
-	static int adminCounter = 1000;
-     static int instructorCounter = 1000;
-     static int studentCounter = 1000;
+int User::AdminCounter = 1000;
+int User::InstructorCounter = 1000;
+int User::StudentCounter = 1000;
 
-     std::string id;
+std::string User::generateID(UserType userType) {
+	 std::string id;
 
      switch (userType) {
          case UserType::Administrator:
-             id = "ADM" + std::to_string(++adminCounter);
+			 id = "ADM" + std::to_string(++AdminCounter);
              break;
          case UserType::Instructor:
-             id = "INS" + std::to_string(++instructorCounter);
+			 id = "INS" + std::to_string(++InstructorCounter);
              break;
          case UserType::Student:
-             id = "STU" + std::to_string(++studentCounter);
+             id = "STU" + std::to_string(++StudentCounter);
              break;
          default:
              id = "UNKNOWN";
@@ -78,8 +78,8 @@ std::string User::generateID(UserType userType) {
  void User::SaveUser(std::ostream& out) {
       out << GetUserID() << "," << GetEmail() << "," << GetPassword() << ","
       << GetFirstName() << "," << GetLastName() << "," << GetGender() << "," << GetDateOfBirth() << ","
-      << GetPhoneNumber() << "," << GetAddress() << "," << GetSecurityQuestion() << ","
-      << GetSecurityAnswer() << "," << GetIsBlocked();
+	  << GetPhoneNumber() << "," << GetAddress() << "," << GetSecurityQuestion() << ","
+	  << GetSecurityAnswer() << "," << (GetIsBlocked() ? "1" : "0");
  }
 
  void User::Logout() {
