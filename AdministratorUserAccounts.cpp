@@ -136,15 +136,25 @@ void __fastcall TAdministratorUserAccountsForm::FormCreate(TObject *Sender)
 	Width = ((Screen->Width)-50);
 	Height = ((Screen->Height)-50);
 
-	TShadowEffect *dropShadow = new TShadowEffect(this);
-    dropShadow->Parent = PopupProfileMenuBackground;
-	dropShadow->Enabled = true;
-	dropShadow->Softness = 0.6f;  // A higher value creates a softer shadow
-	dropShadow->Distance = 2.0f;  // A lower value creates a shorter shadow
-	dropShadow->Direction = 90.0f; // Set the direction to 90 degrees (downwards)
-    dropShadow->ShadowColor = claBlack;
-	dropShadow->Opacity = 0.25f;
-	dropShadow->SendToBack();
+	TShadowEffect *PopupProfileMenuShadow = new TShadowEffect(this);
+	PopupProfileMenuShadow->Parent = PopupProfileMenuBackground;
+	PopupProfileMenuShadow->Enabled = true;
+	PopupProfileMenuShadow->Softness = 0.6f;  // A higher value creates a softer shadow
+	PopupProfileMenuShadow->Distance = 2.0f;  // A lower value creates a shorter shadow
+	PopupProfileMenuShadow->Direction = 90.0f; // Set the direction to 90 degrees (downwards)
+	PopupProfileMenuShadow->ShadowColor = claBlack;
+	PopupProfileMenuShadow->Opacity = 0.25f;
+	PopupProfileMenuShadow->SendToBack();
+
+	TShadowEffect *UserTypePopupMenuShadow = new TShadowEffect(this);
+	UserTypePopupMenuShadow->Parent = UserTypePopupMenuBackground;
+	UserTypePopupMenuShadow->Enabled = true;
+	UserTypePopupMenuShadow->Softness = 0.6f;  // A higher value creates a softer shadow
+	UserTypePopupMenuShadow->Distance = 2.0f;  // A lower value creates a shorter shadow
+	UserTypePopupMenuShadow->Direction = 90.0f; // Set the direction to 90 degrees (downwards)
+	UserTypePopupMenuShadow->ShadowColor = claBlack;
+	UserTypePopupMenuShadow->Opacity = 0.50f;
+	UserTypePopupMenuShadow->SendToBack();
 
 	PopulateGridWithAdministrators(School::GetInstance().GetAdministrators());
 	AdjustColumnWidths();
@@ -174,7 +184,7 @@ void __fastcall TAdministratorUserAccountsForm::AdministratorAccountsStringGridD
 	float paddingVertical = 5;
 	TRectF paddedBounds = TRectF(Bounds.Left + paddingHorizontal, Bounds.Top + paddingVertical, Bounds.Right - paddingHorizontal, Bounds.Bottom - paddingVertical);
 
-	Canvas->FillText(paddedBounds, Column->Header, false, 1, fillTextFlags, TTextAlign::Leading, TTextAlign::Leading);
+	Canvas->FillText(paddedBounds, Column->Header, false, 1, fillTextFlags, TTextAlign::Leading);
 
 	Canvas->Font->Assign(oldFont); // Restore the old font settings
 	Canvas->Fill->Assign(oldFill); // Restore the old fill settings
@@ -219,6 +229,102 @@ void __fastcall TAdministratorUserAccountsForm::CreateAdministratorButtonClick(T
 	 ClearCreateEdits();
 	 PopulateGridWithAdministrators(School::GetInstance().GetAdministrators());
 	 AdjustColumnWidths();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::UserTypeSelectorClick(TObject *Sender)
+
+{
+	if(UserTypePopupMenu->Visible == true) {
+		UserTypePopupMenu->Visible = false;
+		AdministratorSelector->Visible = false;
+		InstructorSelector->Visible = false;
+		StudentSelector->Visible = false;
+		return;
+	}
+
+	UserTypePopupMenu->Visible = true;
+
+	if(UserTypeSelectionText->Text == "Administrators") {
+		InstructorSelector->Visible = true;
+		StudentSelector->Visible = true;
+	}
+
+	if(UserTypeSelectionText->Text == "Instructors") {
+		AdministratorSelector->Visible = true;
+		StudentSelector->Visible = true;
+	}
+
+	if(UserTypeSelectionText->Text == "Students") {
+		AdministratorSelector->Visible = true;
+		InstructorSelector->Visible = true;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::AdministratorSelectorMouseEnter(TObject *Sender)
+
+{
+	AdministratorSelector->Fill->Kind = TBrushKind::Solid;
+	AdministratorSelector->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::AdministratorSelectorMouseLeave(TObject *Sender)
+
+{
+	AdministratorSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::AdministratorSelectorClick(TObject *Sender)
+
+{
+	// AdministratorSelector->Click
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::InstructorSelectorMouseEnter(TObject *Sender)
+
+{
+	InstructorSelector->Fill->Kind = TBrushKind::Solid;
+	InstructorSelector->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::InstructorSelectorMouseLeave(TObject *Sender)
+
+{
+	InstructorSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::InstructorSelectorClick(TObject *Sender)
+
+{
+	//  InstructorSelector->Click
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::StudentSelectorMouseEnter(TObject *Sender)
+
+{
+	StudentSelector->Fill->Kind = TBrushKind::Solid;
+	StudentSelector->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::StudentSelectorMouseLeave(TObject *Sender)
+
+{
+	StudentSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::StudentSelectorClick(TObject *Sender)
+
+{
+	// StudentSelector->Click
 }
 //---------------------------------------------------------------------------
 

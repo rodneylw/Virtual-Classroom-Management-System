@@ -77,10 +77,28 @@ __published:	// IDE-managed Components
 	TEdit *GenderEdit;
 	TEdit *SecurityQuestionEdit;
 	TEdit *SecurityAnswerEdit;
+	TImage *UserTypePopupMenu;
+	TRectangle *UserTypePopupMenuBackground;
+	TRectangle *StudentSelector;
+	TRectangle *InstructorSelector;
+	TText *InsutrctorUserStype;
+	TText *StudentUserType;
+	TRectangle *AdministratorSelector;
+	TText *AdministratorUserType;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
           TColumn * const Column, const TRectF &Bounds);
 	void __fastcall CreateAdministratorButtonClick(TObject *Sender);
+	void __fastcall UserTypeSelectorClick(TObject *Sender);
+	void __fastcall AdministratorSelectorMouseEnter(TObject *Sender);
+	void __fastcall AdministratorSelectorMouseLeave(TObject *Sender);
+	void __fastcall AdministratorSelectorClick(TObject *Sender);
+	void __fastcall InstructorSelectorMouseEnter(TObject *Sender);
+	void __fastcall InstructorSelectorMouseLeave(TObject *Sender);
+	void __fastcall InstructorSelectorClick(TObject *Sender);
+	void __fastcall StudentSelectorMouseEnter(TObject *Sender);
+	void __fastcall StudentSelectorMouseLeave(TObject *Sender);
+	void __fastcall StudentSelectorClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);

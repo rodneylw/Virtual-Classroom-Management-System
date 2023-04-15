@@ -28,15 +28,15 @@ void __fastcall TAdministratorUIParentForm::FormCreate(TObject *Sender)
 	Width = ((Screen->Width)-50);
 	Height = ((Screen->Height)-50);
 
-	TShadowEffect *dropShadow = new TShadowEffect(this);
-    dropShadow->Parent = PopupProfileMenuBackground;
-	dropShadow->Enabled = true;
-	dropShadow->Softness = 0.6f;  // A higher value creates a softer shadow
-	dropShadow->Distance = 2.0f;  // A lower value creates a shorter shadow
-	dropShadow->Direction = 90.0f; // Set the direction to 90 degrees (downwards)
-    dropShadow->ShadowColor = claBlack;
-	dropShadow->Opacity = 0.25f;
-	dropShadow->SendToBack();
+	TShadowEffect *PopupProfileMenuShadow = new TShadowEffect(this);
+	PopupProfileMenuShadow->Parent = PopupProfileMenuBackground;
+	PopupProfileMenuShadow->Enabled = true;
+	PopupProfileMenuShadow->Softness = 0.6f;  // A higher value creates a softer shadow
+	PopupProfileMenuShadow->Distance = 2.0f;  // A lower value creates a shorter shadow
+	PopupProfileMenuShadow->Direction = 90.0f; // Set the direction to 90 degrees (downwards)
+	PopupProfileMenuShadow->ShadowColor = claBlack;
+	PopupProfileMenuShadow->Opacity = 0.25f;
+	PopupProfileMenuShadow->SendToBack();
 }
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUIParentForm::HomeMenuItemRectMouseEnter(TObject *Sender)
