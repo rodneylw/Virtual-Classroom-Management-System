@@ -6,10 +6,12 @@
 #pragma hdrstop
 
 #include "School.h"
+#include "Student.h"
 #include "Instructor.h"
 #include "Administrator.h"
 #include "AdministratorHome.h"
 #include "AdministratorUserAccounts.h"
+#include "HelperFunctions.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "AdministratorUIParent"
@@ -148,8 +150,8 @@ void __fastcall TAdministratorUserAccountsForm::PopulateGridWithInstructors(cons
 	// Populate StrinGrid
 	for (int i=0; i < instructors.size(); i++)
 	{
-		User* admin = instructors[i].get();
-		Instructor* instructor_ptr = dynamic_cast<Instructor*>(admin);
+		User* instructor = instructors[i].get();
+		Instructor* instructor_ptr = dynamic_cast<Instructor*>(instructor);
 
 		if (instructor_ptr)
 		{
@@ -161,6 +163,41 @@ void __fastcall TAdministratorUserAccountsForm::PopulateGridWithInstructors(cons
 			InstructorAccountsStringGrid->Cells[5][i] = instructor_ptr->GetDateOfBirth().c_str();
 			InstructorAccountsStringGrid->Cells[6][i] = instructor_ptr->GetPhoneNumber().c_str();
 			InstructorAccountsStringGrid->Cells[7][i] = instructor_ptr->GetIsBlocked() ? "Blocked" : "Not Blocked";
+		}
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TAdministratorUserAccountsForm::PopulateGridWithStudents(const std::vector<std::unique_ptr<User>>& students)
+{
+	// Set the row count based on the number of administrators
+	StudentAccountsStringGrid->RowCount = students.size();
+
+	// Add headers for the columns
+	StudentAccountsStringGrid->Columns[0]->Header = "User ID";
+	StudentAccountsStringGrid->Columns[1]->Header = "GPA";
+	StudentAccountsStringGrid->Columns[2]->Header = "First Name";
+	StudentAccountsStringGrid->Columns[3]->Header = "Last Name";
+	StudentAccountsStringGrid->Columns[4]->Header = "Gender";
+	StudentAccountsStringGrid->Columns[5]->Header = "Date of Birth";
+	StudentAccountsStringGrid->Columns[6]->Header = "Phone Number";
+	StudentAccountsStringGrid->Columns[7]->Header = "Blocked?";
+
+	// Populate StrinGrid
+	for (int i=0; i < students.size(); i++)
+	{
+		User* student = students[i].get();
+		Student* student_ptr = dynamic_cast<Student*>(student);
+
+		if (student_ptr)
+		{
+			StudentAccountsStringGrid->Cells[0][i] = student_ptr->GetUserID().c_str();
+			StudentAccountsStringGrid->Cells[1][i] = FloatToString(student_ptr->GetGPA()).c_str();
+			StudentAccountsStringGrid->Cells[2][i] = student_ptr->GetFirstName().c_str();
+			StudentAccountsStringGrid->Cells[3][i] = student_ptr->GetLastName().c_str();
+			StudentAccountsStringGrid->Cells[4][i] = student_ptr->GetGender().c_str();
+			StudentAccountsStringGrid->Cells[5][i] = student_ptr->GetDateOfBirth().c_str();
+			StudentAccountsStringGrid->Cells[6][i] = student_ptr->GetPhoneNumber().c_str();
+			StudentAccountsStringGrid->Cells[7][i] = student_ptr->GetIsBlocked() ? "Blocked" : "Not Blocked";
 		}
 	}
 }
@@ -284,18 +321,21 @@ void __fastcall TAdministratorUserAccountsForm::UserTypeSelectorClick(TObject *S
 	UserTypePopupMenu->Visible = true;
 
 	if(UserTypeSelectionText->Text == "Administrators") {
+		AdministratorSelector->Visible = false;
 		InstructorSelector->Visible = true;
 		StudentSelector->Visible = true;
 	}
 
 	if(UserTypeSelectionText->Text == "Instructors") {
 		AdministratorSelector->Visible = true;
+		InstructorSelector->Visible = false;
 		StudentSelector->Visible = true;
 	}
 
 	if(UserTypeSelectionText->Text == "Students") {
 		AdministratorSelector->Visible = true;
 		InstructorSelector->Visible = true;
+        StudentSelector->Visible = false;
 	}
 }
 //---------------------------------------------------------------------------
@@ -319,6 +359,13 @@ void __fastcall TAdministratorUserAccountsForm::AdministratorSelectorClick(TObje
 
 {
 	// AdministratorSelector->Click
+	UserTypePopupMenu->Visible = false;
+	UserTypeSelectionText->Text = "Administrators";
+	AdministratorAccountsStringGrid->Visible = true;
+	InstructorAccountsStringGrid->Visible = false;
+	StudentAccountsStringGrid->Visible = false;
+	PopulateGridWithAdministrators(School::GetInstance().GetAdministrators());
+	AdjustColumnWidths(AdministratorAccountsStringGrid);
 }
 //---------------------------------------------------------------------------
 
@@ -345,6 +392,7 @@ void __fastcall TAdministratorUserAccountsForm::InstructorSelectorClick(TObject 
 	UserTypeSelectionText->Text = "Instructors";
 	AdministratorAccountsStringGrid->Visible = false;
 	InstructorAccountsStringGrid->Visible = true;
+	StudentAccountsStringGrid->Visible = false;
 	PopulateGridWithInstructors(School::GetInstance().GetInstructors());
 	AdjustColumnWidths(InstructorAccountsStringGrid);
 }
@@ -369,6 +417,13 @@ void __fastcall TAdministratorUserAccountsForm::StudentSelectorClick(TObject *Se
 
 {
 	// StudentSelector->Click
+	UserTypePopupMenu->Visible = false;
+	UserTypeSelectionText->Text = "Students";
+	AdministratorAccountsStringGrid->Visible = false;
+	InstructorAccountsStringGrid->Visible = false;
+	StudentAccountsStringGrid->Visible = true;
+	PopulateGridWithStudents(School::GetInstance().GetStudents());
+	AdjustColumnWidths(StudentAccountsStringGrid);
 }
 //---------------------------------------------------------------------------
 

@@ -5,6 +5,7 @@
 #include "HelperFunctions.h"
 #include "VirtualClassroomLogin.h"
 #include <System.hpp>
+#include <iomanip>
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -57,7 +58,26 @@ void LogoutCloseForms() {
 	}
 }
 
+float StringToFloat(const std::string& stringValue) {
+    float floatValue = 0.0;
+    std::stringstream ss(stringValue);
 
+    ss >> floatValue;
+
+    if (ss.fail() || !ss.eof()) {
+        throw std::invalid_argument("Invalid float value: " + stringValue);
+    }
+
+    floatValue = roundf(floatValue * 100) / 100;
+
+    return floatValue;
+}
+
+std::string FloatToString(float floatValue) {
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(2) << floatValue;
+	return ss.str();
+}
 
 
 

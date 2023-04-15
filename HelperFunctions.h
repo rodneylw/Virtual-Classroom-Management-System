@@ -15,5 +15,7 @@ std::vector<std::string> ParseCommaDelimitedString(std::string line);
 bool StringToBool(std::string obj);
 
 void LogoutCloseForms();
+float StringToFloat(const std::string& stringValue);
+std::string FloatToString(float floatValue);
 
 #endif

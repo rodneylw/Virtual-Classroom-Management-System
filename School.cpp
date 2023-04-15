@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
 #pragma hdrstop
-
+#include <System.SysUtils.hpp>
 #include <fstream>
 #include <string>
 #include "School.h"
@@ -170,11 +170,12 @@ void School::LoadUsers() {
            std::string Address = ParsedLine[8];
            std::string SecurityQuestion = ParsedLine[9];
            std::string SecurityAnswer = ParsedLine[10];
-           std::string IsBlockedString = ParsedLine[11];
+		   std::string IsBlockedString = ParsedLine[11];
+		   std::string GPAString = ParsedLine[12];
 
-           std::unique_ptr<User> obj = std::make_unique<Student>(UserID, Email, Password,
+		   std::unique_ptr<User> obj = std::make_unique<Student>(UserID, Email, Password,
            FirstName, LastName, Gender, DateOfBirth, PhoneNumber, Address, SecurityQuestion,
-           SecurityAnswer, StringToBool(IsBlockedString));
+		   SecurityAnswer, StringToBool(IsBlockedString), StringToFloat(GPAString));
 
            Students.push_back(std::move(obj));
 

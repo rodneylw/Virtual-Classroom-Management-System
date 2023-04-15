@@ -1,0 +1,17 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "Student.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+ void Student::SaveUser(std::ostream& out) {
+	 User::SaveUser(out);
+	 out << "," << GetGPA();
+ }
+
+float Student::GetGPA() {
+	return GPA;
+};
+

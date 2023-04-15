@@ -94,6 +94,15 @@ __published:	// IDE-managed Components
 	TStringColumn *InstructorDateOfBirth;
 	TStringColumn *InstructorPhoneNumber;
 	TStringColumn *InstructorBlocked;
+	TStringGrid *StudentAccountsStringGrid;
+	TStringColumn *StringColumn1;
+	TStringColumn *StringColumn2;
+	TStringColumn *StringColumn3;
+	TStringColumn *StringColumn4;
+	TStringColumn *StringColumn5;
+	TStringColumn *StringColumn6;
+	TStringColumn *StringColumn7;
+	TStringColumn *StringColumn8;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
           TColumn * const Column, const TRectF &Bounds);
@@ -113,7 +122,8 @@ public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
     void __fastcall ClearCreateEdits();
 	void __fastcall PopulateGridWithAdministrators(const std::vector<std::unique_ptr<User>>& administrators);
-    void __fastcall PopulateGridWithInstructors(const std::vector<std::unique_ptr<User>>& instructors);
+	void __fastcall PopulateGridWithInstructors(const std::vector<std::unique_ptr<User>>& instructors);
+    void __fastcall PopulateGridWithStudents(const std::vector<std::unique_ptr<User>>& students);
 	void __fastcall AdjustColumnWidths(TStringGrid *AccountsStringGrid);
 };
 //---------------------------------------------------------------------------
