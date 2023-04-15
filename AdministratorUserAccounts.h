@@ -16,6 +16,7 @@
 #include <FMX.ScrollBox.hpp>
 #include <System.Rtti.hpp>
 #include <FMX.Edit.hpp>
+#include <FMX.StdCtrls.hpp>
 #include <vector>
 
 #include "User.h"
@@ -39,16 +40,51 @@ __published:	// IDE-managed Components
 	TText *UserTypeSelectionText;
 	TRectangle *UserTypeSelector;
 	TLayout *Content;
-	TLayout *CreateNewAdministratorSection;
+	TLayout *CreateNewSection;
 	TLine *VerticleDivider;
 	TText *CreateNewText;
-	TEdit *Edit1;
+	TButton *CreateAdministratorButton;
+	TLayout *JobTitleLayout;
+	TLabel *JobTitleLabel;
+	TEdit *JobTitleEdit;
+	TLayout *EmailLayout;
+	TEdit *EmailEdit;
+	TLabel *EmailLabel;
+	TLayout *FirstNameLayout;
+	TLayout *PasswordLayout;
+	TLabel *PasswordLabel;
+	TEdit *PasswordEdit;
+	TLabel *FirstNameLabel;
+	TEdit *FirstNameEdit;
+	TLayout *LastNameLayout;
+	TLabel *LastNameLabel;
+	TEdit *LastNameEdit;
+	TLayout *BirthdateLayout;
+	TLayout *SecurityAnswerLayout;
+	TLayout *SecurityQuestionLayout;
+	TLayout *GenderLayout;
+	TLayout *AddressLayout;
+	TLayout *PhoneNumberLayout;
+	TLabel *BirthdateLabel;
+	TEdit *BirthdateEdit;
+	TLabel *PhoneNumberLabel;
+	TLabel *AddressLabel;
+	TLabel *GenderLabel;
+	TLabel *SecurityQuestionLabel;
+	TLabel *SecurityAnswerLabel;
+	TEdit *PhoneNumberEdit;
+	TEdit *AddressEdit;
+	TEdit *GenderEdit;
+	TEdit *SecurityQuestionEdit;
+	TEdit *SecurityAnswerEdit;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
           TColumn * const Column, const TRectF &Bounds);
+	void __fastcall CreateAdministratorButtonClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
+    void __fastcall ClearCreateEdits();
 	void __fastcall PopulateGridWithAdministrators(const std::vector<std::unique_ptr<User>>& administrators);
     void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths();
 };

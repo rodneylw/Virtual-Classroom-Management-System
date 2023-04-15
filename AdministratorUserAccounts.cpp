@@ -21,6 +21,21 @@ __fastcall TAdministratorUserAccountsForm::TAdministratorUserAccountsForm(TCompo
 
 }
 //---------------------------------------------------------------------------
+void __fastcall TAdministratorUserAccountsForm::ClearCreateEdits()
+{
+	 JobTitleEdit->Text = "";
+	 EmailEdit->Text = "";
+	 PasswordEdit->Text = "";
+	 FirstNameEdit->Text = "";
+	 LastNameEdit->Text = "";
+	 BirthdateEdit->Text = "";
+	 PhoneNumberEdit->Text = "";
+	 AddressEdit->Text = "";
+	 GenderEdit->Text = "";
+	 SecurityQuestionEdit->Text = "";
+	 SecurityAnswerEdit->Text = "";
+}
+//---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths()
 {
 	// Initialize a vector to store the maximum width for each column
@@ -31,7 +46,7 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths()
     {
 		for (int j = 0; j < AdministratorAccountsStringGrid->ColumnCount; ++j)
         {
-            // Calculate the width of the current cell or header
+			// Calculate the width of the current cell or header
 			int cellWidth = AdministratorAccountsStringGrid->Canvas->TextWidth(AdministratorAccountsStringGrid->Cells[j][i]);
 
 			// If the current row is the first row, then we need to compare the cell width with the header width
@@ -43,7 +58,7 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths()
 
 			// Update the maximum width for the current column, if needed
             if (cellWidth > maxWidths[j])
-            {
+			{
 				maxWidths[j] = cellWidth;
 			}
 		}
@@ -63,17 +78,17 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths()
 	int remainingWidth = totalAvailableWidth - totalRequiredWidth;
 
 	// Adjust the width of each column based on the calculated maximum width and distribute the remaining width
-	int extraWidthPerColumn = (remainingWidth-8) / AdministratorAccountsStringGrid->ColumnCount;
+	int extraWidthPerColumn = (remainingWidth) / AdministratorAccountsStringGrid->ColumnCount;
 
 	for (int j = 0; j < AdministratorAccountsStringGrid->ColumnCount; ++j)
 	{
 		AdministratorAccountsStringGrid->Columns[j]->Width = maxWidths[j];
 
 		// Distribute the remaining width among the columns evenly
-		AdministratorAccountsStringGrid->Columns[j]->Width += extraWidthPerColumn;
+		AdministratorAccountsStringGrid->Columns[j]->Width += (extraWidthPerColumn);
 
 		// Width
-		AdministratorAccountsStringGrid->Columns[7]->Width += 2;
+		//AdministratorAccountsStringGrid->Columns[7]->Width;
 	}
 }
 //---------------------------------------------------------------------------
@@ -167,7 +182,41 @@ void __fastcall TAdministratorUserAccountsForm::AdministratorAccountsStringGridD
 }
 
 //---------------------------------------------------------------------------
+void __fastcall TAdministratorUserAccountsForm::CreateAdministratorButtonClick(TObject *Sender)
+
+{
+	 AnsiString AnsiEmail = EmailEdit->Text;
+     string Email = AnsiEmail.c_str();
+     AnsiString AnsiPassword = PasswordEdit->Text;
+     string Password = AnsiPassword.c_str();
+     AnsiString AnsiFirstName = FirstNameEdit->Text;
+     string FirstName = AnsiFirstName.c_str();
+     AnsiString AnsiLastName = LastNameEdit->Text;
+     string LastName = AnsiLastName.c_str();
+     AnsiString AnsiBirthdate = BirthdateEdit->Text;
+     string Birthdate = AnsiBirthdate.c_str();
+     AnsiString AnsiPhoneNumber = PhoneNumberEdit->Text;
+     string PhoneNumber = AnsiPhoneNumber.c_str();
+     AnsiString AnsiAddress = AddressEdit->Text;
+     string Address = AnsiAddress.c_str();
+     AnsiString AnsiGender = GenderEdit->Text;
+     string Gender = AnsiGender.c_str();
+     AnsiString AnsiSecurityQuestion = SecurityQuestionEdit->Text;
+     string SecurityQuestion = AnsiSecurityQuestion.c_str();
+     AnsiString AnsiSecurityAnswer = SecurityAnswerEdit->Text;
+     string SecurityAnswer = AnsiSecurityAnswer.c_str();
+     AnsiString AnsiJobTitle = JobTitleEdit->Text;
+     string JobTitle = AnsiJobTitle.c_str();
 
 
+     std::unique_ptr<User> obj = std::make_unique<Administrator>(Email, Password, FirstName,
+     LastName, Gender, Birthdate, PhoneNumber, Address, SecurityQuestion, SecurityAnswer, JobTitle);
 
+     School::GetInstance().AddAdministrator(std::move(obj));
+	 School::GetInstance().SaveUsers();
+	 ClearCreateEdits();
+	 PopulateGridWithAdministrators(School::GetInstance().GetAdministrators());
+	 AdjustColumnWidths();
+}
+//---------------------------------------------------------------------------
 
