@@ -38,58 +38,60 @@ void __fastcall TAdministratorUserAccountsForm::ClearCreateEdits()
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths()
 {
-	// Initialize a vector to store the maximum width for each column
-	std::vector<int> maxWidths(AdministratorAccountsStringGrid->ColumnCount, 0);
+    // Initialize a vector to store the maximum width for each column
+    std::vector<int> maxWidths(AdministratorAccountsStringGrid->ColumnCount, 0);
 
-	// Iterate over all cells in the TStringGrid
-	for (int i = 0; i < AdministratorAccountsStringGrid->RowCount; ++i)
+    // Iterate over all cells in the TStringGrid
+    for (int i = 0; i < AdministratorAccountsStringGrid->RowCount; ++i)
     {
-		for (int j = 0; j < AdministratorAccountsStringGrid->ColumnCount; ++j)
+        for (int j = 0; j < AdministratorAccountsStringGrid->ColumnCount; ++j)
         {
-			// Calculate the width of the current cell or header
-			int cellWidth = AdministratorAccountsStringGrid->Canvas->TextWidth(AdministratorAccountsStringGrid->Cells[j][i]);
+            // Calculate the width of the current cell or header
+            int cellWidth = AdministratorAccountsStringGrid->Canvas->TextWidth(AdministratorAccountsStringGrid->Cells[j][i]);
 
-			// If the current row is the first row, then we need to compare the cell width with the header width
-			if (i == 0)
+            // If the current row is the first row, then we need to compare the cell width with the header width
+            if (i == 0)
             {
-				int headerWidth = AdministratorAccountsStringGrid->Canvas->TextWidth(AdministratorAccountsStringGrid->Columns[j]->Header);
-				cellWidth = std::max(cellWidth, headerWidth);
+                int headerWidth = AdministratorAccountsStringGrid->Canvas->TextWidth(AdministratorAccountsStringGrid->Columns[j]->Header);
+                cellWidth = std::max(cellWidth, headerWidth);
             }
 
-			// Update the maximum width for the current column, if needed
+            // Update the maximum width for the current column, if needed
             if (cellWidth > maxWidths[j])
-			{
-				maxWidths[j] = cellWidth;
-			}
-		}
-	}
+            {
+                maxWidths[j] = cellWidth;
+            }
+        }
+    }
 
-	// Set the total available width
-	int totalAvailableWidth = AdministratorAccountsStringGrid->Width;
+    // Set the total available width, subtracting a constant value to account for any padding, margins, or scrollbars
+	int totalAvailableWidth = AdministratorAccountsStringGrid->Width - 9; // Adjust this value as needed
 
-	// Calculate the total required width for all columns based on the maxWidths
-	int totalRequiredWidth = 0;
-	for (int maxWidth : maxWidths)
-	{
-		totalRequiredWidth += maxWidth;
-	}
+    // Calculate the total required width for all columns based on the maxWidths
+    int totalRequiredWidth = 0;
+    for (int maxWidth : maxWidths)
+    {
+        totalRequiredWidth += maxWidth;
+    }
 
-	// Calculate the remaining width that needs to be distributed among the columns
-	int remainingWidth = totalAvailableWidth - totalRequiredWidth;
+    // Calculate the remaining width that needs to be distributed among the columns
+    int remainingWidth = totalAvailableWidth - totalRequiredWidth;
 
-	// Adjust the width of each column based on the calculated maximum width and distribute the remaining width
-	int extraWidthPerColumn = (remainingWidth) / AdministratorAccountsStringGrid->ColumnCount;
+    // Adjust the width of each column based on the calculated maximum width and distribute the remaining width evenly
+    int extraWidthPerColumn = remainingWidth / AdministratorAccountsStringGrid->ColumnCount;
+    int remainingExtraWidth = remainingWidth % AdministratorAccountsStringGrid->ColumnCount;
 
-	for (int j = 0; j < AdministratorAccountsStringGrid->ColumnCount; ++j)
-	{
-		AdministratorAccountsStringGrid->Columns[j]->Width = maxWidths[j];
+    for (int j = 0; j < AdministratorAccountsStringGrid->ColumnCount; ++j)
+    {
+        AdministratorAccountsStringGrid->Columns[j]->Width = maxWidths[j] + extraWidthPerColumn;
 
-		// Distribute the remaining width among the columns evenly
-		AdministratorAccountsStringGrid->Columns[j]->Width += (extraWidthPerColumn);
-
-		// Width
-		//AdministratorAccountsStringGrid->Columns[7]->Width;
-	}
+        // Distribute the remaining extra width among the first few columns
+        if (remainingExtraWidth > 0)
+        {
+            AdministratorAccountsStringGrid->Columns[j]->Width += 1;
+            remainingExtraWidth -= 1;
+        }
+    }
 }
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::PopulateGridWithAdministrators(const std::vector<std::unique_ptr<User>>& administrators)
