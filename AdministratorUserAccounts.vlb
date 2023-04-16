@@ -17,7 +17,7 @@ Coordinates=187,146,66,36
 Coordinates=10,78,82,58
 
 []
-Coordinates=800,362,91,36
+Coordinates=1165,353,168,36
 
 [UserAccountsMenuItemIcon]
 Coordinates=10,10,176,58
@@ -146,9 +146,6 @@ Coordinates=16,77,112,58
 
 [AdministratorAccountsStringGrid]
 Coordinates=686,1,202,58
-
-[PopupProfileMenuSelector]
-Coordinates=1165,353,168,36
 
 [UserAccountsScrollBox]
 Coordinates=1146,458,149,36

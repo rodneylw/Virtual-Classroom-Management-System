@@ -673,7 +673,7 @@ void __fastcall TAdministratorUserAccountsForm::EditUserStringGridOptionSelector
 
 {
 	EditUserStringGridOptionSelector->Fill->Kind = TBrushKind::Solid;
-	EditUserStringGridOptionSelector->Fill->Color =  0xFFADB7FF;
+	EditUserStringGridOptionSelector->Fill->Color =  0xFFDFE9F1;
 }
 //---------------------------------------------------------------------------
 
@@ -688,7 +688,7 @@ void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelect
 
 {
 	RemoveUserStringGridOptionSelector->Fill->Kind = TBrushKind::Solid;
-	RemoveUserStringGridOptionSelector->Fill->Color =  0xFFFF99A2;
+	RemoveUserStringGridOptionSelector->Fill->Color =  0xFFDFE9F1;
 }
 //---------------------------------------------------------------------------
 
@@ -748,7 +748,7 @@ void __fastcall TAdministratorUserAccountsForm::BlockUserStringGridOptionSelecto
 
 {
 	BlockUserStringGridOptionSelector->Fill->Kind = TBrushKind::Solid;
-	BlockUserStringGridOptionSelector->Fill->Color = 0xFFFF99A2;
+	BlockUserStringGridOptionSelector->Fill->Color = 0xFFDFE9F1;
 }
 //---------------------------------------------------------------------------
 

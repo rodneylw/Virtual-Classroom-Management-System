@@ -164,7 +164,7 @@ void __fastcall TAdministratorUIParentForm::PopupProfileMenuSelectorClick(TObjec
 	}
 
 	PopupProfileMenu->Visible = true;
-    ProfileMenuIndicator->Visible = false;
+	ProfileMenuIndicator->Visible = false;
 }
 //---------------------------------------------------------------------------
 
@@ -291,4 +291,5 @@ void __fastcall TAdministratorUIParentForm::FormActivate(TObject *Sender)
 	UserNameProfile->Text = School::GetInstance().GetLoggedInUserName().c_str();
 }
 //---------------------------------------------------------------------------
+
 
