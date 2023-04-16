@@ -56,5 +56,4 @@ extern "C" int FMXmain()
 }
 //---------------------------------------------------------------------------
 
-//Add Instructor Subject where necessary
-//Instructor Population Function
+//Create User Buttons

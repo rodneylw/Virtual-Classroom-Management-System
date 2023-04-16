@@ -27,6 +27,7 @@ __fastcall TAdministratorUserAccountsForm::TAdministratorUserAccountsForm(TCompo
 void __fastcall TAdministratorUserAccountsForm::ClearCreateEdits()
 {
 	 JobTitleEdit->Text = "";
+     DepartmentEdit->Text = "";
 	 EmailEdit->Text = "";
 	 PasswordEdit->Text = "";
 	 FirstNameEdit->Text = "";
@@ -68,7 +69,7 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths(TStringGrid *
     }
 
     // Set the total available width, subtracting a constant value to account for any padding, margins, or scrollbars
-    int totalAvailableWidth = AccountsStringGrid->Width - 8; // Adjust this value as needed
+    int totalAvailableWidth = AccountsStringGrid->Width - 11; // Adjust this value as needed
 
     // Calculate the total required width for all columns based on the maxWidths
     int totalRequiredWidth = 0;
@@ -276,28 +277,28 @@ void __fastcall TAdministratorUserAccountsForm::CreateAdministratorButtonClick(T
      string Password = AnsiPassword.c_str();
      AnsiString AnsiFirstName = FirstNameEdit->Text;
      string FirstName = AnsiFirstName.c_str();
-     AnsiString AnsiLastName = LastNameEdit->Text;
-     string LastName = AnsiLastName.c_str();
-     AnsiString AnsiBirthdate = BirthdateEdit->Text;
-     string Birthdate = AnsiBirthdate.c_str();
-     AnsiString AnsiPhoneNumber = PhoneNumberEdit->Text;
-     string PhoneNumber = AnsiPhoneNumber.c_str();
-     AnsiString AnsiAddress = AddressEdit->Text;
-     string Address = AnsiAddress.c_str();
-     AnsiString AnsiGender = GenderEdit->Text;
-     string Gender = AnsiGender.c_str();
-     AnsiString AnsiSecurityQuestion = SecurityQuestionEdit->Text;
-     string SecurityQuestion = AnsiSecurityQuestion.c_str();
-     AnsiString AnsiSecurityAnswer = SecurityAnswerEdit->Text;
-     string SecurityAnswer = AnsiSecurityAnswer.c_str();
-     AnsiString AnsiJobTitle = JobTitleEdit->Text;
-     string JobTitle = AnsiJobTitle.c_str();
+	 AnsiString AnsiLastName = LastNameEdit->Text;
+	 string LastName = AnsiLastName.c_str();
+	 AnsiString AnsiBirthdate = BirthdateEdit->Text;
+	 string Birthdate = AnsiBirthdate.c_str();
+	 AnsiString AnsiPhoneNumber = PhoneNumberEdit->Text;
+	 string PhoneNumber = AnsiPhoneNumber.c_str();
+	 AnsiString AnsiAddress = AddressEdit->Text;
+	 string Address = AnsiAddress.c_str();
+	 AnsiString AnsiGender = GenderEdit->Text;
+	 string Gender = AnsiGender.c_str();
+	 AnsiString AnsiSecurityQuestion = SecurityQuestionEdit->Text;
+	 string SecurityQuestion = AnsiSecurityQuestion.c_str();
+	 AnsiString AnsiSecurityAnswer = SecurityAnswerEdit->Text;
+	 string SecurityAnswer = AnsiSecurityAnswer.c_str();
+	 AnsiString AnsiJobTitle = JobTitleEdit->Text;
+	 string JobTitle = AnsiJobTitle.c_str();
 
 
-     std::unique_ptr<User> obj = std::make_unique<Administrator>(Email, Password, FirstName,
-     LastName, Gender, Birthdate, PhoneNumber, Address, SecurityQuestion, SecurityAnswer, JobTitle);
+	 std::unique_ptr<User> obj = std::make_unique<Administrator>(Email, Password, FirstName,
+	 LastName, Gender, Birthdate, PhoneNumber, Address, SecurityQuestion, SecurityAnswer, JobTitle);
 
-     School::GetInstance().AddAdministrator(std::move(obj));
+	 School::GetInstance().AddAdministrator(std::move(obj));
 	 School::GetInstance().SaveUsers();
 
 	 ClearCreateEdits();
@@ -358,7 +359,7 @@ void __fastcall TAdministratorUserAccountsForm::AdministratorSelectorMouseLeave(
 void __fastcall TAdministratorUserAccountsForm::AdministratorSelectorClick(TObject *Sender)
 
 {
-	// AdministratorSelector->Click
+	// User Accounts Grid
 	UserTypePopupMenu->Visible = false;
 	UserTypeSelectionText->Text = "Administrators";
 	AdministratorAccountsStringGrid->Visible = true;
@@ -366,6 +367,17 @@ void __fastcall TAdministratorUserAccountsForm::AdministratorSelectorClick(TObje
 	StudentAccountsStringGrid->Visible = false;
 	PopulateGridWithAdministrators(School::GetInstance().GetAdministrators());
 	AdjustColumnWidths(AdministratorAccountsStringGrid);
+
+	// Create New User
+	CreateNewText->Text = "Create New Administrator";
+
+	CreateAdministratorButton->Visible = true;
+	CreateInstructorButton->Visible = false;
+	CreateStudentButton->Visible = false;
+
+	BottomEditLayout->Visible = true;
+	JobTitleLayout->Visible = true;
+	DepartmentLayout->Visible = false;
 }
 //---------------------------------------------------------------------------
 
@@ -387,7 +399,7 @@ void __fastcall TAdministratorUserAccountsForm::InstructorSelectorMouseLeave(TOb
 void __fastcall TAdministratorUserAccountsForm::InstructorSelectorClick(TObject *Sender)
 
 {
-	//  InstructorSelector->Click
+	// User Accounts Grid
     UserTypePopupMenu->Visible = false;
 	UserTypeSelectionText->Text = "Instructors";
 	AdministratorAccountsStringGrid->Visible = false;
@@ -395,6 +407,17 @@ void __fastcall TAdministratorUserAccountsForm::InstructorSelectorClick(TObject 
 	StudentAccountsStringGrid->Visible = false;
 	PopulateGridWithInstructors(School::GetInstance().GetInstructors());
 	AdjustColumnWidths(InstructorAccountsStringGrid);
+
+	// Create New User
+	CreateNewText->Text = "Create New Instructor";
+
+	CreateAdministratorButton->Visible = false;
+	CreateInstructorButton->Visible = true;
+	CreateStudentButton->Visible = false;
+
+    BottomEditLayout->Visible = true;
+	JobTitleLayout->Visible = false;
+	DepartmentLayout->Visible = true;
 }
 //---------------------------------------------------------------------------
 
@@ -416,7 +439,7 @@ void __fastcall TAdministratorUserAccountsForm::StudentSelectorMouseLeave(TObjec
 void __fastcall TAdministratorUserAccountsForm::StudentSelectorClick(TObject *Sender)
 
 {
-	// StudentSelector->Click
+	// User Accounts Grid
 	UserTypePopupMenu->Visible = false;
 	UserTypeSelectionText->Text = "Students";
 	AdministratorAccountsStringGrid->Visible = false;
@@ -424,6 +447,95 @@ void __fastcall TAdministratorUserAccountsForm::StudentSelectorClick(TObject *Se
 	StudentAccountsStringGrid->Visible = true;
 	PopulateGridWithStudents(School::GetInstance().GetStudents());
 	AdjustColumnWidths(StudentAccountsStringGrid);
+
+	// Create New User
+	CreateNewText->Text = "Create New Student";
+
+	CreateAdministratorButton->Visible = false;
+	CreateInstructorButton->Visible = false;
+	CreateStudentButton->Visible = true;
+
+    BottomEditLayout->Visible = false;
+	JobTitleLayout->Visible = false;
+	DepartmentLayout->Visible = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::CreateInstructorButtonClick(TObject *Sender)
+
+{
+	 AnsiString AnsiDepartment = DepartmentEdit->Text;
+	 string Department = AnsiDepartment.c_str();
+	 AnsiString AnsiEmail = EmailEdit->Text;
+	 string Email = AnsiEmail.c_str();
+	 AnsiString AnsiPassword = PasswordEdit->Text;
+	 string Password = AnsiPassword.c_str();
+	 AnsiString AnsiFirstName = FirstNameEdit->Text;
+	 string FirstName = AnsiFirstName.c_str();
+	 AnsiString AnsiLastName = LastNameEdit->Text;
+	 string LastName = AnsiLastName.c_str();
+	 AnsiString AnsiBirthdate = BirthdateEdit->Text;
+	 string Birthdate = AnsiBirthdate.c_str();
+	 AnsiString AnsiPhoneNumber = PhoneNumberEdit->Text;
+	 string PhoneNumber = AnsiPhoneNumber.c_str();
+	 AnsiString AnsiAddress = AddressEdit->Text;
+	 string Address = AnsiAddress.c_str();
+	 AnsiString AnsiGender = GenderEdit->Text;
+	 string Gender = AnsiGender.c_str();
+	 AnsiString AnsiSecurityQuestion = SecurityQuestionEdit->Text;
+	 string SecurityQuestion = AnsiSecurityQuestion.c_str();
+	 AnsiString AnsiSecurityAnswer = SecurityAnswerEdit->Text;
+	 string SecurityAnswer = AnsiSecurityAnswer.c_str();
+
+
+	 std::unique_ptr<User> obj = std::make_unique<Instructor>(Email, Password, FirstName,
+	 LastName, Gender, Birthdate, PhoneNumber, Address, SecurityQuestion, SecurityAnswer, Department);
+
+	 School::GetInstance().AddInstructor(std::move(obj));
+	 School::GetInstance().SaveUsers();
+
+	 ClearCreateEdits();
+
+	 PopulateGridWithInstructors(School::GetInstance().GetInstructors());
+	 AdjustColumnWidths(InstructorAccountsStringGrid);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::CreateStudentButtonClick(TObject *Sender)
+
+{
+	 AnsiString AnsiEmail = EmailEdit->Text;
+	 string Email = AnsiEmail.c_str();
+	 AnsiString AnsiPassword = PasswordEdit->Text;
+	 string Password = AnsiPassword.c_str();
+	 AnsiString AnsiFirstName = FirstNameEdit->Text;
+	 string FirstName = AnsiFirstName.c_str();
+	 AnsiString AnsiLastName = LastNameEdit->Text;
+	 string LastName = AnsiLastName.c_str();
+	 AnsiString AnsiBirthdate = BirthdateEdit->Text;
+	 string Birthdate = AnsiBirthdate.c_str();
+	 AnsiString AnsiPhoneNumber = PhoneNumberEdit->Text;
+	 string PhoneNumber = AnsiPhoneNumber.c_str();
+	 AnsiString AnsiAddress = AddressEdit->Text;
+	 string Address = AnsiAddress.c_str();
+	 AnsiString AnsiGender = GenderEdit->Text;
+	 string Gender = AnsiGender.c_str();
+	 AnsiString AnsiSecurityQuestion = SecurityQuestionEdit->Text;
+	 string SecurityQuestion = AnsiSecurityQuestion.c_str();
+	 AnsiString AnsiSecurityAnswer = SecurityAnswerEdit->Text;
+	 string SecurityAnswer = AnsiSecurityAnswer.c_str();
+
+
+	 std::unique_ptr<User> obj = std::make_unique<Student>(Email, Password, FirstName,
+	 LastName, Gender, Birthdate, PhoneNumber, Address, SecurityQuestion, SecurityAnswer);
+
+	 School::GetInstance().AddStudent(std::move(obj));
+	 School::GetInstance().SaveUsers();
+
+	 ClearCreateEdits();
+
+	 PopulateGridWithStudents(School::GetInstance().GetStudents());
+	 AdjustColumnWidths(StudentAccountsStringGrid);
 }
 //---------------------------------------------------------------------------
 

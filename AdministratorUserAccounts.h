@@ -44,9 +44,6 @@ __published:	// IDE-managed Components
 	TLine *VerticleDivider;
 	TText *CreateNewText;
 	TButton *CreateAdministratorButton;
-	TLayout *JobTitleLayout;
-	TLabel *JobTitleLabel;
-	TEdit *JobTitleEdit;
 	TLayout *EmailLayout;
 	TEdit *EmailEdit;
 	TLabel *EmailLabel;
@@ -103,6 +100,15 @@ __published:	// IDE-managed Components
 	TStringColumn *StringColumn6;
 	TStringColumn *StringColumn7;
 	TStringColumn *StringColumn8;
+	TButton *CreateStudentButton;
+	TButton *CreateInstructorButton;
+	TLayout *BottomEditLayout;
+	TLayout *DepartmentLayout;
+	TEdit *DepartmentEdit;
+	TLabel *DepartmentLabel;
+	TLayout *JobTitleLayout;
+	TEdit *JobTitleEdit;
+	TLabel *JobTitleLabel;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
           TColumn * const Column, const TRectF &Bounds);
@@ -117,6 +123,8 @@ __published:	// IDE-managed Components
 	void __fastcall StudentSelectorMouseEnter(TObject *Sender);
 	void __fastcall StudentSelectorMouseLeave(TObject *Sender);
 	void __fastcall StudentSelectorClick(TObject *Sender);
+	void __fastcall CreateInstructorButtonClick(TObject *Sender);
+	void __fastcall CreateStudentButtonClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
