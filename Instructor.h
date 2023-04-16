@@ -26,8 +26,7 @@ public:
 
      Instructor(string email, string password, string firstname, string lastname, string gender, string dob, string phoneNumber, string address, string question, string answer, string department)
 	   : User(UserType::Instructor, email, password, firstname, lastname, gender, dob, phoneNumber, address, question, answer), Department(department){
-		  UnblockUser();
-          InstructorCounter++;
+
 	 }
 
 	 void SaveUser(std::ostream& out);

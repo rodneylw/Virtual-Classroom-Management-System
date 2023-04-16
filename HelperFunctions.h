@@ -18,4 +18,6 @@ void LogoutCloseForms();
 float StringToFloat(const std::string& stringValue);
 std::string FloatToString(float floatValue);
 
+bool IsOnlyWhitespace(const std::string& str);
+
 #endif

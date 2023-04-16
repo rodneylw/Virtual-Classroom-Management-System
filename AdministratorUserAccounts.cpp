@@ -466,26 +466,58 @@ void __fastcall TAdministratorUserAccountsForm::CreateInstructorButtonClick(TObj
 {
 	 AnsiString AnsiDepartment = DepartmentEdit->Text;
 	 string Department = AnsiDepartment.c_str();
+	 if(Department == "" || IsOnlyWhitespace(Department))
+		return;
+
 	 AnsiString AnsiEmail = EmailEdit->Text;
 	 string Email = AnsiEmail.c_str();
+	 if(Email == "" || IsOnlyWhitespace(Email))
+		return;
+
 	 AnsiString AnsiPassword = PasswordEdit->Text;
 	 string Password = AnsiPassword.c_str();
+	 if(Password == "" || IsOnlyWhitespace(Password))
+		return;
+
 	 AnsiString AnsiFirstName = FirstNameEdit->Text;
 	 string FirstName = AnsiFirstName.c_str();
+	 if(FirstName == "" || IsOnlyWhitespace(FirstName))
+		return;
+
 	 AnsiString AnsiLastName = LastNameEdit->Text;
 	 string LastName = AnsiLastName.c_str();
+	 if(LastName == "" || IsOnlyWhitespace(LastName))
+		return;
+
 	 AnsiString AnsiBirthdate = BirthdateEdit->Text;
 	 string Birthdate = AnsiBirthdate.c_str();
+	 if(Birthdate == "" || IsOnlyWhitespace(Birthdate))
+		return;
+
 	 AnsiString AnsiPhoneNumber = PhoneNumberEdit->Text;
 	 string PhoneNumber = AnsiPhoneNumber.c_str();
+	 if(PhoneNumber == "" || IsOnlyWhitespace(PhoneNumber))
+		return;
+
 	 AnsiString AnsiAddress = AddressEdit->Text;
 	 string Address = AnsiAddress.c_str();
+	 if(Address == "" || IsOnlyWhitespace(Address))
+		return;
+
 	 AnsiString AnsiGender = GenderEdit->Text;
 	 string Gender = AnsiGender.c_str();
+	 if(Gender == "" || IsOnlyWhitespace(Gender))
+		return;
+
 	 AnsiString AnsiSecurityQuestion = SecurityQuestionEdit->Text;
 	 string SecurityQuestion = AnsiSecurityQuestion.c_str();
+	 if(SecurityQuestion == "" || IsOnlyWhitespace(SecurityQuestion))
+		return;
+
 	 AnsiString AnsiSecurityAnswer = SecurityAnswerEdit->Text;
 	 string SecurityAnswer = AnsiSecurityAnswer.c_str();
+	 if(SecurityAnswer == "" || IsOnlyWhitespace(SecurityAnswer))
+		return;
 
 
 	 std::unique_ptr<User> obj = std::make_unique<Instructor>(Email, Password, FirstName,

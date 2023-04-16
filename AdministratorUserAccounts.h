@@ -109,6 +109,12 @@ __published:	// IDE-managed Components
 	TLayout *JobTitleLayout;
 	TEdit *JobTitleEdit;
 	TLabel *JobTitleLabel;
+	TRectangle *BlockUserStringGridOptionSelector;
+	TImage *BlockUserStringGridOption;
+	TRectangle *RemoveUserStringGridOptionSelector;
+	TImage *RemoveUserStringGridOption;
+	TRectangle *EditUserStringGridOptionSelector;
+	TImage *EditUserStringGridOption;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
           TColumn * const Column, const TRectF &Bounds);

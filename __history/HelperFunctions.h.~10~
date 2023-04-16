@@ -1,0 +1,23 @@
+//---------------------------------------------------------------------------
+
+#ifndef HelperFunctionsH
+#define HelperFunctionsH
+//---------------------------------------------------------------------------
+#include <iostream>
+#include <string>
+#include <vector>
+#include <sstream>
+#include <ctime>
+#include <chrono>
+#include <random>
+
+std::vector<std::string> ParseCommaDelimitedString(std::string line);
+bool StringToBool(std::string obj);
+
+void LogoutCloseForms();
+float StringToFloat(const std::string& stringValue);
+std::string FloatToString(float floatValue);
+
+bool isOnlyWhitespace(const std::string& str);
+
+#endif

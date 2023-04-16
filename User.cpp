@@ -82,7 +82,7 @@ std::string User::generateID(UserType userType) {
       out << GetUserID() << "," << GetEmail() << "," << GetPassword() << ","
       << GetFirstName() << "," << GetLastName() << "," << GetGender() << "," << GetDateOfBirth() << ","
 	  << GetPhoneNumber() << "," << GetAddress() << "," << GetSecurityQuestion() << ","
-	  << GetSecurityAnswer() << "," << (GetIsBlocked() ? "1" : "0");
+	  << GetSecurityAnswer() << "," << GetIsBlocked();
  }
 
  void User::Logout() {

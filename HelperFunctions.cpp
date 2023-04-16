@@ -79,5 +79,13 @@ std::string FloatToString(float floatValue) {
 	return ss.str();
 }
 
+bool IsOnlyWhitespace(const std::string& str) {
+    for (char c : str) {
+        if (!std::isspace(static_cast<unsigned char>(c))) {
+            return false;
+		}
+    }
+	return true;
+}
 
 
