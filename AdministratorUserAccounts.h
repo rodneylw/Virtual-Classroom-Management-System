@@ -138,6 +138,7 @@ __published:	// IDE-managed Components
 	void __fastcall BlockUserStringGridOptionSelectorMouseEnter(TObject *Sender);
 	void __fastcall BlockUserStringGridOptionSelectorMouseLeave(TObject *Sender);
 	void __fastcall RemoveUserStringGridOptionSelectorClick(TObject *Sender);
+	void __fastcall BlockUserStringGridOptionSelectorClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
@@ -148,6 +149,7 @@ public:		// User declarations
 	void __fastcall AdjustColumnWidths(TStringGrid *AccountsStringGrid);
 	std::string __fastcall GetSelectedID(TStringGrid *StringGrid);
 	std::vector<std::unique_ptr<User>>& __fastcall GetActiveUserVector();
+    TStringGrid* __fastcall GetActiveStringGrid();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TAdministratorUserAccountsForm *AdministratorUserAccountsForm;

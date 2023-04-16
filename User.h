@@ -88,6 +88,7 @@ public:
      string GetGender();
 	 bool GetIsBlocked();
 	 void UnblockUser();
+     void BlockUser();
 	 bool GetIsLoggedIn();
      void Logout();
 	 virtual void SaveUser(std::ostream& out);

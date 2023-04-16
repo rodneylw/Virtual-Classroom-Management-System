@@ -59,7 +59,21 @@ std::vector<std::unique_ptr<User>>& __fastcall TAdministratorUserAccountsForm::G
 	else if(StudentAccountsStringGrid->Visible == true) {
 		return School::GetInstance().GetStudents();
 	} else {
-        ShowMessage("Error: Failed To Get Active User Vector");
+		ShowMessage("Error: Failed To Get Active User Vector. Defaulted to Administrators");
+		return School::GetInstance().GetAdministrators();
+	}
+}
+//---------------------------------------------------------------------------
+TStringGrid* __fastcall TAdministratorUserAccountsForm::GetActiveStringGrid() {
+	if(UserTypeSelectionText->Text == "Administrators") {
+		return AdministratorAccountsStringGrid;
+	} else if (UserTypeSelectionText->Text == "Instructors") {
+		return InstructorAccountsStringGrid;
+	} else if (UserTypeSelectionText->Text == "Students") {
+    	return StudentAccountsStringGrid;
+	} else {
+		ShowMessage("Error: Failed To Get Active String Grid.");
+		return nullptr;
     }
 }
 //---------------------------------------------------------------------------
@@ -296,26 +310,58 @@ void __fastcall TAdministratorUserAccountsForm::CreateAdministratorButtonClick(T
 {
 	 AnsiString AnsiEmail = EmailEdit->Text;
 	 string Email = AnsiEmail.c_str();
+	 if(Email == "" || IsOnlyWhitespace(Email))
+		return;
+
      AnsiString AnsiPassword = PasswordEdit->Text;
-     string Password = AnsiPassword.c_str();
+	 string Password = AnsiPassword.c_str();
+	 if(Password == "" || IsOnlyWhitespace(Password))
+		return;
+
      AnsiString AnsiFirstName = FirstNameEdit->Text;
-     string FirstName = AnsiFirstName.c_str();
+	 string FirstName = AnsiFirstName.c_str();
+	 if(FirstName == "" || IsOnlyWhitespace(FirstName))
+		return;
+
 	 AnsiString AnsiLastName = LastNameEdit->Text;
 	 string LastName = AnsiLastName.c_str();
+	 if(LastName == "" || IsOnlyWhitespace(LastName))
+		return;
+
 	 AnsiString AnsiBirthdate = BirthdateEdit->Text;
 	 string Birthdate = AnsiBirthdate.c_str();
+	 if(Birthdate == "" || IsOnlyWhitespace(Birthdate))
+		return;
+
 	 AnsiString AnsiPhoneNumber = PhoneNumberEdit->Text;
 	 string PhoneNumber = AnsiPhoneNumber.c_str();
+	 if(PhoneNumber == "" || IsOnlyWhitespace(PhoneNumber))
+		return;
+
 	 AnsiString AnsiAddress = AddressEdit->Text;
 	 string Address = AnsiAddress.c_str();
+	 if(Address == "" || IsOnlyWhitespace(Address))
+		return;
+
 	 AnsiString AnsiGender = GenderEdit->Text;
 	 string Gender = AnsiGender.c_str();
+	 if(Gender == "" || IsOnlyWhitespace(Gender))
+		return;
+
 	 AnsiString AnsiSecurityQuestion = SecurityQuestionEdit->Text;
 	 string SecurityQuestion = AnsiSecurityQuestion.c_str();
+	 if(SecurityQuestion == "" || IsOnlyWhitespace(SecurityQuestion))
+		return;
+
 	 AnsiString AnsiSecurityAnswer = SecurityAnswerEdit->Text;
 	 string SecurityAnswer = AnsiSecurityAnswer.c_str();
+	 if(SecurityAnswer == "" || IsOnlyWhitespace(SecurityAnswer))
+		return;
+
 	 AnsiString AnsiJobTitle = JobTitleEdit->Text;
 	 string JobTitle = AnsiJobTitle.c_str();
+	 if(JobTitle == "" || IsOnlyWhitespace(JobTitle))
+		return;
 
 
 	 std::unique_ptr<User> obj = std::make_unique<Administrator>(Email, Password, FirstName,
@@ -478,7 +524,7 @@ void __fastcall TAdministratorUserAccountsForm::StudentSelectorClick(TObject *Se
 	CreateInstructorButton->Visible = false;
 	CreateStudentButton->Visible = true;
 
-    BottomEditLayout->Visible = false;
+	BottomEditLayout->Visible = false;
 	JobTitleLayout->Visible = false;
 	DepartmentLayout->Visible = false;
 }
@@ -561,24 +607,53 @@ void __fastcall TAdministratorUserAccountsForm::CreateStudentButtonClick(TObject
 {
 	 AnsiString AnsiEmail = EmailEdit->Text;
 	 string Email = AnsiEmail.c_str();
+	 if(Email == "" || IsOnlyWhitespace(Email))
+		return;
+
 	 AnsiString AnsiPassword = PasswordEdit->Text;
 	 string Password = AnsiPassword.c_str();
+	 if(Password == "" || IsOnlyWhitespace(Password))
+		return;
+
 	 AnsiString AnsiFirstName = FirstNameEdit->Text;
 	 string FirstName = AnsiFirstName.c_str();
+	 if(FirstName == "" || IsOnlyWhitespace(FirstName))
+		return;
+
 	 AnsiString AnsiLastName = LastNameEdit->Text;
 	 string LastName = AnsiLastName.c_str();
+	 if(LastName == "" || IsOnlyWhitespace(LastName))
+		return;
+
 	 AnsiString AnsiBirthdate = BirthdateEdit->Text;
 	 string Birthdate = AnsiBirthdate.c_str();
+	 if(Birthdate == "" || IsOnlyWhitespace(Birthdate))
+		return;
+
 	 AnsiString AnsiPhoneNumber = PhoneNumberEdit->Text;
 	 string PhoneNumber = AnsiPhoneNumber.c_str();
+	 if(PhoneNumber == "" || IsOnlyWhitespace(PhoneNumber))
+		return;
+
 	 AnsiString AnsiAddress = AddressEdit->Text;
 	 string Address = AnsiAddress.c_str();
+	 if(Address == "" || IsOnlyWhitespace(Address))
+		return;
+
 	 AnsiString AnsiGender = GenderEdit->Text;
 	 string Gender = AnsiGender.c_str();
+	 if(Gender == "" || IsOnlyWhitespace(Gender))
+		return;
+
 	 AnsiString AnsiSecurityQuestion = SecurityQuestionEdit->Text;
 	 string SecurityQuestion = AnsiSecurityQuestion.c_str();
+	 if(SecurityQuestion == "" || IsOnlyWhitespace(SecurityQuestion))
+		return;
+
 	 AnsiString AnsiSecurityAnswer = SecurityAnswerEdit->Text;
 	 string SecurityAnswer = AnsiSecurityAnswer.c_str();
+	 if(SecurityAnswer == "" || IsOnlyWhitespace(SecurityAnswer))
+		return;
 
 
 	 std::unique_ptr<User> obj = std::make_unique<Student>(Email, Password, FirstName,
@@ -624,6 +699,51 @@ void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelect
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelectorClick(TObject *Sender)
+{
+	std::string UserID = GetSelectedID(GetActiveStringGrid());
+	std::vector<std::unique_ptr<User>>& ActiveUserType = GetActiveUserVector();
+	TStringGrid *ActiveGrid = GetActiveStringGrid();
+
+	std::string Msg = "Are you sure you want to remove User " + UserID;
+	UnicodeString UniMsg = UnicodeString(Msg.c_str());
+	TMsgDlgButtons buttons = TMsgDlgButtons() << TMsgDlgBtn::mbYes << TMsgDlgBtn::mbNo;
+	TMsgDlgType dlgType = TMsgDlgType::mtConfirmation;
+
+	if (MessageDlg(UniMsg, dlgType, buttons, 0) == mrYes) {
+		if (!ActiveUserType.empty()) {
+			//Search Vector
+			for(auto &user : ActiveUserType) {
+				if(UserID == user->GetUserID()) {
+					School::GetInstance().RemoveUser(ActiveUserType, *user);
+				}
+			}
+		}
+		else {
+			ShowMessage("Error: No Selected User Type");
+		}
+    }
+
+	if (ActiveGrid == AdministratorAccountsStringGrid) {
+		PopulateGridWithInstructors(School::GetInstance().GetAdministrators());
+		AdjustColumnWidths(AdministratorAccountsStringGrid);
+	}
+	else if (ActiveGrid == InstructorAccountsStringGrid) {
+		PopulateGridWithInstructors(School::GetInstance().GetInstructors());
+		AdjustColumnWidths(InstructorAccountsStringGrid);
+	}
+	else if (ActiveGrid == StudentAccountsStringGrid) {
+		PopulateGridWithStudents(School::GetInstance().GetStudents());
+		AdjustColumnWidths(StudentAccountsStringGrid);
+	} else {
+		return;
+	}
+
+	ActiveGrid->RowCount = ActiveUserType.size();
+	ActiveGrid->Repaint();
+}
+//---------------------------------------------------------------------------
+
 void __fastcall TAdministratorUserAccountsForm::BlockUserStringGridOptionSelectorMouseEnter(TObject *Sender)
 
 {
@@ -639,24 +759,45 @@ void __fastcall TAdministratorUserAccountsForm::BlockUserStringGridOptionSelecto
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelectorClick(TObject *Sender)
-
+void __fastcall TAdministratorUserAccountsForm::BlockUserStringGridOptionSelectorClick(TObject *Sender)
 {
-	std::string UserID = GetSelectedID();
-	std::vector<std::unique_ptr<User>>* ActiveUserType = GetActiveUserVector();
+	std::string UserID = GetSelectedID(GetActiveStringGrid());
+	std::vector<std::unique_ptr<User>>& ActiveUserType = GetActiveUserVector();
+	TStringGrid *ActiveGrid = GetActiveStringGrid();
 
-	if (ActiveUserType != nullptr) {
-		//Search Vector
-		for(auto &user : ActiveUserType) {
-			if(UserID == user->GetUserID() {
-                ShowMessage("User Found, not removed");
-            }
-        }
-		//Remove User
+	if (!ActiveUserType.empty()) {
+	for(auto &user : ActiveUserType) {
+		if(UserID == user->GetUserID()) {
+			int rowIndex = ActiveGrid->Selected;
+			int blockedStatusColumnIndex = 7; // Assuming the blocked/unblocked status is in column 8
+
+			if(user->GetIsBlocked()) {
+				School::GetInstance().UnblockUser(ActiveUserType, *user);
+				GetActiveStringGrid()->Cells[blockedStatusColumnIndex][rowIndex] = "Not Blocked";
+			}
+			else {
+				School::GetInstance().BlockUser(ActiveUserType, *user);
+				GetActiveStringGrid()->Cells[blockedStatusColumnIndex][rowIndex] = "Blocked";
+			}
+		}
+	}
 	}
 	else {
-        ShowMessage("Error: No Selected User Type");
+		ShowMessage("Error: No Selected User Type");
+	}
+
+	if (ActiveGrid == AdministratorAccountsStringGrid) {
+        AdjustColumnWidths(AdministratorAccountsStringGrid);
     }
+    else if (ActiveGrid == InstructorAccountsStringGrid) {
+        AdjustColumnWidths(InstructorAccountsStringGrid);
+    }
+    else if (ActiveGrid == StudentAccountsStringGrid) {
+        AdjustColumnWidths(StudentAccountsStringGrid);
+    }
+
+    ActiveGrid->Repaint();
 }
 //---------------------------------------------------------------------------
+
 

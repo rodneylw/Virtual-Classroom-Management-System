@@ -74,6 +74,9 @@ std::string User::generateID(UserType userType) {
  void User::UnblockUser() {
 	IsBlocked = false;
  };
+ void User::BlockUser() {
+	IsBlocked = true;
+ }
  bool User::GetIsLoggedIn() {
 	return IsLoggedIn;
  };

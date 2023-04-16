@@ -20,8 +20,35 @@ School* School::Instance = nullptr; // Initialize the instance pointer
 School& School::GetInstance() {
     if(Instance == nullptr) {
         Instance = new School("Horizon Middle School");
-    }
-    return *Instance;
+	}
+	return *Instance;
+}
+
+void School::RemoveUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToRemove) {
+	for (auto it = userVector.begin(); it != userVector.end(); ++it) {
+		if((*it)->GetUserID() == userToRemove.GetUserID()) {
+			userVector.erase(it);
+			break;
+		}
+	}
+}
+
+void School::BlockUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToBlock) {
+	for (auto it = userVector.begin(); it != userVector.end(); ++it) {
+		if((*it)->GetUserID() == userToBlock.GetUserID()) {
+			(*it)->BlockUser();
+			break;
+		}
+	}
+}
+
+void School::UnblockUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToBlock) {
+	for (auto it = userVector.begin(); it != userVector.end(); ++it) {
+		if((*it)->GetUserID() == userToBlock.GetUserID()) {
+			(*it)->UnblockUser();
+			break;
+		}
+	}
 }
 
 void School::AddAdministrator(std::unique_ptr<User> admin) {

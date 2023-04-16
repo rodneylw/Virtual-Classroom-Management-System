@@ -15,7 +15,7 @@ class School {
 private:
 	 string LoggedInUserID;
 	 string LoggedInUserName;
-     string SchoolName;
+	 string SchoolName;
 	 std::vector<std::unique_ptr<User>> Administrators;
 	 std::vector<std::unique_ptr<User>> Instructors;
      std::vector<std::unique_ptr<User>> Students;
@@ -27,6 +27,10 @@ private:
      };
 public:
 	 static School& GetInstance();
+
+	 void RemoveUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToRemove);
+	 void BlockUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToBlock);
+	 void UnblockUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToBlock);
 
      void AddAdministrator(std::unique_ptr<User> admin);
 	 std::vector<std::unique_ptr<User>>& GetAdministrators();
