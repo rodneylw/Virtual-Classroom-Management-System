@@ -40,6 +40,29 @@ void __fastcall TAdministratorUserAccountsForm::ClearCreateEdits()
 	 SecurityAnswerEdit->Text = "";
 }
 //---------------------------------------------------------------------------
+std::string __fastcall TAdministratorUserAccountsForm::GetSelectedID(TStringGrid *StringGrid) {
+	 if (StringGrid->Selected >= 0) {
+		AnsiString AnsiUserID = StringGrid->Cells[0][StringGrid->Selected];
+		return AnsiUserID.c_str();
+	 } else {
+		 return "";
+	 }
+}
+//---------------------------------------------------------------------------
+std::vector<std::unique_ptr<User>>& __fastcall TAdministratorUserAccountsForm::GetActiveUserVector() {
+	if(AdministratorAccountsStringGrid->Visible == true){
+		return School::GetInstance().GetAdministrators();
+	}
+	else if(InstructorAccountsStringGrid->Visible == true){
+		return School::GetInstance().GetInstructors();
+	}
+	else if(StudentAccountsStringGrid->Visible == true) {
+		return School::GetInstance().GetStudents();
+	} else {
+        ShowMessage("Error: Failed To Get Active User Vector");
+    }
+}
+//---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths(TStringGrid *AccountsStringGrid)
 {
     // Initialize a vector to store the maximum width for each column
@@ -272,7 +295,7 @@ void __fastcall TAdministratorUserAccountsForm::CreateAdministratorButtonClick(T
 
 {
 	 AnsiString AnsiEmail = EmailEdit->Text;
-     string Email = AnsiEmail.c_str();
+	 string Email = AnsiEmail.c_str();
      AnsiString AnsiPassword = PasswordEdit->Text;
      string Password = AnsiPassword.c_str();
      AnsiString AnsiFirstName = FirstNameEdit->Text;
@@ -568,6 +591,72 @@ void __fastcall TAdministratorUserAccountsForm::CreateStudentButtonClick(TObject
 
 	 PopulateGridWithStudents(School::GetInstance().GetStudents());
 	 AdjustColumnWidths(StudentAccountsStringGrid);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::EditUserStringGridOptionSelectorMouseEnter(TObject *Sender)
+
+{
+	EditUserStringGridOptionSelector->Fill->Kind = TBrushKind::Solid;
+	EditUserStringGridOptionSelector->Fill->Color =  0xFFADB7FF;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::EditUserStringGridOptionSelectorMouseLeave(TObject *Sender)
+
+{
+	EditUserStringGridOptionSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelectorMouseEnter(TObject *Sender)
+
+{
+	RemoveUserStringGridOptionSelector->Fill->Kind = TBrushKind::Solid;
+	RemoveUserStringGridOptionSelector->Fill->Color =  0xFFFF99A2;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelectorMouseLeave(TObject *Sender)
+
+{
+	RemoveUserStringGridOptionSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::BlockUserStringGridOptionSelectorMouseEnter(TObject *Sender)
+
+{
+	BlockUserStringGridOptionSelector->Fill->Kind = TBrushKind::Solid;
+	BlockUserStringGridOptionSelector->Fill->Color = 0xFFFF99A2;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::BlockUserStringGridOptionSelectorMouseLeave(TObject *Sender)
+
+{
+	BlockUserStringGridOptionSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelectorClick(TObject *Sender)
+
+{
+	std::string UserID = GetSelectedID();
+	std::vector<std::unique_ptr<User>>* ActiveUserType = GetActiveUserVector();
+
+	if (ActiveUserType != nullptr) {
+		//Search Vector
+		for(auto &user : ActiveUserType) {
+			if(UserID == user->GetUserID() {
+                ShowMessage("User Found, not removed");
+            }
+        }
+		//Remove User
+	}
+	else {
+        ShowMessage("Error: No Selected User Type");
+    }
 }
 //---------------------------------------------------------------------------
 

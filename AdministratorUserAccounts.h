@@ -131,6 +131,13 @@ __published:	// IDE-managed Components
 	void __fastcall StudentSelectorClick(TObject *Sender);
 	void __fastcall CreateInstructorButtonClick(TObject *Sender);
 	void __fastcall CreateStudentButtonClick(TObject *Sender);
+	void __fastcall EditUserStringGridOptionSelectorMouseEnter(TObject *Sender);
+	void __fastcall EditUserStringGridOptionSelectorMouseLeave(TObject *Sender);
+	void __fastcall RemoveUserStringGridOptionSelectorMouseEnter(TObject *Sender);
+	void __fastcall RemoveUserStringGridOptionSelectorMouseLeave(TObject *Sender);
+	void __fastcall BlockUserStringGridOptionSelectorMouseEnter(TObject *Sender);
+	void __fastcall BlockUserStringGridOptionSelectorMouseLeave(TObject *Sender);
+	void __fastcall RemoveUserStringGridOptionSelectorClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
@@ -139,6 +146,8 @@ public:		// User declarations
 	void __fastcall PopulateGridWithInstructors(const std::vector<std::unique_ptr<User>>& instructors);
     void __fastcall PopulateGridWithStudents(const std::vector<std::unique_ptr<User>>& students);
 	void __fastcall AdjustColumnWidths(TStringGrid *AccountsStringGrid);
+	std::string __fastcall GetSelectedID(TStringGrid *StringGrid);
+	std::vector<std::unique_ptr<User>>& __fastcall GetActiveUserVector();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TAdministratorUserAccountsForm *AdministratorUserAccountsForm;

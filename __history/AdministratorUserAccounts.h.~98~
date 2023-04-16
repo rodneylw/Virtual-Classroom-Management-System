@@ -1,0 +1,152 @@
+//---------------------------------------------------------------------------
+
+#ifndef AdministratorUserAccountsH
+#define AdministratorUserAccountsH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include "AdministratorUIParent.h"
+#include <FMX.Layouts.hpp>
+#include <FMX.Objects.hpp>
+#include <FMX.Types.hpp>
+#include <FMX.Controls.Presentation.hpp>
+#include <FMX.Grid.hpp>
+#include <FMX.Grid.Style.hpp>
+#include <FMX.ScrollBox.hpp>
+#include <System.Rtti.hpp>
+#include <FMX.Edit.hpp>
+#include <FMX.StdCtrls.hpp>
+#include <vector>
+
+#include "User.h"
+//---------------------------------------------------------------------------
+class TAdministratorUserAccountsForm : public TAdministratorUIParentForm
+{
+__published:	// IDE-managed Components
+	TVertScrollBox *UserAccountsScrollBox;
+	TStringGrid *AdministratorAccountsStringGrid;
+	TStringColumn *AdministratorUserID;
+	TStringColumn *AdministratorJobTitle;
+	TStringColumn *AdministratorFirstName;
+	TStringColumn *AdministratorLastName;
+	TStringColumn *AdministratorGender;
+	TStringColumn *AdministratorPhoneNumber;
+	TStringColumn *AdministratorBlocked;
+	TStyleBook *StyleBook1;
+	TStringColumn *AdministratorDateOfBirth;
+	TImage *UserTypeSelectionContainer;
+	TImage *UserTypeSelectionDropDownIndicator;
+	TText *UserTypeSelectionText;
+	TRectangle *UserTypeSelector;
+	TLayout *Content;
+	TLayout *CreateNewSection;
+	TLine *VerticleDivider;
+	TText *CreateNewText;
+	TButton *CreateAdministratorButton;
+	TLayout *EmailLayout;
+	TEdit *EmailEdit;
+	TLabel *EmailLabel;
+	TLayout *FirstNameLayout;
+	TLayout *PasswordLayout;
+	TLabel *PasswordLabel;
+	TEdit *PasswordEdit;
+	TLabel *FirstNameLabel;
+	TEdit *FirstNameEdit;
+	TLayout *LastNameLayout;
+	TLabel *LastNameLabel;
+	TEdit *LastNameEdit;
+	TLayout *BirthdateLayout;
+	TLayout *SecurityAnswerLayout;
+	TLayout *SecurityQuestionLayout;
+	TLayout *GenderLayout;
+	TLayout *AddressLayout;
+	TLayout *PhoneNumberLayout;
+	TLabel *BirthdateLabel;
+	TEdit *BirthdateEdit;
+	TLabel *PhoneNumberLabel;
+	TLabel *AddressLabel;
+	TLabel *GenderLabel;
+	TLabel *SecurityQuestionLabel;
+	TLabel *SecurityAnswerLabel;
+	TEdit *PhoneNumberEdit;
+	TEdit *AddressEdit;
+	TEdit *GenderEdit;
+	TEdit *SecurityQuestionEdit;
+	TEdit *SecurityAnswerEdit;
+	TImage *UserTypePopupMenu;
+	TRectangle *UserTypePopupMenuBackground;
+	TRectangle *StudentSelector;
+	TRectangle *InstructorSelector;
+	TText *InsutrctorUserStype;
+	TText *StudentUserType;
+	TRectangle *AdministratorSelector;
+	TText *AdministratorUserType;
+	TStringGrid *InstructorAccountsStringGrid;
+	TStringColumn *InstructorID;
+	TStringColumn *InstructorSubject;
+	TStringColumn *InstructorFirstName;
+	TStringColumn *InstructorLastName;
+	TStringColumn *InstructorGender;
+	TStringColumn *InstructorDateOfBirth;
+	TStringColumn *InstructorPhoneNumber;
+	TStringColumn *InstructorBlocked;
+	TStringGrid *StudentAccountsStringGrid;
+	TStringColumn *StringColumn1;
+	TStringColumn *StringColumn2;
+	TStringColumn *StringColumn3;
+	TStringColumn *StringColumn4;
+	TStringColumn *StringColumn5;
+	TStringColumn *StringColumn6;
+	TStringColumn *StringColumn7;
+	TStringColumn *StringColumn8;
+	TButton *CreateStudentButton;
+	TButton *CreateInstructorButton;
+	TLayout *BottomEditLayout;
+	TLayout *DepartmentLayout;
+	TEdit *DepartmentEdit;
+	TLabel *DepartmentLabel;
+	TLayout *JobTitleLayout;
+	TEdit *JobTitleEdit;
+	TLabel *JobTitleLabel;
+	TRectangle *BlockUserStringGridOptionSelector;
+	TImage *BlockUserStringGridOption;
+	TRectangle *RemoveUserStringGridOptionSelector;
+	TImage *RemoveUserStringGridOption;
+	TRectangle *EditUserStringGridOptionSelector;
+	TImage *EditUserStringGridOption;
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
+          TColumn * const Column, const TRectF &Bounds);
+	void __fastcall CreateAdministratorButtonClick(TObject *Sender);
+	void __fastcall UserTypeSelectorClick(TObject *Sender);
+	void __fastcall AdministratorSelectorMouseEnter(TObject *Sender);
+	void __fastcall AdministratorSelectorMouseLeave(TObject *Sender);
+	void __fastcall AdministratorSelectorClick(TObject *Sender);
+	void __fastcall InstructorSelectorMouseEnter(TObject *Sender);
+	void __fastcall InstructorSelectorMouseLeave(TObject *Sender);
+	void __fastcall InstructorSelectorClick(TObject *Sender);
+	void __fastcall StudentSelectorMouseEnter(TObject *Sender);
+	void __fastcall StudentSelectorMouseLeave(TObject *Sender);
+	void __fastcall StudentSelectorClick(TObject *Sender);
+	void __fastcall CreateInstructorButtonClick(TObject *Sender);
+	void __fastcall CreateStudentButtonClick(TObject *Sender);
+	void __fastcall EditUserStringGridOptionSelectorMouseEnter(TObject *Sender);
+	void __fastcall EditUserStringGridOptionSelectorMouseLeave(TObject *Sender);
+	void __fastcall RemoveUserStringGridOptionSelectorMouseEnter(TObject *Sender);
+	void __fastcall RemoveUserStringGridOptionSelectorMouseLeave(TObject *Sender);
+	void __fastcall BlockUserStringGridOptionSelectorMouseEnter(TObject *Sender);
+	void __fastcall BlockUserStringGridOptionSelectorMouseLeave(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
+    void __fastcall ClearCreateEdits();
+	void __fastcall PopulateGridWithAdministrators(const std::vector<std::unique_ptr<User>>& administrators);
+	void __fastcall PopulateGridWithInstructors(const std::vector<std::unique_ptr<User>>& instructors);
+    void __fastcall PopulateGridWithStudents(const std::vector<std::unique_ptr<User>>& students);
+	void __fastcall AdjustColumnWidths(TStringGrid *AccountsStringGrid);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TAdministratorUserAccountsForm *AdministratorUserAccountsForm;
+//---------------------------------------------------------------------------
+#endif

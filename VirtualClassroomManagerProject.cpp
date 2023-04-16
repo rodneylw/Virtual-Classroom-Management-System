@@ -57,4 +57,6 @@ extern "C" int FMXmain()
 //---------------------------------------------------------------------------
 
 //Change User String Grid Option Buttons
-    //Create Functionality
+	//Create Functionality
+
+//GetActiveStringGrid();
