@@ -801,3 +801,36 @@ void __fastcall TAdministratorUserAccountsForm::BlockUserStringGridOptionSelecto
 //---------------------------------------------------------------------------
 
 
+void __fastcall TAdministratorUserAccountsForm::SearchBarEditClick(TObject *Sender)
+
+{
+	if (SearchBarEdit->Text == "Search...") {
+		SearchBarEdit->Text = "";
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::SearchBarEditExit(TObject *Sender)
+
+{
+	if (SearchBarEdit->Text == "") {
+		SearchBarEdit->Text = "Search...";
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::SearchIconRectangleMouseEnter(TObject *Sender)
+
+{
+	SearchIconRectangle->Fill->Kind = TBrushKind::Solid;
+	SearchIconRectangle->Fill->Color = 0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::SearchIconRectangleMouseLeave(TObject *Sender)
+
+{
+	SearchIconRectangle->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+

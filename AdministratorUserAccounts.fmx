@@ -2271,6 +2271,71 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
           Size.PlatformDefault = False
         end
       end
+      object SearchBarLayout: TLayout
+        Align = Right
+        Margins.Top = 35.000000000000000000
+        Margins.Right = 40.000000000000000000
+        Margins.Bottom = 4.000000000000000000
+        Position.X = 778.000000000000000000
+        Position.Y = 35.000000000000000000
+        Size.Width = 179.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 8
+        object SearchIconRectangle: TRectangle
+          Cursor = crHandPoint
+          Fill.Kind = None
+          Position.X = 145.000000000000000000
+          Size.Width = 32.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = claGray
+          OnMouseEnter = SearchIconRectangleMouseEnter
+          OnMouseLeave = SearchIconRectangleMouseLeave
+          object SearchIcon: TImage
+            MultiResBitmap = <
+              item
+                Width = 32
+                Height = 32
+                PNG = {
+                  89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+                  F4000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+                  01A6494441545847ED97EB4DC43010840315D0019440075C0750027440097402
+                  1D701D0015001540074005DC7E97AC34B2E2B09B18851F8C34B24FE7D8B30FEF
+                  26DDDA3818C6088E8CA7FD748F4FE34B3FFD3D9C186F8C6FC6EF117E18EF8D17
+                  C6E6E0E0B1436B7C36AA8742180B01AE7E30969BE1EE47E3D7FE57D71D1BB19C
+                  F58A2BE35D3FCD83CDB0442DBB35128A1A105186E8D2380B7A38F1CDB814A12A
+                  229D171AF3ECE10E158157CAF054C1420EF58737C6B9207F7C1F8C0A8198F943
+                  58B104E48BEF851742E02EFB43735C5F22BCDFE130BACBDF8D2DAADBD33082C9
+                  70BA004F1604B4801A3199882E6035FC390153152F03DD87AE59850BA0C6031E
+                  6C21E26C184128A9AF8D7E6D5AD6018A5B0865255C520BB406842B21D05E4053
+                  0AD7718156540C4AEDC162ED8659117A3824AC69E07A0D05F39F7A3B3157B73B
+                  43B934F64684083A9A5ACF55DA1A5F8D6435FFB1EE7C186BE0CD8837A4343860
+                  CCAA29D2F978092943B1E856D148D840C352925C21DEEAB1B088CC770162DCF5
+                  FE4D40F3AA353044E8C1B3C3B1044DC33117FF221CA58854996E0515C1355F05
+                  DC26ACB7DBD4753BA065B09052C02BE00000000049454E44AE426082}
+              end>
+            HitTest = False
+            MarginWrapMode = Original
+            Position.X = 4.000000000000000000
+            Position.Y = 4.000000000000000000
+            Size.Width = 24.000000000000000000
+            Size.Height = 15.000000000000000000
+            Size.PlatformDefault = False
+          end
+        end
+        object SearchBarEdit: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Left
+          TabOrder = 0
+          Text = 'Search...'
+          Size.Width = 146.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          OnClick = SearchBarEditClick
+          OnExit = SearchBarEditExit
+        end
+      end
     end
     object UserAccountsScrollBox: TVertScrollBox
       Align = Client
@@ -2296,8 +2361,8 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
         TabOrder = 2
         Options = [AlternatingRowBackground, ColLines, RowLines, RowSelect, Tabs, Header, AutoDisplacement]
         OnDrawColumnHeader = AdministratorAccountsStringGridDrawColumnHeader
-        Viewport.Width = 1105.000000000000000000
-        Viewport.Height = 773.000000000000000000
+        Viewport.Width = 1085.000000000000000000
+        Viewport.Height = 748.000000000000000000
         object AdministratorUserID: TStringColumn
           Padding.Left = 6.000000000000000000
         end
@@ -2338,8 +2403,8 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
         Visible = False
         Options = [AlternatingRowBackground, ColLines, RowLines, RowSelect, Tabs, Header, AutoDisplacement]
         OnDrawColumnHeader = AdministratorAccountsStringGridDrawColumnHeader
-        Viewport.Width = 1105.000000000000000000
-        Viewport.Height = 773.000000000000000000
+        Viewport.Width = 1085.000000000000000000
+        Viewport.Height = 748.000000000000000000
         object InstructorID: TStringColumn
           Padding.Left = 6.000000000000000000
         end
@@ -2380,8 +2445,8 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
         Visible = False
         Options = [AlternatingRowBackground, ColLines, RowLines, RowSelect, Tabs, Header, AutoDisplacement]
         OnDrawColumnHeader = AdministratorAccountsStringGridDrawColumnHeader
-        Viewport.Width = 1105.000000000000000000
-        Viewport.Height = 773.000000000000000000
+        Viewport.Width = 1085.000000000000000000
+        Viewport.Height = 748.000000000000000000
         object StringColumn1: TStringColumn
           Padding.Left = 6.000000000000000000
         end
@@ -2404,6 +2469,121 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
         end
         object StringColumn8: TStringColumn
           Padding.Left = 6.000000000000000000
+        end
+      end
+    end
+    object UserTypePopupMenu: TImage
+      MultiResBitmap = <
+        item
+        end>
+      Padding.Top = 5.000000000000000000
+      Position.X = 70.000000000000000000
+      Position.Y = 80.000000000000000000
+      Size.Width = 175.000000000000000000
+      Size.Height = 89.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      object UserTypePopupMenuBackground: TRectangle
+        Fill.Color = xFFEDF4F6
+        Position.Y = 1.000000000000000000
+        Size.Width = 175.000000000000000000
+        Size.Height = 89.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+      end
+      object StudentSelector: TRectangle
+        Align = Top
+        Cursor = crHandPoint
+        Fill.Kind = None
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 175.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        Visible = False
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        OnClick = StudentSelectorClick
+        OnMouseEnter = StudentSelectorMouseEnter
+        OnMouseLeave = StudentSelectorMouseLeave
+        object StudentUserType: TText
+          Align = Center
+          HitTest = False
+          Size.Width = 136.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Students'
+          TextSettings.Font.Family = 'Arial'
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Leading
+        end
+      end
+      object InstructorSelector: TRectangle
+        Align = Top
+        Cursor = crHandPoint
+        Fill.Kind = None
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 175.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        Visible = False
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        OnClick = InstructorSelectorClick
+        OnMouseEnter = InstructorSelectorMouseEnter
+        OnMouseLeave = InstructorSelectorMouseLeave
+        object InsutrctorUserStype: TText
+          Align = Center
+          HitTest = False
+          Size.Width = 135.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Instructors'
+          TextSettings.Font.Family = 'Arial'
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Leading
+        end
+      end
+      object AdministratorSelector: TRectangle
+        Align = Top
+        Cursor = crHandPoint
+        Fill.Kind = None
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Position.Y = 10.000000000000000000
+        Size.Width = 175.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        Visible = False
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+        OnClick = AdministratorSelectorClick
+        OnMouseEnter = AdministratorSelectorMouseEnter
+        OnMouseLeave = AdministratorSelectorMouseLeave
+        object AdministratorUserType: TText
+          Align = Center
+          HitTest = False
+          Size.Width = 135.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          Text = 'Administrators'
+          TextSettings.Font.Family = 'Arial'
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Leading
         end
       end
     end
@@ -2512,7 +2692,7 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
           TextSettings.Font.StyleExt = {00070000000000000004000000}
           TextSettings.HorzAlign = Trailing
           Text = 'First Name:'
-          TabOrder = 17
+          TabOrder = 16
         end
         object FirstNameEdit: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -2546,7 +2726,7 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
           TextSettings.Font.StyleExt = {00070000000000000004000000}
           TextSettings.HorzAlign = Trailing
           Text = 'Password:'
-          TabOrder = 16
+          TabOrder = 15
         end
         object PasswordEdit: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -2580,7 +2760,7 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
           TextSettings.Font.StyleExt = {00070000000000000004000000}
           TextSettings.HorzAlign = Trailing
           Text = 'Last Name:'
-          TabOrder = 15
+          TabOrder = 14
         end
         object LastNameEdit: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -2614,7 +2794,7 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
           TextSettings.Font.StyleExt = {00070000000000000004000000}
           TextSettings.HorzAlign = Trailing
           Text = 'Birthdate:'
-          TabOrder = 12
+          TabOrder = 11
         end
         object BirthdateEdit: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -2750,7 +2930,7 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
           TextSettings.Font.StyleExt = {00070000000000000004000000}
           TextSettings.HorzAlign = Trailing
           Text = 'Address:'
-          TabOrder = 10
+          TabOrder = 9
         end
         object AddressEdit: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -2784,7 +2964,7 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
           TextSettings.Font.StyleExt = {00070000000000000004000000}
           TextSettings.HorzAlign = Trailing
           Text = 'Phone:'
-          TabOrder = 11
+          TabOrder = 10
         end
         object PhoneNumberEdit: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -2897,121 +3077,6 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
             Text = 'Job Title:'
             TabOrder = 21
           end
-        end
-      end
-    end
-    object UserTypePopupMenu: TImage
-      MultiResBitmap = <
-        item
-        end>
-      Padding.Top = 5.000000000000000000
-      Position.X = 70.000000000000000000
-      Position.Y = 80.000000000000000000
-      Size.Width = 175.000000000000000000
-      Size.Height = 89.000000000000000000
-      Size.PlatformDefault = False
-      Visible = False
-      object UserTypePopupMenuBackground: TRectangle
-        Fill.Color = xFFEDF4F6
-        Position.Y = 1.000000000000000000
-        Size.Width = 175.000000000000000000
-        Size.Height = 89.000000000000000000
-        Size.PlatformDefault = False
-        Stroke.Kind = None
-        XRadius = 5.000000000000000000
-        YRadius = 5.000000000000000000
-      end
-      object StudentSelector: TRectangle
-        Align = Top
-        Cursor = crHandPoint
-        Fill.Kind = None
-        Margins.Left = 10.000000000000000000
-        Margins.Top = 5.000000000000000000
-        Margins.Right = 10.000000000000000000
-        Position.Y = 10.000000000000000000
-        Size.Width = 175.000000000000000000
-        Size.Height = 33.000000000000000000
-        Size.PlatformDefault = False
-        Stroke.Kind = None
-        Visible = False
-        XRadius = 5.000000000000000000
-        YRadius = 5.000000000000000000
-        OnClick = StudentSelectorClick
-        OnMouseEnter = StudentSelectorMouseEnter
-        OnMouseLeave = StudentSelectorMouseLeave
-        object StudentUserType: TText
-          Align = Center
-          HitTest = False
-          Size.Width = 136.000000000000000000
-          Size.Height = 23.000000000000000000
-          Size.PlatformDefault = False
-          Text = 'Students'
-          TextSettings.Font.Family = 'Arial'
-          TextSettings.Font.Size = 18.000000000000000000
-          TextSettings.Font.StyleExt = {00070000000000000004000000}
-          TextSettings.HorzAlign = Leading
-        end
-      end
-      object InstructorSelector: TRectangle
-        Align = Top
-        Cursor = crHandPoint
-        Fill.Kind = None
-        Margins.Left = 10.000000000000000000
-        Margins.Top = 5.000000000000000000
-        Margins.Right = 10.000000000000000000
-        Position.Y = 10.000000000000000000
-        Size.Width = 175.000000000000000000
-        Size.Height = 33.000000000000000000
-        Size.PlatformDefault = False
-        Stroke.Kind = None
-        Visible = False
-        XRadius = 5.000000000000000000
-        YRadius = 5.000000000000000000
-        OnClick = InstructorSelectorClick
-        OnMouseEnter = InstructorSelectorMouseEnter
-        OnMouseLeave = InstructorSelectorMouseLeave
-        object InsutrctorUserStype: TText
-          Align = Center
-          HitTest = False
-          Size.Width = 135.000000000000000000
-          Size.Height = 25.000000000000000000
-          Size.PlatformDefault = False
-          Text = 'Instructors'
-          TextSettings.Font.Family = 'Arial'
-          TextSettings.Font.Size = 18.000000000000000000
-          TextSettings.Font.StyleExt = {00070000000000000004000000}
-          TextSettings.HorzAlign = Leading
-        end
-      end
-      object AdministratorSelector: TRectangle
-        Align = Top
-        Cursor = crHandPoint
-        Fill.Kind = None
-        Margins.Left = 10.000000000000000000
-        Margins.Top = 5.000000000000000000
-        Margins.Right = 10.000000000000000000
-        Position.Y = 10.000000000000000000
-        Size.Width = 175.000000000000000000
-        Size.Height = 33.000000000000000000
-        Size.PlatformDefault = False
-        Stroke.Kind = None
-        Visible = False
-        XRadius = 5.000000000000000000
-        YRadius = 5.000000000000000000
-        OnClick = AdministratorSelectorClick
-        OnMouseEnter = AdministratorSelectorMouseEnter
-        OnMouseLeave = AdministratorSelectorMouseLeave
-        object AdministratorUserType: TText
-          Align = Center
-          HitTest = False
-          Size.Width = 135.000000000000000000
-          Size.Height = 25.000000000000000000
-          Size.PlatformDefault = False
-          Text = 'Administrators'
-          TextSettings.Font.Family = 'Arial'
-          TextSettings.Font.Size = 18.000000000000000000
-          TextSettings.Font.StyleExt = {00070000000000000004000000}
-          TextSettings.HorzAlign = Leading
         end
       end
     end

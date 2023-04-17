@@ -115,6 +115,10 @@ __published:	// IDE-managed Components
 	TImage *RemoveUserStringGridOption;
 	TRectangle *EditUserStringGridOptionSelector;
 	TImage *EditUserStringGridOption;
+	TLayout *SearchBarLayout;
+	TRectangle *SearchIconRectangle;
+	TImage *SearchIcon;
+	TEdit *SearchBarEdit;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
           TColumn * const Column, const TRectF &Bounds);
@@ -139,6 +143,10 @@ __published:	// IDE-managed Components
 	void __fastcall BlockUserStringGridOptionSelectorMouseLeave(TObject *Sender);
 	void __fastcall RemoveUserStringGridOptionSelectorClick(TObject *Sender);
 	void __fastcall BlockUserStringGridOptionSelectorClick(TObject *Sender);
+	void __fastcall SearchBarEditClick(TObject *Sender);
+	void __fastcall SearchBarEditExit(TObject *Sender);
+	void __fastcall SearchIconRectangleMouseEnter(TObject *Sender);
+	void __fastcall SearchIconRectangleMouseLeave(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
