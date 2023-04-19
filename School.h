@@ -51,8 +51,7 @@ public:
      string GetLoggedInUserName();
 	 void LoginUser(string userID, string userName);
 	 void LogoutUser();
-
-
+	 std::vector<User*> FilterUsersBySearchText(const std::vector<std::unique_ptr<User>>& users, const std::string& searchText);
 };
 
 

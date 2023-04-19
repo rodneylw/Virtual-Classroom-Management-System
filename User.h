@@ -92,6 +92,7 @@ public:
 	 bool GetIsLoggedIn();
      void Logout();
 	 virtual void SaveUser(std::ostream& out);
+     virtual bool HasAttributeSubstring(const std::string& searchText) const;
 };
 
 

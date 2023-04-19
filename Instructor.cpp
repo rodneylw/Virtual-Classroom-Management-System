@@ -15,3 +15,8 @@ string Instructor::GetDepartment() {
      out << "," << GetDepartment();
  }
 
+ bool Instructor::HasAttributeSubstring(const std::string& searchText) const {
+	return User::HasAttributeSubstring(searchText) || (Department.find(searchText) != std::string::npos);
+}
+
+

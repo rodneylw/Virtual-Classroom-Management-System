@@ -92,4 +92,16 @@ std::string User::generateID(UserType userType) {
      IsLoggedIn = false;
  }
 
-
+ bool User::HasAttributeSubstring(const std::string& searchText) const {
+	// Check if any attribute contains searchText as a substring
+	return (LastName.find(searchText) != std::string::npos) ||
+		   (FirstName.find(searchText) != std::string::npos) ||
+		   (UserID.find(searchText) != std::string::npos) ||
+	       (Email.find(searchText) != std::string::npos) ||
+	       (PhoneNumber.find(searchText) != std::string::npos) ||
+	       (DateOfBirth.find(searchText) != std::string::npos) ||
+	       (SecurityQuestion.find(searchText) != std::string::npos) ||
+	       (SecurityAnswer.find(searchText) != std::string::npos) ||
+		   (Address.find(searchText) != std::string::npos) ||
+		   (Gender.find(searchText) != std::string::npos);
+}

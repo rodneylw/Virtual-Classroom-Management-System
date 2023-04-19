@@ -32,6 +32,7 @@ public:
 	 void SaveUser(std::ostream& out);
 
 	 string GetDepartment();
+     bool HasAttributeSubstring(const std::string& searchText) const override;
 };
 
 #endif

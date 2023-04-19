@@ -591,7 +591,7 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
             0B5D508A06D414E2452A0DE6F7F19803AF23AD2FADCD3BBC5947578DDE4216D2
             E25870C3D3EC6DCE143AE65048202927EE80248A643C2C9AE16E9796F8DA665F
             71D5F22E5DBABE52D3DAB2BFA8A0A4B147F71E0D96D61E7176CE75B88CBC64B9
-            DB9D2CF078CC83E5E5F1D3F5DFFBFE9F9EEC11B11C5F7DF5D1DFFFEB01679E96
+            DB9D2CF078CC83E5E5F1D3F5DFFBFE9F9EEC11B11C5F7DF5D1DFFDEB01678196
             88C7859F2DD8EF0359773DBB66ED9DAC7C402638611D390091968CE3793C2EA7
             F0C235ACADAA14B168500C1F30F0F04D37DDFCE098C9631E99DEABD73BC6B6F6
             D54F81CFDC779F5F441DD7D7B586BEBCBDA672586B55B5D39B932703D1307C05
@@ -686,7 +686,7 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
             2828282828282828282828282828282828282828282828282828282828282828
             2828282828282828282828282828282828282828282828282828282828282828
             2828282828282828282828282828282828282828282828282828282828282828
-            28282828282828282828282828282828287C4C20C4FF07F278DAB51B8990D900
+            28282828282828282828282828282828287C4C20C4FF07F270DAB56E12D48900
             00000049454E44AE426082}
         end>
     end
@@ -2332,6 +2332,7 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
           Size.Width = 146.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
+          OnKeyUp = SearchBarEditKeyUp
           OnClick = SearchBarEditClick
           OnExit = SearchBarEditExit
         end
@@ -2361,8 +2362,8 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
         TabOrder = 2
         Options = [AlternatingRowBackground, ColLines, RowLines, RowSelect, Tabs, Header, AutoDisplacement]
         OnDrawColumnHeader = AdministratorAccountsStringGridDrawColumnHeader
-        Viewport.Width = 1085.000000000000000000
-        Viewport.Height = 748.000000000000000000
+        Viewport.Width = 1105.000000000000000000
+        Viewport.Height = 773.000000000000000000
         object AdministratorUserID: TStringColumn
           Padding.Left = 6.000000000000000000
         end
@@ -2403,8 +2404,8 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
         Visible = False
         Options = [AlternatingRowBackground, ColLines, RowLines, RowSelect, Tabs, Header, AutoDisplacement]
         OnDrawColumnHeader = AdministratorAccountsStringGridDrawColumnHeader
-        Viewport.Width = 1085.000000000000000000
-        Viewport.Height = 748.000000000000000000
+        Viewport.Width = 1105.000000000000000000
+        Viewport.Height = 773.000000000000000000
         object InstructorID: TStringColumn
           Padding.Left = 6.000000000000000000
         end
@@ -2445,8 +2446,8 @@ inherited AdministratorUserAccountsForm: TAdministratorUserAccountsForm
         Visible = False
         Options = [AlternatingRowBackground, ColLines, RowLines, RowSelect, Tabs, Header, AutoDisplacement]
         OnDrawColumnHeader = AdministratorAccountsStringGridDrawColumnHeader
-        Viewport.Width = 1085.000000000000000000
-        Viewport.Height = 748.000000000000000000
+        Viewport.Width = 1105.000000000000000000
+        Viewport.Height = 773.000000000000000000
         object StringColumn1: TStringColumn
           Padding.Left = 6.000000000000000000
         end

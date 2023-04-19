@@ -14,3 +14,7 @@ string Administrator::GetJobTitle() {
      User::SaveUser(out);
      out << "," << GetJobTitle();
  }
+
+ bool Administrator::HasAttributeSubstring(const std::string& searchText) const {
+	return User::HasAttributeSubstring(searchText) || (JobTitle.find(searchText) != std::string::npos);
+}

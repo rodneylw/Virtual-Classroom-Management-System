@@ -252,3 +252,14 @@ void School::LogoutUser() {
 	}
 }
 
+std::vector<User*> School::FilterUsersBySearchText(const std::vector<std::unique_ptr<User>>& users, const std::string& searchText) {
+	std::vector<User*> filteredUsers;
+
+	for (const auto& user : users) {
+		if (user->HasAttributeSubstring(searchText)) {
+			filteredUsers.push_back(user.get());
+		}
+	}
+
+	return filteredUsers;
+}

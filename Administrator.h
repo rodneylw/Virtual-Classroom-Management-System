@@ -27,6 +27,8 @@
 		 string GetJobTitle();
 
 		 void SaveUser(std::ostream& out);
+         bool HasAttributeSubstring(const std::string& searchText) const override;
+
 	};
 
 
