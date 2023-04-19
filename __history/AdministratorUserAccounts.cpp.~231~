@@ -83,7 +83,7 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths(TStringGrid *
     std::vector<int> maxWidths(AccountsStringGrid->ColumnCount, 0);
 
     // Iterate over all cells in the TStringGrid
-    for (int i = 0; i < AccountsStringGrid->RowCount; ++i)
+	for (int i = 0; i < AccountsStringGrid->RowCount; ++i)
     {
         for (int j = 0; j < AccountsStringGrid->ColumnCount; ++j)
         {
@@ -106,37 +106,44 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths(TStringGrid *
     }
 
     // Set the total available width, subtracting a constant value to account for any padding, margins, or scrollbars
-    int totalAvailableWidth = AccountsStringGrid->Width - 11; // Adjust this value as needed
+	int totalAvailableWidth = AccountsStringGrid->Width - 11; // Adjust this value as needed
 
-    // Calculate the total required width for all columns based on the maxWidths
-    int totalRequiredWidth = 0;
-    for (int maxWidth : maxWidths)
-    {
-        totalRequiredWidth += maxWidth;
-    }
+	if(AccountsStringGrid->RowCount >= 28)
+		totalAvailableWidth -= 14;
 
-    // Calculate the remaining width that needs to be distributed among the columns
-    int remainingWidth = totalAvailableWidth - totalRequiredWidth;
 
-    // Adjust the width of each column based on the calculated maximum width and distribute the remaining width evenly
-    int extraWidthPerColumn = remainingWidth / AccountsStringGrid->ColumnCount;
-    int remainingExtraWidth = remainingWidth % AccountsStringGrid->ColumnCount;
+	// Calculate the total required width for all columns based on the maxWidths
+	int totalRequiredWidth = 0;
+	for (int maxWidth : maxWidths)
+	{
+		totalRequiredWidth += maxWidth;
+	}
 
-    for (int j = 0; j < AccountsStringGrid->ColumnCount; ++j)
-    {
-        AccountsStringGrid->Columns[j]->Width = maxWidths[j] + extraWidthPerColumn;
+	// Calculate the remaining width that needs to be distributed among the columns
+	int remainingWidth = totalAvailableWidth - totalRequiredWidth;
 
-        // Distribute the remaining extra width among the first few columns
-        if (remainingExtraWidth > 0)
-        {
-            AccountsStringGrid->Columns[j]->Width += 1;
-            remainingExtraWidth -= 1;
-        }
-    }
+	// Adjust the width of each column based on the calculated maximum width and distribute the remaining width evenly
+	int extraWidthPerColumn = remainingWidth / AccountsStringGrid->ColumnCount;
+	int remainingExtraWidth = remainingWidth % AccountsStringGrid->ColumnCount;
+
+	for (int j = 0; j < AccountsStringGrid->ColumnCount; ++j)
+	{
+		AccountsStringGrid->Columns[j]->Width = maxWidths[j] + extraWidthPerColumn;
+
+		// Distribute the remaining extra width among the first few columns
+		if (remainingExtraWidth > 0)
+		{
+			AccountsStringGrid->Columns[j]->Width += 1;
+			remainingExtraWidth -= 1;
+		}
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::PopulateGridWithAdministrators(const std::vector<std::unique_ptr<User>>& administrators)
 {
+	// Clear Previous Grid Info
+	ClearGridCells(AdministratorAccountsStringGrid);
+
 	// Set the row count based on the number of administrators
 	AdministratorAccountsStringGrid->RowCount = administrators.size();
 
@@ -168,10 +175,51 @@ void __fastcall TAdministratorUserAccountsForm::PopulateGridWithAdministrators(c
 			AdministratorAccountsStringGrid->Cells[7][i] = admin_ptr->GetIsBlocked() ? "Blocked" : "Not Blocked";
 		}
 	}
+}   //---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::PopulateGridWithFilteredAdministrators(std::vector<User*>& administrators)
+{
+	// Clear Previous Grid Info
+	ClearGridCells(AdministratorAccountsStringGrid);
+
+	// Set the row count based on the number of administrators
+	AdministratorAccountsStringGrid->RowCount = administrators.size();
+
+	// Add headers for the columns
+	AdministratorAccountsStringGrid->Columns[0]->Header = "User ID";
+	AdministratorAccountsStringGrid->Columns[1]->Header = "Job Title";
+	AdministratorAccountsStringGrid->Columns[2]->Header = "First Name";
+	AdministratorAccountsStringGrid->Columns[3]->Header = "Last Name";
+	AdministratorAccountsStringGrid->Columns[4]->Header = "Gender";
+	AdministratorAccountsStringGrid->Columns[5]->Header = "Date of Birth";
+	AdministratorAccountsStringGrid->Columns[6]->Header = "Phone Number";
+	AdministratorAccountsStringGrid->Columns[7]->Header = "Blocked?";
+
+	// Populate StrinGrid
+	for (int i=0; i < administrators.size(); i++)
+	{
+		User* admin = administrators[i];
+		Administrator* admin_ptr = dynamic_cast<Administrator*>(admin);
+
+		if (admin_ptr)
+		{
+			AdministratorAccountsStringGrid->Cells[0][i] = admin_ptr->GetUserID().c_str();
+			AdministratorAccountsStringGrid->Cells[1][i] = admin_ptr->GetJobTitle().c_str();
+			AdministratorAccountsStringGrid->Cells[2][i] = admin_ptr->GetFirstName().c_str();
+			AdministratorAccountsStringGrid->Cells[3][i] = admin_ptr->GetLastName().c_str();
+			AdministratorAccountsStringGrid->Cells[4][i] = admin_ptr->GetGender().c_str();
+			AdministratorAccountsStringGrid->Cells[5][i] = admin_ptr->GetDateOfBirth().c_str();
+			AdministratorAccountsStringGrid->Cells[6][i] = admin_ptr->GetPhoneNumber().c_str();
+			AdministratorAccountsStringGrid->Cells[7][i] = admin_ptr->GetIsBlocked() ? "Blocked" : "Not Blocked";
+		}
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::PopulateGridWithInstructors(const std::vector<std::unique_ptr<User>>& instructors)
 {
+	// Clear Previous Grid Info
+	ClearGridCells(InstructorAccountsStringGrid);
+
 	// Set the row count based on the number of administrators
 	InstructorAccountsStringGrid->RowCount = instructors.size();
 
@@ -205,8 +253,49 @@ void __fastcall TAdministratorUserAccountsForm::PopulateGridWithInstructors(cons
 	}
 }
 //---------------------------------------------------------------------------
+void __fastcall TAdministratorUserAccountsForm::PopulateGridWithFilteredInstructors(std::vector<User*>& instructors)
+{
+	// Clear Previous Grid Info
+	ClearGridCells(InstructorAccountsStringGrid);
+
+	// Set the row count based on the number of administrators
+	InstructorAccountsStringGrid->RowCount = instructors.size();
+
+	// Add headers for the columns
+	InstructorAccountsStringGrid->Columns[0]->Header = "User ID";
+	InstructorAccountsStringGrid->Columns[1]->Header = "Department";
+	InstructorAccountsStringGrid->Columns[2]->Header = "First Name";
+	InstructorAccountsStringGrid->Columns[3]->Header = "Last Name";
+	InstructorAccountsStringGrid->Columns[4]->Header = "Gender";
+	InstructorAccountsStringGrid->Columns[5]->Header = "Date of Birth";
+	InstructorAccountsStringGrid->Columns[6]->Header = "Phone Number";
+	InstructorAccountsStringGrid->Columns[7]->Header = "Blocked?";
+
+	// Populate StrinGrid
+	for (int i=0; i < instructors.size(); i++)
+	{
+		User* instructor = instructors[i];
+		Instructor* instructor_ptr = dynamic_cast<Instructor*>(instructor);
+
+		if (instructor_ptr)
+		{
+			InstructorAccountsStringGrid->Cells[0][i] = instructor_ptr->GetUserID().c_str();
+			InstructorAccountsStringGrid->Cells[1][i] = instructor_ptr->GetDepartment().c_str();
+			InstructorAccountsStringGrid->Cells[2][i] = instructor_ptr->GetFirstName().c_str();
+			InstructorAccountsStringGrid->Cells[3][i] = instructor_ptr->GetLastName().c_str();
+			InstructorAccountsStringGrid->Cells[4][i] = instructor_ptr->GetGender().c_str();
+			InstructorAccountsStringGrid->Cells[5][i] = instructor_ptr->GetDateOfBirth().c_str();
+			InstructorAccountsStringGrid->Cells[6][i] = instructor_ptr->GetPhoneNumber().c_str();
+			InstructorAccountsStringGrid->Cells[7][i] = instructor_ptr->GetIsBlocked() ? "Blocked" : "Not Blocked";
+		}
+	}
+}
+//---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::PopulateGridWithStudents(const std::vector<std::unique_ptr<User>>& students)
 {
+	// Clear Previous Grid Info
+	ClearGridCells(StudentAccountsStringGrid);
+
 	// Set the row count based on the number of administrators
 	StudentAccountsStringGrid->RowCount = students.size();
 
@@ -224,6 +313,44 @@ void __fastcall TAdministratorUserAccountsForm::PopulateGridWithStudents(const s
 	for (int i=0; i < students.size(); i++)
 	{
 		User* student = students[i].get();
+		Student* student_ptr = dynamic_cast<Student*>(student);
+
+		if (student_ptr)
+		{
+			StudentAccountsStringGrid->Cells[0][i] = student_ptr->GetUserID().c_str();
+			StudentAccountsStringGrid->Cells[1][i] = FloatToString(student_ptr->GetGPA()).c_str();
+			StudentAccountsStringGrid->Cells[2][i] = student_ptr->GetFirstName().c_str();
+			StudentAccountsStringGrid->Cells[3][i] = student_ptr->GetLastName().c_str();
+			StudentAccountsStringGrid->Cells[4][i] = student_ptr->GetGender().c_str();
+			StudentAccountsStringGrid->Cells[5][i] = student_ptr->GetDateOfBirth().c_str();
+			StudentAccountsStringGrid->Cells[6][i] = student_ptr->GetPhoneNumber().c_str();
+			StudentAccountsStringGrid->Cells[7][i] = student_ptr->GetIsBlocked() ? "Blocked" : "Not Blocked";
+		}
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TAdministratorUserAccountsForm::PopulateGridWithFilteredStudents(std::vector<User*>& students)
+{
+	// Clear Previous Grid Info
+	ClearGridCells(StudentAccountsStringGrid);
+
+	// Set the row count based on the number of administrators
+	StudentAccountsStringGrid->RowCount = students.size();
+
+	// Add headers for the columns
+	StudentAccountsStringGrid->Columns[0]->Header = "User ID";
+	StudentAccountsStringGrid->Columns[1]->Header = "GPA";
+	StudentAccountsStringGrid->Columns[2]->Header = "First Name";
+	StudentAccountsStringGrid->Columns[3]->Header = "Last Name";
+	StudentAccountsStringGrid->Columns[4]->Header = "Gender";
+	StudentAccountsStringGrid->Columns[5]->Header = "Date of Birth";
+	StudentAccountsStringGrid->Columns[6]->Header = "Phone Number";
+	StudentAccountsStringGrid->Columns[7]->Header = "Blocked?";
+
+	// Populate StrinGrid
+	for (int i=0; i < students.size(); i++)
+	{
+		User* student = students[i];
 		Student* student_ptr = dynamic_cast<Student*>(student);
 
 		if (student_ptr)
@@ -271,7 +398,29 @@ void __fastcall TAdministratorUserAccountsForm::FormCreate(TObject *Sender)
 	AdjustColumnWidths(AdministratorAccountsStringGrid);
 }
 //---------------------------------------------------------------------------
+void __fastcall TAdministratorUserAccountsForm::ClearGridCells(Fmx::Grid::TStringGrid* stringGrid)
+{
+	if (stringGrid == nullptr)
+		return;
 
+    // Temporarily disable visual updates
+    stringGrid->BeginUpdate();
+
+    // Iterate through all cells in the TStringGrid
+    for (int row = 0; row < stringGrid->RowCount; ++row)
+    {
+        for (int col = 0; col < stringGrid->ColumnCount; ++col)
+        {
+            // Remove the text from the current cell
+            stringGrid->Cells[col][row] = "";
+        }
+    }
+
+    // Re-enable visual updates and apply changes
+    stringGrid->EndUpdate();
+}
+
+//---------------------------------------------------------------------------
 void __fastcall TAdministratorUserAccountsForm::AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender,
 		  TCanvas * const Canvas, TColumn * const Column, const TRectF &Bounds)
 {
@@ -716,6 +865,7 @@ void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelect
 			for(auto &user : ActiveUserType) {
 				if(UserID == user->GetUserID()) {
 					School::GetInstance().RemoveUser(ActiveUserType, *user);
+                    break;
 				}
 			}
 		}
@@ -831,6 +981,55 @@ void __fastcall TAdministratorUserAccountsForm::SearchIconRectangleMouseLeave(TO
 
 {
 	SearchIconRectangle->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorUserAccountsForm::SearchBarEditKeyUp(TObject *Sender,
+		  WORD &Key, System::WideChar &KeyChar, TShiftState Shift)
+{
+	// Get the search text from the SearchBarEdit component
+	std::string searchText = AnsiString(SearchBarEdit->Text).c_str();
+
+	// Get the active string grid and the corresponding users
+	TStringGrid *ActiveGrid = GetActiveStringGrid();
+
+	std::vector<std::unique_ptr<User>>* ActiveUsers;
+	if (ActiveGrid == AdministratorAccountsStringGrid) {
+		ActiveUsers = &School::GetInstance().GetAdministrators();
+	} else if (ActiveGrid == InstructorAccountsStringGrid) {
+		ActiveUsers = &School::GetInstance().GetInstructors();
+	} else if (ActiveGrid == StudentAccountsStringGrid) {
+		ActiveUsers = &School::GetInstance().GetStudents();
+	} else {
+		return;
+	}
+
+	// If the search text is empty, reset the grid to show all users
+	if (searchText.empty()) {
+		if (ActiveGrid == AdministratorAccountsStringGrid) {
+			PopulateGridWithAdministrators(*ActiveUsers);
+		} else if (ActiveGrid == InstructorAccountsStringGrid) {
+			PopulateGridWithInstructors(*ActiveUsers);
+		} else if (ActiveGrid == StudentAccountsStringGrid) {
+			PopulateGridWithStudents(*ActiveUsers);
+		}
+	} else {
+		// Filter the users based on the search text
+		auto filteredUsers = School::GetInstance().FilterUsersBySearchText(*ActiveUsers, searchText);
+
+		// Display the filtered users on the active grid
+		if (ActiveGrid == AdministratorAccountsStringGrid) {
+			PopulateGridWithFilteredAdministrators(filteredUsers);
+		} else if (ActiveGrid == InstructorAccountsStringGrid) {
+			PopulateGridWithFilteredInstructors(filteredUsers);
+		} else if (ActiveGrid == StudentAccountsStringGrid) {
+			PopulateGridWithFilteredStudents(filteredUsers);
+		}
+	}
+
+	// Adjust the column widths and repaint the active grid
+	AdjustColumnWidths(ActiveGrid);
+	ActiveGrid->Repaint();
 }
 //---------------------------------------------------------------------------
 

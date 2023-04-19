@@ -83,7 +83,7 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths(TStringGrid *
     std::vector<int> maxWidths(AccountsStringGrid->ColumnCount, 0);
 
     // Iterate over all cells in the TStringGrid
-    for (int i = 0; i < AccountsStringGrid->RowCount; ++i)
+	for (int i = 0; i < AccountsStringGrid->RowCount; ++i)
     {
         for (int j = 0; j < AccountsStringGrid->ColumnCount; ++j)
         {
@@ -106,32 +106,37 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths(TStringGrid *
     }
 
     // Set the total available width, subtracting a constant value to account for any padding, margins, or scrollbars
-    int totalAvailableWidth = AccountsStringGrid->Width - 11; // Adjust this value as needed
+	int totalAvailableWidth = AccountsStringGrid->Width - 10; // Adjust this value as needed
 
-    // Calculate the total required width for all columns based on the maxWidths
-    int totalRequiredWidth = 0;
-    for (int maxWidth : maxWidths)
-    {
-        totalRequiredWidth += maxWidth;
-    }
+	//if vert scroll bar visible
+	if(AccountsStringGrid->RowCount >= 28)
+		totalAvailableWidth -= 14;
+
+
+	// Calculate the total required width for all columns based on the maxWidths
+	int totalRequiredWidth = 0;
+	for (int maxWidth : maxWidths)
+	{
+		totalRequiredWidth += maxWidth;
+	}
 
 	// Calculate the remaining width that needs to be distributed among the columns
 	int remainingWidth = totalAvailableWidth - totalRequiredWidth;
 
 	// Adjust the width of each column based on the calculated maximum width and distribute the remaining width evenly
 	int extraWidthPerColumn = remainingWidth / AccountsStringGrid->ColumnCount;
-	int remainingExtraWidth = remainingWidth % AccountsStringGrid->ColumnCount;
+    // int remainingExtraWidth = remainingWidth % AccountsStringGrid->ColumnCount;
 
 	for (int j = 0; j < AccountsStringGrid->ColumnCount; ++j)
 	{
 		AccountsStringGrid->Columns[j]->Width = maxWidths[j] + extraWidthPerColumn;
 
-		// Distribute the remaining extra width among the first few columns
+		/* Distribute the remaining extra width among the first few columns
 		if (remainingExtraWidth > 0)
 		{
 			AccountsStringGrid->Columns[j]->Width += 1;
 			remainingExtraWidth -= 1;
-		}
+		}  */
 	}
 }
 //---------------------------------------------------------------------------
@@ -153,7 +158,7 @@ void __fastcall TAdministratorUserAccountsForm::PopulateGridWithAdministrators(c
 	AdministratorAccountsStringGrid->Columns[6]->Header = "Phone Number";
 	AdministratorAccountsStringGrid->Columns[7]->Header = "Blocked?";
 
-	// Populate StrinGrid
+	// Populate StringGrid
 	for (int i=0; i < administrators.size(); i++)
 	{
 		User* admin = administrators[i].get();
@@ -171,7 +176,8 @@ void __fastcall TAdministratorUserAccountsForm::PopulateGridWithAdministrators(c
 			AdministratorAccountsStringGrid->Cells[7][i] = admin_ptr->GetIsBlocked() ? "Blocked" : "Not Blocked";
 		}
 	}
-}   //---------------------------------------------------------------------------
+}
+//---------------------------------------------------------------------------
 
 void __fastcall TAdministratorUserAccountsForm::PopulateGridWithFilteredAdministrators(std::vector<User*>& administrators)
 {
@@ -861,6 +867,7 @@ void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelect
 			for(auto &user : ActiveUserType) {
 				if(UserID == user->GetUserID()) {
 					School::GetInstance().RemoveUser(ActiveUserType, *user);
+                    break;
 				}
 			}
 		}
@@ -870,7 +877,7 @@ void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelect
     }
 
 	if (ActiveGrid == AdministratorAccountsStringGrid) {
-		PopulateGridWithInstructors(School::GetInstance().GetAdministrators());
+		PopulateGridWithAdministrators(School::GetInstance().GetAdministrators());
 		AdjustColumnWidths(AdministratorAccountsStringGrid);
 	}
 	else if (ActiveGrid == InstructorAccountsStringGrid) {
