@@ -88,4 +88,17 @@ bool IsOnlyWhitespace(const std::string& str) {
 	return true;
 }
 
+std::string GenerateRandomID(int length) {
+	static const std::string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	static std::random_device rd;
+    static std::mt19937 gen(rd());
+    static std::uniform_int_distribution<> dist(0, characters.size() - 1);
+
+    std::string randomID(length, '\0');
+    for (int i = 0; i < length; ++i) {
+        randomID[i] = characters[dist(gen)];
+    }
+    return randomID;
+}
+
 

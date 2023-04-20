@@ -7,7 +7,7 @@
 #include <memory>
 #include "User.h"
 #include "Administrator.h"
-//#include "Course.h"
+#include "Course.h"
 
 using std::string;
 //---------------------------------------------------------------------------
@@ -19,7 +19,7 @@ private:
 	 std::vector<std::shared_ptr<User>> Administrators;
 	 std::vector<std::shared_ptr<User>> Instructors;
 	 std::vector<std::shared_ptr<User>> Students;
-	 //std::vector<std::shared_ptr<Course>> Courses;
+	 std::vector<std::shared_ptr<Course>> Courses;
      static School* Instance;
 
 	 School(string name) {
@@ -40,6 +40,9 @@ public:
 
 	 void AddStudent(std::shared_ptr<User> student);
 	 std::vector<std::shared_ptr<User>>& GetStudents();
+
+	 void AddCourse(std::shared_ptr<Course> course);
+	 std::vector<std::shared_ptr<Course>> GetCourses();
 
      void SaveUsers();
      void LoadUsers();

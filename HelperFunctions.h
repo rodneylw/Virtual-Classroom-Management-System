@@ -20,4 +20,6 @@ std::string FloatToString(float floatValue);
 
 bool IsOnlyWhitespace(const std::string& str);
 
+std::string GenerateRandomID(int length);
+
 #endif

@@ -9,6 +9,7 @@
 #include "Administrator.h"
 #include "Instructor.h"
 #include "Student.h"
+#include "Course.h"
 #include "HelperFunctions.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -73,6 +74,14 @@ void School::AddStudent(std::shared_ptr<User> student) {
 
 std::vector<std::shared_ptr<User>>& School::GetStudents() {
 		return Students;
+}
+
+void School::AddCourse(std::shared_ptr<Course> course) {
+	Courses.push_back(std::move(course));
+}
+
+std::vector<std::shared_ptr<Course>> School::GetCourses() {
+	return Courses;
 }
 
 void School::SaveUsers() {
