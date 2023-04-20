@@ -24,7 +24,7 @@ School& School::GetInstance() {
 	return *Instance;
 }
 
-void School::RemoveUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToRemove) {
+void School::RemoveUser(std::vector<std::shared_ptr<User>>& userVector,  User& userToRemove) {
 	for (auto it = userVector.begin(); it != userVector.end(); ++it) {
 		if((*it)->GetUserID() == userToRemove.GetUserID()) {
 			userVector.erase(it);
@@ -33,7 +33,7 @@ void School::RemoveUser(std::vector<std::unique_ptr<User>>& userVector,  User& u
 	}
 }
 
-void School::BlockUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToBlock) {
+void School::BlockUser(std::vector<std::shared_ptr<User>>& userVector,  User& userToBlock) {
 	for (auto it = userVector.begin(); it != userVector.end(); ++it) {
 		if((*it)->GetUserID() == userToBlock.GetUserID()) {
 			(*it)->BlockUser();
@@ -42,7 +42,7 @@ void School::BlockUser(std::vector<std::unique_ptr<User>>& userVector,  User& us
 	}
 }
 
-void School::UnblockUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToBlock) {
+void School::UnblockUser(std::vector<std::shared_ptr<User>>& userVector,  User& userToBlock) {
 	for (auto it = userVector.begin(); it != userVector.end(); ++it) {
 		if((*it)->GetUserID() == userToBlock.GetUserID()) {
 			(*it)->UnblockUser();
@@ -51,27 +51,27 @@ void School::UnblockUser(std::vector<std::unique_ptr<User>>& userVector,  User& 
 	}
 }
 
-void School::AddAdministrator(std::unique_ptr<User> admin) {
+void School::AddAdministrator(std::shared_ptr<User> admin) {
 	Administrators.push_back(std::move(admin));
 }
 
-std::vector<std::unique_ptr<User>>& School::GetAdministrators() {
+std::vector<std::shared_ptr<User>>& School::GetAdministrators() {
 		return Administrators;
 }
 
-void School::AddInstructor(std::unique_ptr<User> instructor) {
+void School::AddInstructor(std::shared_ptr<User> instructor) {
 	Instructors.push_back(std::move(instructor));
 }
 
-std::vector<std::unique_ptr<User>>& School::GetInstructors() {
+std::vector<std::shared_ptr<User>>& School::GetInstructors() {
 		return Instructors;
 }
 
-void School::AddStudent(std::unique_ptr<User> student) {
+void School::AddStudent(std::shared_ptr<User> student) {
 	Students.push_back(std::move(student));
 }
 
-std::vector<std::unique_ptr<User>>& School::GetStudents() {
+std::vector<std::shared_ptr<User>>& School::GetStudents() {
 		return Students;
 }
 
@@ -136,7 +136,7 @@ void School::LoadUsers() {
 			   std::string IsBlockedString = ParsedLine[11];
 			   std::string JobTitle = ParsedLine[12];
 
-			   std::unique_ptr<User> obj = std::make_unique<Administrator>(UserID, Email, Password,
+			   std::shared_ptr<User> obj = std::make_shared<Administrator>(UserID, Email, Password,
 			   FirstName, LastName, Gender, DateOfBirth, PhoneNumber, Address, SecurityQuestion,
 			   SecurityAnswer, StringToBool(IsBlockedString), JobTitle);
 
@@ -168,7 +168,7 @@ void School::LoadUsers() {
 		   std::string IsBlockedString = ParsedLine[11];
 		   std::string Department = ParsedLine[12];
 
-           std::unique_ptr<User> obj = std::make_unique<Instructor>(UserID, Email, Password,
+           std::shared_ptr<User> obj = std::make_shared<Instructor>(UserID, Email, Password,
            FirstName, LastName, Gender, DateOfBirth, PhoneNumber, Address, SecurityQuestion,
            SecurityAnswer, StringToBool(IsBlockedString), Department);
 
@@ -200,7 +200,7 @@ void School::LoadUsers() {
 		   std::string IsBlockedString = ParsedLine[11];
 		   std::string GPAString = ParsedLine[12];
 
-		   std::unique_ptr<User> obj = std::make_unique<Student>(UserID, Email, Password,
+		   std::shared_ptr<User> obj = std::make_shared<Student>(UserID, Email, Password,
            FirstName, LastName, Gender, DateOfBirth, PhoneNumber, Address, SecurityQuestion,
 		   SecurityAnswer, StringToBool(IsBlockedString), StringToFloat(GPAString));
 
@@ -252,7 +252,7 @@ void School::LogoutUser() {
 	}
 }
 
-std::vector<User*> School::FilterUsersBySearchText(const std::vector<std::unique_ptr<User>>& users, const std::string& searchText) {
+std::vector<User*> School::FilterUsersBySearchText(const std::vector<std::shared_ptr<User>>& users, const std::string& searchText) {
 	std::vector<User*> filteredUsers;
 
 	for (const auto& user : users) {

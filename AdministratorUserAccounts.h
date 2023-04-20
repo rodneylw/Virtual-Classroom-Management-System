@@ -153,16 +153,16 @@ private:	// User declarations
 public:		// User declarations
 	__fastcall TAdministratorUserAccountsForm(TComponent* Owner);
     void __fastcall ClearCreateEdits();
-	void __fastcall PopulateGridWithAdministrators(const std::vector<std::unique_ptr<User>>& administrators);
+	void __fastcall PopulateGridWithAdministrators(const std::vector<std::shared_ptr<User>>& administrators);
     void __fastcall PopulateGridWithFilteredAdministrators(std::vector<User*>& administrators);
-	void __fastcall PopulateGridWithInstructors(const std::vector<std::unique_ptr<User>>& instructors);
+	void __fastcall PopulateGridWithInstructors(const std::vector<std::shared_ptr<User>>& instructors);
 	void __fastcall PopulateGridWithFilteredInstructors(std::vector<User*>& instructors);
-	void __fastcall PopulateGridWithStudents(const std::vector<std::unique_ptr<User>>& students);
+	void __fastcall PopulateGridWithStudents(const std::vector<std::shared_ptr<User>>& students);
 	void __fastcall PopulateGridWithFilteredStudents(std::vector<User*>& students);
 	void __fastcall ClearGridCells(Fmx::Grid::TStringGrid* stringGrid);
 	void __fastcall AdjustColumnWidths(TStringGrid *AccountsStringGrid);
 	std::string __fastcall GetSelectedID(TStringGrid *StringGrid);
-	std::vector<std::unique_ptr<User>>& __fastcall GetActiveUserVector();
+	std::vector<std::shared_ptr<User>>& __fastcall GetActiveUserVector();
 	TStringGrid* __fastcall GetActiveStringGrid();
 };
 //---------------------------------------------------------------------------

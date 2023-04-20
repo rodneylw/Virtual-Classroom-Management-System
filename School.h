@@ -16,10 +16,10 @@ private:
 	 string LoggedInUserID;
 	 string LoggedInUserName;
 	 string SchoolName;
-	 std::vector<std::unique_ptr<User>> Administrators;
-	 std::vector<std::unique_ptr<User>> Instructors;
-     std::vector<std::unique_ptr<User>> Students;
-     //std::vector<std::unique_ptr<Course>> Courses;
+	 std::vector<std::shared_ptr<User>> Administrators;
+	 std::vector<std::shared_ptr<User>> Instructors;
+	 std::vector<std::shared_ptr<User>> Students;
+	 //std::vector<std::shared_ptr<Course>> Courses;
      static School* Instance;
 
 	 School(string name) {
@@ -28,18 +28,18 @@ private:
 public:
 	 static School& GetInstance();
 
-	 void RemoveUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToRemove);
-	 void BlockUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToBlock);
-	 void UnblockUser(std::vector<std::unique_ptr<User>>& userVector,  User& userToBlock);
+	 void RemoveUser(std::vector<std::shared_ptr<User>>& userVector,  User& userToRemove);
+	 void BlockUser(std::vector<std::shared_ptr<User>>& userVector,  User& userToBlock);
+	 void UnblockUser(std::vector<std::shared_ptr<User>>& userVector,  User& userToBlock);
 
-     void AddAdministrator(std::unique_ptr<User> admin);
-	 std::vector<std::unique_ptr<User>>& GetAdministrators();
+	 void AddAdministrator(std::shared_ptr<User> admin);
+	 std::vector<std::shared_ptr<User>>& GetAdministrators();
 
-	 void AddInstructor(std::unique_ptr<User> instructor);
-	 std::vector<std::unique_ptr<User>>& GetInstructors();
+	 void AddInstructor(std::shared_ptr<User> instructor);
+	 std::vector<std::shared_ptr<User>>& GetInstructors();
 
-	 void AddStudent(std::unique_ptr<User> student);
-	 std::vector<std::unique_ptr<User>>& GetStudents();
+	 void AddStudent(std::shared_ptr<User> student);
+	 std::vector<std::shared_ptr<User>>& GetStudents();
 
      void SaveUsers();
      void LoadUsers();
@@ -51,7 +51,7 @@ public:
      string GetLoggedInUserName();
 	 void LoginUser(string userID, string userName);
 	 void LogoutUser();
-	 std::vector<User*> FilterUsersBySearchText(const std::vector<std::unique_ptr<User>>& users, const std::string& searchText);
+	 std::vector<User*> FilterUsersBySearchText(const std::vector<std::shared_ptr<User>>& users, const std::string& searchText);
 };
 
 

@@ -49,7 +49,7 @@ std::string __fastcall TAdministratorUserAccountsForm::GetSelectedID(TStringGrid
 	 }
 }
 //---------------------------------------------------------------------------
-std::vector<std::unique_ptr<User>>& __fastcall TAdministratorUserAccountsForm::GetActiveUserVector() {
+std::vector<std::shared_ptr<User>>& __fastcall TAdministratorUserAccountsForm::GetActiveUserVector() {
 	if(AdministratorAccountsStringGrid->Visible == true){
 		return School::GetInstance().GetAdministrators();
 	}
@@ -140,7 +140,7 @@ void __fastcall TAdministratorUserAccountsForm::AdjustColumnWidths(TStringGrid *
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TAdministratorUserAccountsForm::PopulateGridWithAdministrators(const std::vector<std::unique_ptr<User>>& administrators)
+void __fastcall TAdministratorUserAccountsForm::PopulateGridWithAdministrators(const std::vector<std::shared_ptr<User>>& administrators)
 {
 	// Clear Previous Grid Info
 	ClearGridCells(AdministratorAccountsStringGrid);
@@ -217,7 +217,7 @@ void __fastcall TAdministratorUserAccountsForm::PopulateGridWithFilteredAdminist
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TAdministratorUserAccountsForm::PopulateGridWithInstructors(const std::vector<std::unique_ptr<User>>& instructors)
+void __fastcall TAdministratorUserAccountsForm::PopulateGridWithInstructors(const std::vector<std::shared_ptr<User>>& instructors)
 {
 	// Clear Previous Grid Info
 	ClearGridCells(InstructorAccountsStringGrid);
@@ -293,7 +293,7 @@ void __fastcall TAdministratorUserAccountsForm::PopulateGridWithFilteredInstruct
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TAdministratorUserAccountsForm::PopulateGridWithStudents(const std::vector<std::unique_ptr<User>>& students)
+void __fastcall TAdministratorUserAccountsForm::PopulateGridWithStudents(const std::vector<std::shared_ptr<User>>& students)
 {
 	// Clear Previous Grid Info
 	ClearGridCells(StudentAccountsStringGrid);
@@ -515,7 +515,7 @@ void __fastcall TAdministratorUserAccountsForm::CreateAdministratorButtonClick(T
 		return;
 
 
-	 std::unique_ptr<User> obj = std::make_unique<Administrator>(Email, Password, FirstName,
+	 std::shared_ptr<User> obj = std::make_shared<Administrator>(Email, Password, FirstName,
 	 LastName, Gender, Birthdate, PhoneNumber, Address, SecurityQuestion, SecurityAnswer, JobTitle);
 
 	 School::GetInstance().AddAdministrator(std::move(obj));
@@ -740,7 +740,7 @@ void __fastcall TAdministratorUserAccountsForm::CreateInstructorButtonClick(TObj
 		return;
 
 
-	 std::unique_ptr<User> obj = std::make_unique<Instructor>(Email, Password, FirstName,
+	 std::shared_ptr<User> obj = std::make_shared<Instructor>(Email, Password, FirstName,
 	 LastName, Gender, Birthdate, PhoneNumber, Address, SecurityQuestion, SecurityAnswer, Department);
 
 	 School::GetInstance().AddInstructor(std::move(obj));
@@ -807,7 +807,7 @@ void __fastcall TAdministratorUserAccountsForm::CreateStudentButtonClick(TObject
 		return;
 
 
-	 std::unique_ptr<User> obj = std::make_unique<Student>(Email, Password, FirstName,
+	 std::shared_ptr<User> obj = std::make_shared<Student>(Email, Password, FirstName,
 	 LastName, Gender, Birthdate, PhoneNumber, Address, SecurityQuestion, SecurityAnswer);
 
 	 School::GetInstance().AddStudent(std::move(obj));
@@ -853,7 +853,7 @@ void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelect
 void __fastcall TAdministratorUserAccountsForm::RemoveUserStringGridOptionSelectorClick(TObject *Sender)
 {
 	std::string UserID = GetSelectedID(GetActiveStringGrid());
-	std::vector<std::unique_ptr<User>>& ActiveUserType = GetActiveUserVector();
+	std::vector<std::shared_ptr<User>>& ActiveUserType = GetActiveUserVector();
 	TStringGrid *ActiveGrid = GetActiveStringGrid();
 
 	std::string Msg = "Are you sure you want to remove User " + UserID;
@@ -914,7 +914,7 @@ void __fastcall TAdministratorUserAccountsForm::BlockUserStringGridOptionSelecto
 void __fastcall TAdministratorUserAccountsForm::BlockUserStringGridOptionSelectorClick(TObject *Sender)
 {
 	std::string UserID = GetSelectedID(GetActiveStringGrid());
-	std::vector<std::unique_ptr<User>>& ActiveUserType = GetActiveUserVector();
+	std::vector<std::shared_ptr<User>>& ActiveUserType = GetActiveUserVector();
 	TStringGrid *ActiveGrid = GetActiveStringGrid();
 
 	if (!ActiveUserType.empty()) {
@@ -995,7 +995,7 @@ void __fastcall TAdministratorUserAccountsForm::SearchBarEditKeyUp(TObject *Send
 	// Get the active string grid and the corresponding users
 	TStringGrid *ActiveGrid = GetActiveStringGrid();
 
-	std::vector<std::unique_ptr<User>>* ActiveUsers;
+	std::vector<std::shared_ptr<User>>* ActiveUsers;
 	if (ActiveGrid == AdministratorAccountsStringGrid) {
 		ActiveUsers = &School::GetInstance().GetAdministrators();
 	} else if (ActiveGrid == InstructorAccountsStringGrid) {

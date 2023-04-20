@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "User.h"
+#include "School.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
@@ -15,15 +16,30 @@ int User::StudentCounter = 1000;
 std::string User::generateID(UserType userType) {
 	 std::string id;
 
-     switch (userType) {
-         case UserType::Administrator:
+	 switch (userType) {
+		 case UserType::Administrator:
 			 id = "ADM" + std::to_string(++AdminCounter);
-             break;
-         case UserType::Instructor:
+			 for (const auto& admin : School::GetInstance().GetAdministrators()) {
+				while (admin->GetUserID() == id) {
+					id = "ADM" + std::to_string(++AdminCounter);
+				}
+			 }
+			break;
+		 case UserType::Instructor:
 			 id = "INS" + std::to_string(++InstructorCounter);
+			 for (const auto& instructor : School::GetInstance().GetInstructors()) {
+				while (instructor->GetUserID() == id) {
+					id = "INS" + std::to_string(++InstructorCounter);
+				}
+			 }
              break;
          case UserType::Student:
-             id = "STU" + std::to_string(++StudentCounter);
+			 id = "STU" + std::to_string(++StudentCounter);
+			 for (const auto& student : School::GetInstance().GetStudents()) {
+				while (student->GetUserID() == id) {
+					id = "STU" + std::to_string(++StudentCounter);
+				}
+			 }
              break;
          default:
              id = "UNKNOWN";
