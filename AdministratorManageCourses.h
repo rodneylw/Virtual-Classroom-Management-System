@@ -91,8 +91,8 @@ __published:	// IDE-managed Components
 	TLabel *JobTitleLabel;
 	TStringColumn *CourseSemester;
 	TComboEdit *CourseInstructorDropDownEdit;
-	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall CourseInstructorDropDownEditExit(TObject *Sender);
 private:	// User declarations
     TStringList *InstructorNames;
 public:		// User declarations

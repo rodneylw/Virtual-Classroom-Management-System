@@ -18,28 +18,46 @@ TAdministratorManageCoursesForm *AdministratorManageCoursesForm;
 __fastcall TAdministratorManageCoursesForm::TAdministratorManageCoursesForm(TComponent* Owner)
 	: TAdministratorUIParentForm(Owner)
 {
-	InstructorNames = new TStringList;
+
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TAdministratorManageCoursesForm::FormClose(TObject *Sender, TCloseAction &Action)
-
-{
-	delete InstructorNames;
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TAdministratorManageCoursesForm::FormCreate(TObject *Sender)
 {
 	std::vector<std::shared_ptr<User>> Instructors = School::GetInstance().GetInstructors();
+	InstructorNames = new TStringList;
+
 
 	// Populate the TStringList with the instructor names
 	for (int i = 0; i < Instructors.size(); i++) {
 		InstructorNames->Add(Instructors[i]->GetFullName().c_str());
 	}
 
-    // Set the TStringList as the TComboBox's Items property
+	// Set the TStringList as the TComboBox's Items property
 	CourseInstructorDropDownEdit->Items->Assign(InstructorNames);
+
+	delete InstructorNames;
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall TAdministratorManageCoursesForm::CourseInstructorDropDownEditExit(TObject *Sender)
+
+{
+	bool Valid = false;
+	for(auto& Instructor : School::GetInstance().GetInstructors()) {
+		if(CourseInstructorDropDownEdit->Text == Instructor->GetFullName().c_str()) {
+			Valid = true;
+			break;
+		}
+	}
+	if(Valid == false) {
+		CourseInstructorDropDownEdit->Text = "";
+    }
 }
 //---------------------------------------------------------------------------
 
