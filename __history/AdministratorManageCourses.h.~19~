@@ -17,6 +17,7 @@
 #include <FMX.ScrollBox.hpp>
 #include <FMX.StdCtrls.hpp>
 #include <System.Rtti.hpp>
+#include <FMX.ComboEdit.hpp>
 //---------------------------------------------------------------------------
 class TAdministratorManageCoursesForm : public TAdministratorUIParentForm
 {
@@ -53,17 +54,16 @@ __published:	// IDE-managed Components
 	TLine *VerticleDivider;
 	TButton *CreateCourseButton;
 	TLayout *EmailLayout;
-	TEdit *EmailEdit;
-	TLabel *EmailLabel;
+	TLabel *InstructorLabel;
 	TLayout *FirstNameLayout;
-	TLabel *CourseNameEdit;
-	TEdit *FirstNameEdit;
+	TLabel *CourseNameLabel;
+	TEdit *CourseNameEdit;
 	TLayout *PasswordLayout;
 	TLabel *PasswordLabel;
 	TEdit *PasswordEdit;
 	TLayout *LastNameLayout;
-	TLabel *LastNameLabel;
-	TEdit *LastNameEdit;
+	TLabel *CourseDepartmentLabel;
+	TEdit *CourseDepartmentEdit;
 	TLayout *BirthdateLayout;
 	TLabel *BirthdateLabel;
 	TEdit *BirthdateEdit;
@@ -90,7 +90,11 @@ __published:	// IDE-managed Components
 	TEdit *JobTitleEdit;
 	TLabel *JobTitleLabel;
 	TStringColumn *CourseSemester;
+	TComboEdit *CourseInstructorDropDownEdit;
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall CourseInstructorDropDownEditExit(TObject *Sender);
 private:	// User declarations
+    TStringList *InstructorNames;
 public:		// User declarations
 	__fastcall TAdministratorManageCoursesForm(TComponent* Owner);
 };
