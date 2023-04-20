@@ -45,7 +45,10 @@ public:
 	 std::vector<std::shared_ptr<Course>> GetCourses();
 
      void SaveUsers();
-     void LoadUsers();
+	 void LoadUsers();
+
+	 void SaveCourses();
+     void LoadCourses();
 
 	School(const School&) = delete;
 	 School& operator=(const School&) = delete;

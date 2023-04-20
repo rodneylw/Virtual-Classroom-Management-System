@@ -7,7 +7,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-string Course::GenerateCourseID() {
+/*string Course::GenerateCourseID() {
 	std::string ID = GenerateRandomID(6);
 	std::vector<std::string> ExistingCourseIDs;
 
@@ -22,9 +22,9 @@ string Course::GenerateCourseID() {
 	}
 
 	return ID;
-}
+} */
 
-std::shared_ptr<Instructor> GetInstructor(std::string FullName) {
+std::shared_ptr<Instructor> Course::GetInstructor(std::string FullName) {
 	for(auto instructor : School::GetInstance().GetInstructors()) {
 		 if(FullName == instructor->GetFullName()) {
 			 return  std::dynamic_pointer_cast<Instructor>(instructor);
@@ -37,3 +37,35 @@ std::string Course::GetCourseID() {
     return CourseID;
 }
 
+string Course::GetCourseName() {
+	return CourseName;
+}
+
+string Course::GetCourseDepartment() {
+	return CourseDepartment;
+}
+
+string Course::GetCourseSemester() {
+	return CourseSemester;
+}
+
+bool Course::GetCourseEnabled() {
+	return CourseEnabled;
+}
+
+string Course::GetCourseInstructorString() {
+	std::string CourseInstructorFullName = CourseInstructor->GetFullName();
+	return CourseInstructorFullName;
+}
+
+string Course::GetCourseStartDate() {
+	return StartDate;
+}
+
+string Course::GetCourseEndDate() {
+    return EndDate;
+}
+
+void Course::SaveCourse(std::ostream& out) {
+  out << GetCourseID() << "," << GetCourseName() << "," << GetCourseDepartment(), GetCourseInstructorString(), GetCourseSemester(), GetCourseStartDate(), GetCourseEndDate(), GetCourseEnabled();
+}

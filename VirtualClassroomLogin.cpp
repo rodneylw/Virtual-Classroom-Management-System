@@ -24,6 +24,7 @@ __fastcall TLoginForm::TLoginForm(TComponent* Owner)
 	: TForm(Owner)
 {
 	  School::GetInstance().LoadUsers();
+	  School::GetInstance().LoadCourses();
 }
 //---------------------------------------------------------------------------
 
@@ -70,6 +71,7 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 void __fastcall TLoginForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	School::GetInstance().SaveUsers();
+    School::GetInstance().SaveCourses();
 
 	 for (int i = Screen->FormCount - 1; i >= 0; i--)
     {

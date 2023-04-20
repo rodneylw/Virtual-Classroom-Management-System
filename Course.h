@@ -30,26 +30,23 @@ private:
 	 string StartDate;
      string EndDate;
 public:
-	 Course(string courseID, string courseName, string courseDepartment, string courseInstructor, string courseSemester, string startDate, string endDate, string enabled)
+	 Course(string courseID, string courseName, string courseDepartment, string courseInstructor, string courseSemester, string startDate, string endDate, bool enabled)
 	  : CourseID(courseID), CourseName(courseName), CourseDepartment(courseDepartment), CourseSemester(courseSemester), StartDate(startDate), EndDate(endDate) {
-		 //Loading From File Constructor
-		 CourseInstructor = GetInstructor(courseInstructor);
-
-		 if(enabled == "1") {
-			 CourseEnabled = true;
-		 } else {
-             CourseEnabled = false;
-         }
-	 }
-	 Course(string courseName, string courseDepartment, string courseInstructor, string courseSemester, string startDate, string endDate, bool enabled) {
-		 //Newly Created Constructor
-		 CourseID = GenerateCourseID();
 		 CourseInstructor = GetInstructor(courseInstructor);
 	 }
 
-     string GetCourseID();
+	 string GetCourseID();
+	 string GetCourseName();
+	 string GetCourseDepartment();
+	 string GetCourseSemester();
+	 bool GetCourseEnabled();
+	 string GetCourseInstructorString();
+	 string GetCourseStartDate();
+	 string GetCourseEndDate();
 
-	 string GenerateCourseID();
+	 void SaveCourse(std::ostream& out);
+
+	 //string GenerateCourseID();
 	 std::shared_ptr<Instructor> GetInstructor(std::string FullName);
 };
 

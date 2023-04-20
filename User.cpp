@@ -98,7 +98,7 @@ std::string User::generateID(UserType userType) {
  };
 
  void User::SaveUser(std::ostream& out) {
-      out << GetUserID() << "," << GetEmail() << "," << GetPassword() << ","
+	  out << GetUserID() << "," << GetEmail() << "," << GetPassword() << ","
       << GetFirstName() << "," << GetLastName() << "," << GetGender() << "," << GetDateOfBirth() << ","
 	  << GetPhoneNumber() << "," << GetAddress() << "," << GetSecurityQuestion() << ","
 	  << GetSecurityAnswer() << "," << GetIsBlocked();
