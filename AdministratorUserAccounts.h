@@ -24,17 +24,7 @@
 class TAdministratorUserAccountsForm : public TAdministratorUIParentForm
 {
 __published:	// IDE-managed Components
-	TVertScrollBox *UserAccountsScrollBox;
-	TStringGrid *AdministratorAccountsStringGrid;
-	TStringColumn *AdministratorUserID;
-	TStringColumn *AdministratorJobTitle;
-	TStringColumn *AdministratorFirstName;
-	TStringColumn *AdministratorLastName;
-	TStringColumn *AdministratorGender;
-	TStringColumn *AdministratorPhoneNumber;
-	TStringColumn *AdministratorBlocked;
 	TStyleBook *StyleBook1;
-	TStringColumn *AdministratorDateOfBirth;
 	TImage *UserTypeSelectionContainer;
 	TImage *UserTypeSelectionDropDownIndicator;
 	TText *UserTypeSelectionText;
@@ -82,24 +72,6 @@ __published:	// IDE-managed Components
 	TText *StudentUserType;
 	TRectangle *AdministratorSelector;
 	TText *AdministratorUserType;
-	TStringGrid *InstructorAccountsStringGrid;
-	TStringColumn *InstructorID;
-	TStringColumn *InstructorSubject;
-	TStringColumn *InstructorFirstName;
-	TStringColumn *InstructorLastName;
-	TStringColumn *InstructorGender;
-	TStringColumn *InstructorDateOfBirth;
-	TStringColumn *InstructorPhoneNumber;
-	TStringColumn *InstructorBlocked;
-	TStringGrid *StudentAccountsStringGrid;
-	TStringColumn *StringColumn1;
-	TStringColumn *StringColumn2;
-	TStringColumn *StringColumn3;
-	TStringColumn *StringColumn4;
-	TStringColumn *StringColumn5;
-	TStringColumn *StringColumn6;
-	TStringColumn *StringColumn7;
-	TStringColumn *StringColumn8;
 	TButton *CreateStudentButton;
 	TButton *CreateInstructorButton;
 	TLayout *BottomEditLayout;
@@ -119,6 +91,34 @@ __published:	// IDE-managed Components
 	TRectangle *SearchIconRectangle;
 	TImage *SearchIcon;
 	TEdit *SearchBarEdit;
+	TLayout *StringGridLayout;
+	TStringGrid *AdministratorAccountsStringGrid;
+	TStringColumn *AdministratorUserID;
+	TStringColumn *AdministratorJobTitle;
+	TStringColumn *AdministratorFirstName;
+	TStringColumn *AdministratorLastName;
+	TStringColumn *AdministratorGender;
+	TStringColumn *AdministratorDateOfBirth;
+	TStringColumn *AdministratorPhoneNumber;
+	TStringColumn *AdministratorBlocked;
+	TStringGrid *InstructorAccountsStringGrid;
+	TStringColumn *InstructorID;
+	TStringColumn *InstructorSubject;
+	TStringColumn *InstructorFirstName;
+	TStringColumn *InstructorLastName;
+	TStringColumn *InstructorGender;
+	TStringColumn *InstructorDateOfBirth;
+	TStringColumn *InstructorPhoneNumber;
+	TStringColumn *InstructorBlocked;
+	TStringGrid *StudentAccountsStringGrid;
+	TStringColumn *StringColumn1;
+	TStringColumn *StringColumn2;
+	TStringColumn *StringColumn3;
+	TStringColumn *StringColumn4;
+	TStringColumn *StringColumn5;
+	TStringColumn *StringColumn6;
+	TStringColumn *StringColumn7;
+	TStringColumn *StringColumn8;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall AdministratorAccountsStringGridDrawColumnHeader(TObject *Sender, TCanvas * const Canvas,
           TColumn * const Column, const TRectF &Bounds);

@@ -18,6 +18,10 @@
 #include <FMX.StdCtrls.hpp>
 #include <System.Rtti.hpp>
 #include <FMX.ComboEdit.hpp>
+#include <vector>
+
+#include "Course.h"
+#include "School.h"
 //---------------------------------------------------------------------------
 class TAdministratorManageCoursesForm : public TAdministratorUIParentForm
 {
@@ -68,8 +72,8 @@ __published:	// IDE-managed Components
 	TLabel *CourseStartDateLabel;
 	TEdit *CourseStartDateEdit;
 	TLayout *CourseEnabledLayout;
-	TLabel *CourseEnabledLabel;
-	TEdit *CourseEnabledEdit;
+	TLabel *CourseDisabledLabel;
+	TEdit *CourseDisabledEdit;
 	TLayout *CourseEndDateLayout;
 	TLabel *CourseEndDateLabel;
 	TEdit *CourseEndDateEdit;
@@ -81,10 +85,16 @@ __published:	// IDE-managed Components
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall CourseInstructorEditExit(TObject *Sender);
 	void __fastcall CreateCourseButtonClick(TObject *Sender);
+	void __fastcall AdministratorCoursesStringGridDrawColumnHeader(TObject *Sender,
+          TCanvas * const Canvas, TColumn * const Column, const TRectF &Bounds);
+
 private:	// User declarations
     TStringList *InstructorNames;
 public:		// User declarations
 	__fastcall TAdministratorManageCoursesForm(TComponent* Owner);
+	void __fastcall PopulateGridWithCourses(const std::vector<std::shared_ptr<Course>>& courses);
+	void __fastcall AdjustColumnWidths(TStringGrid *StringGrid);
+	void __fastcall ClearGridCells(Fmx::Grid::TStringGrid* stringGrid);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TAdministratorManageCoursesForm *AdministratorManageCoursesForm;

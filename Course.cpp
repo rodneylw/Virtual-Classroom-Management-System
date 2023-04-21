@@ -49,8 +49,8 @@ string Course::GetCourseSemester() {
 	return CourseSemester;
 }
 
-bool Course::GetCourseEnabled() {
-	return CourseEnabled;
+bool Course::GetIsCourseDisabled() {
+	return CourseDisabled;
 }
 
 string Course::GetCourseInstructorString() {
@@ -67,5 +67,5 @@ string Course::GetCourseEndDate() {
 }
 
 void Course::SaveCourse(std::ostream& out) {
-  out << GetCourseID() << "," << GetCourseName() << "," << GetCourseDepartment(), GetCourseInstructorString(), GetCourseSemester(), GetCourseStartDate(), GetCourseEndDate(), GetCourseEnabled();
+  out << GetCourseID() << "," << GetCourseName() << "," << GetCourseDepartment() << "," << GetCourseInstructorString() << "," << GetCourseSemester() << "," << GetCourseStartDate() << "," << GetCourseEndDate() << "," << GetIsCourseDisabled();
 }

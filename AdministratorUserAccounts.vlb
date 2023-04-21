@@ -17,7 +17,7 @@ Coordinates=187,146,66,36
 Coordinates=10,78,82,58
 
 []
-Coordinates=1165,353,168,36
+Coordinates=1146,458,149,36
 
 [UserAccountsMenuItemIcon]
 Coordinates=10,10,176,58
@@ -144,33 +144,6 @@ Coordinates=1148,188,252,36
 [UserNameProfile]
 Coordinates=16,77,112,58
 
-[AdministratorAccountsStringGrid]
-Coordinates=686,1,202,58
-
-[UserAccountsScrollBox]
-Coordinates=1146,458,149,36
-
 [FooterLogoutButton]
 Coordinates=435,1,128,58
-
-[AdministratorBlocked]
-Coordinates=1037,458,100,36
-
-[AdministratorFirstName]
-Coordinates=26,362,100,36
-
-[AdministratorGender]
-Coordinates=819,458,100,36
-
-[AdministratorJobTitle]
-Coordinates=1165,243,100,36
-
-[AdministratorLastName]
-Coordinates=1165,298,100,36
-
-[AdministratorPhoneNumber]
-Coordinates=928,458,100,36
-
-[AdministratorUserID]
-Coordinates=1165,408,100,36
 

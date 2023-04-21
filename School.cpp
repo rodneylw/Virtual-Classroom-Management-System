@@ -250,10 +250,10 @@ void School::LoadCourses() {
 			   std::string CourseSemester = ParsedLine[4];
 			   std::string CourseStartDate = ParsedLine[5];
 			   std::string CourseEndDate = ParsedLine[6];
-			   std::string CourseEnabled = ParsedLine[7];
+			   std::string CourseDisabled = ParsedLine[7];
 
 			   std::shared_ptr<Course> obj = std::make_shared<Course>(CourseID, CourseName, CourseDepartment,
-			   CourseInstructor, CourseSemester, CourseStartDate, CourseEndDate, StringToBool(CourseEnabled));
+			   CourseInstructor, CourseSemester, CourseStartDate, CourseEndDate, StringToBool(CourseDisabled));
 
 			   Courses.push_back(std::move(obj));
 		  }

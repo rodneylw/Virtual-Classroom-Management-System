@@ -20,7 +20,7 @@ private:
 	 string CourseName;
 	 string CourseDepartment;
      string CourseSemester;
-	 bool CourseEnabled;
+	 bool CourseDisabled;
 	 std::shared_ptr<Instructor> CourseInstructor;
 	 std::vector<std::unique_ptr<User>> Students;
      //std::vector<Assignment*> Assignments;
@@ -30,16 +30,17 @@ private:
 	 string StartDate;
      string EndDate;
 public:
-	 Course(string courseID, string courseName, string courseDepartment, string courseInstructor, string courseSemester, string startDate, string endDate, bool enabled)
+	 Course(string courseID, string courseName, string courseDepartment, string courseInstructor, string courseSemester, string startDate, string endDate, bool disabled)
 	  : CourseID(courseID), CourseName(courseName), CourseDepartment(courseDepartment), CourseSemester(courseSemester), StartDate(startDate), EndDate(endDate) {
 		 CourseInstructor = GetInstructor(courseInstructor);
+         CourseDisabled = disabled;
 	 }
 
 	 string GetCourseID();
 	 string GetCourseName();
 	 string GetCourseDepartment();
 	 string GetCourseSemester();
-	 bool GetCourseEnabled();
+	 bool GetIsCourseDisabled();
 	 string GetCourseInstructorString();
 	 string GetCourseStartDate();
 	 string GetCourseEndDate();
