@@ -295,3 +295,69 @@ void __fastcall TAdministratorManageCoursesForm::AdministratorCoursesStringGridD
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TAdministratorManageCoursesForm::DeleteCourseStringGridSelectorMouseEnter(TObject *Sender)
+
+{
+	DeleteCourseStringGridSelector->Fill->Kind = TBrushKind::Solid;
+	DeleteCourseStringGridSelector->Fill->Color =  0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorManageCoursesForm::DeleteCourseStringGridSelectorMouseLeave(TObject *Sender)
+
+{
+	DeleteCourseStringGridSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorManageCoursesForm::DeleteCourseStringGridSelectorClick(TObject *Sender)
+
+{
+    //Delete Course Function
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorManageCoursesForm::DisableCourseStringGridSelectorMouseEnter(TObject *Sender)
+
+{
+	DisableCourseStringGridSelector->Fill->Kind = TBrushKind::Solid;
+	DisableCourseStringGridSelector->Fill->Color =  0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorManageCoursesForm::DisableCourseStringGridSelectorMouseLeave(TObject *Sender)
+
+{
+	DisableCourseStringGridSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorManageCoursesForm::DisableCourseStringGridSelectorClick(TObject *Sender)
+
+{
+    //Disable Course Function
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorManageCoursesForm::ModifyCourseStringGridSelectorMouseEnter(TObject *Sender)
+
+{
+	ModifyCourseStringGridSelector->Fill->Kind = TBrushKind::Solid;
+	ModifyCourseStringGridSelector->Fill->Color =  0xFFDFE9F1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorManageCoursesForm::ModifyCourseStringGridSelectorMouseLeave(TObject *Sender)
+
+{
+	ModifyCourseStringGridSelector->Fill->Kind = TBrushKind::None;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TAdministratorManageCoursesForm::ModifyCourseStringGridSelectorClick(TObject *Sender)
+
+{
+    //Modify Course Function
+}
+//---------------------------------------------------------------------------
+

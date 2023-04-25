@@ -64,9 +64,6 @@ Coordinates=142,714,194,36
 [CreateNewSection]
 Coordinates=10,714,122,36
 
-[BlockUserStringGridOption]
-Coordinates=1068,10,169,58
-
 [ManageCoursesMenuItemRect]
 Coordinates=1029,668,192,36
 
@@ -151,9 +148,6 @@ Coordinates=278,622,122,36
 [CreateNewCourseText]
 Coordinates=589,122,145,58
 
-[RemoveUserStringGridOption]
-Coordinates=873,10,185,58
-
 [UserTypePopupMenu]
 Coordinates=517,394,139,58
 
@@ -186,12 +180,6 @@ Coordinates=1133,122,97,58
 
 [CourseIDEdit]
 Coordinates=772,10,91,58
-
-[EditUserStringGridOption]
-Coordinates=963,122,160,58
-
-[BlockUserStringGridOptionSelector]
-Coordinates=460,576,217,36
 
 [Footer]
 Coordinates=398,576,52,36
@@ -265,12 +253,6 @@ Coordinates=579,190,168,58
 [UserAccountsScrollBox]
 Coordinates=10,530,149,36
 
-[RemoveUserStringGridOptionSelector]
-Coordinates=980,462,233,36
-
-[EditUserStringGridOptionSelector]
-Coordinates=762,462,208,36
-
 [CourseSemesterEdit]
 Coordinates=226,326,133,58
 
@@ -310,4 +292,22 @@ Coordinates=1706,606,91,36
 [CourseDisabledEdit]
 Coordinates=225,462,122,58
 Visible=True
+
+[DeleteCourseStringGridSelector]
+Coordinates=980,462,233,36
+
+[DeleteCourseStringGridOption]
+Coordinates=873,10,185,58
+
+[DisableCourseStringGridSelector]
+Coordinates=460,576,217,36
+
+[DisableCourseStringGridOption]
+Coordinates=1068,10,169,58
+
+[ModifyCourseStringGridSelector]
+Coordinates=762,462,208,36
+
+[ModifyCourseStringGridOption]
+Coordinates=963,122,160,58
 

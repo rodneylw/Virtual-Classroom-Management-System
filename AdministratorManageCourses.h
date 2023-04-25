@@ -30,12 +30,12 @@ __published:	// IDE-managed Components
 	TImage *UserTypeSelectionContainer;
 	TRectangle *UserTypeSelector;
 	TText *UserTypeSelectionText;
-	TRectangle *BlockUserStringGridOptionSelector;
-	TImage *BlockUserStringGridOption;
-	TRectangle *RemoveUserStringGridOptionSelector;
-	TImage *RemoveUserStringGridOption;
-	TRectangle *EditUserStringGridOptionSelector;
-	TImage *EditUserStringGridOption;
+	TRectangle *DisableCourseStringGridSelector;
+	TImage *DisableCourseStringGridOption;
+	TRectangle *DeleteCourseStringGridSelector;
+	TImage *DeleteCourseStringGridOption;
+	TRectangle *ModifyCourseStringGridSelector;
+	TImage *ModifyCourseStringGridOption;
 	TLayout *SearchBarLayout;
 	TRectangle *SearchIconRectangle;
 	TImage *SearchIcon;
@@ -87,6 +87,15 @@ __published:	// IDE-managed Components
 	void __fastcall CreateCourseButtonClick(TObject *Sender);
 	void __fastcall AdministratorCoursesStringGridDrawColumnHeader(TObject *Sender,
           TCanvas * const Canvas, TColumn * const Column, const TRectF &Bounds);
+	void __fastcall DeleteCourseStringGridSelectorMouseEnter(TObject *Sender);
+	void __fastcall DeleteCourseStringGridSelectorMouseLeave(TObject *Sender);
+	void __fastcall DeleteCourseStringGridSelectorClick(TObject *Sender);
+	void __fastcall DisableCourseStringGridSelectorMouseEnter(TObject *Sender);
+	void __fastcall DisableCourseStringGridSelectorMouseLeave(TObject *Sender);
+	void __fastcall DisableCourseStringGridSelectorClick(TObject *Sender);
+	void __fastcall ModifyCourseStringGridSelectorMouseEnter(TObject *Sender);
+	void __fastcall ModifyCourseStringGridSelectorMouseLeave(TObject *Sender);
+	void __fastcall ModifyCourseStringGridSelectorClick(TObject *Sender);
 
 private:	// User declarations
     TStringList *InstructorNames;
